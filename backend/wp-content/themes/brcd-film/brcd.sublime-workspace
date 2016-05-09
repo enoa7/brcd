@@ -1,0 +1,306 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 2212,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 334.0,
+		"last_filter": "syn sta",
+		"selected_items":
+		[
+			[
+				"syn sta",
+				"Set Syntax: Sass"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"form",
+				"Snippet: bs3-form"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"syn php",
+				"Set Syntax: PHP"
+			],
+			[
+				"syn md",
+				"Set Syntax: Markdown"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"themer",
+				"Themr: List themes"
+			],
+			[
+				"schemr",
+				"Schemr: List all schemes"
+			],
+			[
+				"thmr",
+				"Themr: List themes"
+			],
+			[
+				"themr",
+				"Themr: Next theme"
+			]
+		],
+		"width": 431.0
+	},
+	"console":
+	{
+		"height": 485.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/gamalp/webdev/project/barracuda/backend/wp-content/themes/brcd-film"
+	],
+	"file_history":
+	[
+		"/Users/gamalp/Desktop/barracuda files/megamenu-backlog.md",
+		"/Users/gamalp/Desktop/barracuda files/baracude_productbacklog.md",
+		"/Users/gamalp/webdev/project/tdi2/gulpfile.js",
+		"/Users/gamalp/webdev/project/atvi/backend/wp-content/themes/atvi-theme/gulpfile.js",
+		"/Users/gamalp/Desktop/potential_shipable_increment.md",
+		"/Users/gamalp/Desktop/Barracuda_MOM_30apr2016.txt",
+		"/Users/gamalp/Desktop/lispw",
+		"/Users/gamalp/webdev/project/atvi/backend/wp-config.php",
+		"/Users/gamalp/webdev/project/atvi/backend/env.php",
+		"/Users/gamalp/webdev/project/resizetest/connect.php",
+		"/Users/gamalp/webdev/project/resizetest/upload.php",
+		"/Users/gamalp/webdev/project/resizetest/index.php",
+		"/Users/gamalp/webdev/project/petarung2/app/functions.php",
+		"/Users/gamalp/webdev/project/resizetest/class.upload.php",
+		"/Users/gamalp/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/Default (OSX).sublime-keymap",
+		"/Users/gamalp/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/gamalp/webdev/project/resizetest/resize_test.php",
+		"/Users/gamalp/.ssh/id_rsa",
+		"/Users/gamalp/.ssh/id_rsa.pub",
+		"/Users/gamalp/webdev/project/petarung2/app/public/template/sidecontent-default.php",
+		"/Users/gamalp/webdev/project/petarung2/app/public/template/sidecontent-berita.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/home.php",
+		"/Users/gamalp/webdev/project/petarung2/app/public/index.php",
+		"/Users/gamalp/webdev/project/petarung2/app/public/berita.php",
+		"/Users/gamalp/webdev/project/petarung2/app/template/berita_terkini.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/template/edit_content.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/template/add_content.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/apparel.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/do_add.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/template/subkategori_apparel.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/template/review_perlengkapan.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/template/subkategori_perlengkapan.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/template/subkategori_gym.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/delete.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/do_edit.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/mod_content.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/gym.php",
+		"/Users/gamalp/webdev/project/petarung2/app/admin/doadd_jadwal.php",
+		"/Users/gamalp/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/gamalp/webdev/project/petarung2/petarungindo.sql",
+		"/Users/gamalp/Desktop/default_dns.txt",
+		"/Users/gamalp/webdev/project/quickstart/database/migrations/2016_03_28_120022_create_tasks_table.php",
+		"/Users/gamalp/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 136.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_delete",
+			"_detele",
+			"process",
+			"process[",
+			"process",
+			"'img/'",
+			"jadwal",
+			"berita",
+			"appa"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$target_dir"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								511,
+								511
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Materialize/Langs/Gulpfile JS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "brcd.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
