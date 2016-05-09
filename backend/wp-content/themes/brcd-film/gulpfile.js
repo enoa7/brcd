@@ -56,7 +56,7 @@ gulp.task('js', function() {
             './node_modules/jquery/dist/jquery.js',
             './node_modules/fastclick/lib/*.js',
             './node_modules/slick-carousel/slick/slick.js',
-            './js/atvi.js',
+            './js/main.js',
             './js/navigation.js',
             './js/skip-link-focus-fix.js',
         ])
