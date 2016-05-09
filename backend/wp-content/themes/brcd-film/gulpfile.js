@@ -11,7 +11,7 @@ var reload = browserSync.reload;
 // var livereload = require('gulp-livereload');
 
 /* path to wp custom theme */
-var path = 'backend/wp-content/themes/atvi-theme';
+var theme_path = 'backend/wp-content/themes/brcd-film';
 
 /* ========================================================
  * Tasks with Browser Sync
