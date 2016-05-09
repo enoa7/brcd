@@ -30,7 +30,7 @@ gulp.task('browserSync', function() {
     ];
 
     browserSync.init(files, {
-        proxy: "http://localhost:8888/atvi/",
+        proxy: "http://localhost/brcd/backend",
         notify: 'false'
     });
 });
