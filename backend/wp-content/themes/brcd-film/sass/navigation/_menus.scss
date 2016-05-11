@@ -127,7 +127,7 @@
 
 		/* when the primary menu list is hover-ed */
 		&:hover {
-			background-color: #000;
+			background-color: $color_secondary;
 			@include transition(0.2s);
 			a {
 				color: #fff;
@@ -139,7 +139,7 @@
 				top: 2em;
 				left: 0;
 				// @include transition(0.3s);
-				background-color: #000;
+				background-color: $color_secondary;
 				@extend .nodots;
 				li {
 					@include font-size(0.9);
@@ -157,7 +157,7 @@
 
 		a {
 			@include padding-vertical(5px);
-			color: #000;
+			color: $color_secondary;
 		}
 
 		ul.sub-menu {

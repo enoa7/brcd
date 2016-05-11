@@ -128,4 +128,5 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 html, body {
 	@include font-size(1);
+	color: $color_secondary;
 }
