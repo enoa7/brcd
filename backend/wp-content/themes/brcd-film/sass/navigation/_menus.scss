@@ -1,107 +1,168 @@
 .main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
-
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 1.5em;
-			left: -999em;
-			z-index: 99999;
-
-			ul {
-				left: -999em;
-				top: 0;
-			}
-
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			a {
-				width: 200px;
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-	
-	li {
-		float: left;
-		position: relative;
-
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-	
-	a {
-		display: block;
-		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
+    // clear: both;
+    // display: block;
+    // float: left;
+    // width: 100%;
+    ul {
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        ul {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+            float: left;
+            position: absolute;
+            top: 1.5em;
+            left: -999em;
+            z-index: 99999;
+            ul {
+                left: -999em;
+                top: 0;
+            }
+            li {
+                &:hover > ul,
+                &.focus > ul {
+                    left: 100%;
+                }
+            }
+            a {
+                width: 200px;
+            }
+            :hover > a,
+            .focus > a {}
+            a:hover,
+            a.focus {}
+        }
+        li:hover > ul,
+        li.focus > ul {
+            left: auto;
+        }
+    }
+    li {
+        float: left;
+        position: relative;
+        &:hover > a,
+        &.focus > a {}
+    }
+    a {
+        display: block;
+        text-decoration: none;
+    }
+    .current_page_item > a,
+    .current-menu-item > a,
+    .current_page_ancestor > a,
+    .current-menu-ancestor > a {}
 }
 
+
 /* Small menu. */
+
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
+    display: block;
 }
 
 @media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
-		display: block;
-	}
+    .menu-toggle {
+        display: none;
+    }
+    .main-navigation ul {
+        display: block;
+    }
 }
 
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
+    .site-main & {
+        margin: 0 0 1.5em;
+        overflow: hidden;
+    }
+    .nav-previous {
+        float: left;
+        width: 50%;
+    }
+    .nav-next {
+        float: right;
+        text-align: right;
+        width: 50%;
+    }
+}
 
-	.site-main & {
-		margin: 0 0 1.5em;
-		overflow: hidden;
-	}
+#masthead {
+	background-color: $color_primary;
+	@include padding-vertical(15px);
+	font-weight: 700;
+    .site-lang {
+        text-align: right;
+        text-transform: uppercase;
+        @include font-size(0.7);
+        padding-top: 10px; //add padding top to aligned it with the searchbox
+    }
+    .site-branding {
+    	float: left;
+    }
+    .site-searchbox {
+    	input {
+    		border-radius: 13px;
+    		@include padding-horizontal(10px);
 
-	.nav-previous {
-		float: left;
-		width: 50%;
-	}
+    		/* center the searchbox placeholder */
+    		&::-webkit-input-placeholder {
+    			text-align: center;	
+    		}
+    	}
+    }
+    .site-branding,
+    #site-navigation {
+    	@include margin-vertical(15px);
+    }
 
-	.nav-next {
-		float: right;
-		text-align: right;
-		width: 50%;
+}
+
+#primary-menu {
+	li {
+		@extend .col-sm-3;
+		text-align: center;
+
+		/* when the primary menu list is hover-ed */
+		&:hover {
+			background-color: #000;
+			@include transition(0.2s);
+			a {
+				color: #fff;
+				text-decoration: none !important;
+			}
+
+			/* show the child menu */
+			ul.sub-menu {
+				top: 2em;
+				left: 0;
+				// @include transition(0.3s);
+				background-color: #000;
+				@extend .nodots;
+				li {
+					@include font-size(0.9);
+					text-align: center;
+					font-weight: 600;
+					a {
+						color: #fff;
+						&:hover {
+							color: $color_primary;
+						}
+					}
+				}
+			}
+		}
+
+		a {
+			@include padding-vertical(5px);
+			color: #000;
+		}
+
+		ul.sub-menu {
+			// left: 0;
+			// top: 2em;
+		}
 	}
 }

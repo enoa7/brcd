@@ -22,3 +22,36 @@
 @mixin clearfix-after() {
 	clear: both;
 }
+
+// margin-side
+@mixin margin-horizontal($side) {
+	margin-left: $side;
+	margin-right: $side;
+}
+
+// margin-vertical
+@mixin margin-vertical($side) {
+	margin-top: $side;
+	margin-bottom: $side;
+}
+
+// padding-side
+@mixin padding-horizontal($side) {
+	padding-left: $side;
+	padding-right: $side;
+}
+
+// padding-vertical
+@mixin padding-vertical($side) {
+	padding-top: $side;
+	padding-bottom: $side;
+}
+/* --------------------------------
+ * List of Useful Mixins
+ * -------------------------------- */
+
+@import 'animation';
+@import 'prefix';
+@import 'transition';
+@import 'opacity';
+
