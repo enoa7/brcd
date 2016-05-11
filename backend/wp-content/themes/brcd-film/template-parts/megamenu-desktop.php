@@ -6,7 +6,7 @@
 
 ?>
 
-<header id="masthead" class="site-header">
+<header id="masthead" class="site-header desktop">
 	<div class="container">
 		<div class="site-lang col-sm-9">
 			<span>english</span>

@@ -1,168 +1,204 @@
-.main-navigation {
-    // clear: both;
-    // display: block;
-    // float: left;
-    // width: 100%;
-    ul {
-        display: none;
-        list-style: none;
-        margin: 0;
-        padding-left: 0;
+    .main-navigation {
+        // clear: both;
+        // display: block;
+        // float: left;
+        // width: 100%;
         ul {
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-            float: left;
-            position: absolute;
-            top: 1.5em;
-            left: -999em;
-            z-index: 99999;
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
             ul {
+                box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+                float: left;
+                position: absolute;
+                top: 1.5em;
                 left: -999em;
-                top: 0;
+                z-index: 99999;
+                ul {
+                    left: -999em;
+                    top: 0;
+                }
+                li {
+                    &:hover > ul,
+                    &.focus > ul {
+                        left: 100%;
+                    }
+                }
+                a {
+                    width: 200px;
+                }
+                :hover > a,
+                .focus > a {}
+                a:hover,
+                a.focus {}
             }
-            li {
-                &:hover > ul,
-                &.focus > ul {
-                    left: 100%;
+            li:hover > ul,
+            li.focus > ul {
+                left: auto;
+            }
+        }
+        li {
+            float: left;
+            position: relative;
+            &:hover > a,
+            &.focus > a {}
+        }
+        a {
+            display: block;
+            text-decoration: none;
+        }
+        .current_page_item > a,
+        .current-menu-item > a,
+        .current_page_ancestor > a,
+        .current-menu-ancestor > a {}
+    }
+    /* Small menu. */
+    
+    .menu-toggle,
+    .main-navigation.toggled ul {
+        display: block;
+    }
+    
+    @media screen and (min-width: 37.5em) {
+        .menu-toggle {
+            display: none;
+        }
+        .main-navigation ul {
+            display: block;
+        }
+    }
+    
+    .comment-navigation,
+    .posts-navigation,
+    .post-navigation {
+        .site-main & {
+            margin: 0 0 1.5em;
+            overflow: hidden;
+        }
+        .nav-previous {
+            float: left;
+            width: 50%;
+        }
+        .nav-next {
+            float: right;
+            text-align: right;
+            width: 50%;
+        }
+    }
+    
+    #masthead {
+        background-color: $color_primary;
+        padding-top: 15px; // default spacing (mobile)
+        /* add space to top and bottom for masthead on 768px++ */
+        @media screen and (min-width: 768px) {
+            @include padding-vertical(15px);
+        }
+        font-weight: 700;
+        .site-lang {
+            text-align: right;
+            text-transform: uppercase;
+            @include font-size(0.7);
+            padding-top: 10px; //add padding top to aligned it with the searchbox
+        }
+        .site-branding {
+            float: left;
+        }
+        .site-searchbox {
+            @media screen and (max-width: 768px) {
+                @include margin-vertical(10px);
+            }
+            .input-group {
+                width: 100%;
+            }
+            input {
+                border-radius: 13px;
+                @include padding-horizontal(10px);
+                /* center the searchbox placeholder */
+                &::-webkit-input-placeholder {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    /* default styling for the primary menu (based on desktop) */
+    
+    #primary-menu {
+        li {
+            @extend .col-sm-3;
+            text-align: center;
+            /* when the primary menu list is hover-ed */
+            &:hover {
+                background-color: $color_secondary;
+                @include transition(0.2s);
+                a {
+                    color: #fff;
+                    text-decoration: none !important;
+                }
+                /* show the child menu */
+                ul.sub-menu {
+                    top: 2em;
+                    left: 0;
                 }
             }
             a {
-                width: 200px;
+                @include padding-vertical(5px);
+                color: $color_secondary;
             }
-            :hover > a,
-            .focus > a {}
-            a:hover,
-            a.focus {}
+            ul.sub-menu {
+                // @include transition(0.3s);
+                background-color: $color_secondary;
+                @extend .nodots;
+                li {
+                    @include font-size(0.9);
+                    text-align: center;
+                    font-weight: 600;
+                    a {
+                        color: #fff;
+                        &:hover {
+                            color: $color_primary;
+                        }
+                    }
+                }
+            }
         }
-        li:hover > ul,
-        li.focus > ul {
-            left: auto;
+    }
+    /* add margin top and bottom on desktop for menu and logo*/
+    
+    #masthead .site-header.desktop {
+        .site-branding,
+        #site-navigation {
+            @include margin-vertical(15px);
         }
     }
-    li {
-        float: left;
-        position: relative;
-        &:hover > a,
-        &.focus > a {}
+    /* mobile megamenu */
+    
+    .site-header.mobile {
+        .main-navigation {
+            @extend .col-xs-12;
+            padding: 0 !important; // set the nav to fullwidth
+            margin-top: 5px;
+        }
+        #primary-menu {
+            @extend .clearfix;
+            background-color: $color_secondary;
+            @include padding-vertical(15px);
+            li {
+                @extend .col-xs-12;
+                @include padding-vertical(5px);
+                text-align: left;
+                a {
+                    color: #fff;
+                }
+
+                /* override default sub-menu style */
+                .sub-menu {
+                    display: block;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    box-shadow: none;
+                }
+            }
+        }
     }
-    a {
-        display: block;
-        text-decoration: none;
-    }
-    .current_page_item > a,
-    .current-menu-item > a,
-    .current_page_ancestor > a,
-    .current-menu-ancestor > a {}
-}
-
-
-/* Small menu. */
-
-.menu-toggle,
-.main-navigation.toggled ul {
-    display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-    .menu-toggle {
-        display: none;
-    }
-    .main-navigation ul {
-        display: block;
-    }
-}
-
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-    .site-main & {
-        margin: 0 0 1.5em;
-        overflow: hidden;
-    }
-    .nav-previous {
-        float: left;
-        width: 50%;
-    }
-    .nav-next {
-        float: right;
-        text-align: right;
-        width: 50%;
-    }
-}
-
-#masthead {
-	background-color: $color_primary;
-	@include padding-vertical(15px);
-	font-weight: 700;
-    .site-lang {
-        text-align: right;
-        text-transform: uppercase;
-        @include font-size(0.7);
-        padding-top: 10px; //add padding top to aligned it with the searchbox
-    }
-    .site-branding {
-    	float: left;
-    }
-    .site-searchbox {
-    	input {
-    		border-radius: 13px;
-    		@include padding-horizontal(10px);
-
-    		/* center the searchbox placeholder */
-    		&::-webkit-input-placeholder {
-    			text-align: center;	
-    		}
-    	}
-    }
-    .site-branding,
-    #site-navigation {
-    	@include margin-vertical(15px);
-    }
-
-}
-
-#primary-menu {
-	li {
-		@extend .col-sm-3;
-		text-align: center;
-
-		/* when the primary menu list is hover-ed */
-		&:hover {
-			background-color: $color_secondary;
-			@include transition(0.2s);
-			a {
-				color: #fff;
-				text-decoration: none !important;
-			}
-
-			/* show the child menu */
-			ul.sub-menu {
-				top: 2em;
-				left: 0;
-				// @include transition(0.3s);
-				background-color: $color_secondary;
-				@extend .nodots;
-				li {
-					@include font-size(0.9);
-					text-align: center;
-					font-weight: 600;
-					a {
-						color: #fff;
-						&:hover {
-							color: $color_primary;
-						}
-					}
-				}
-			}
-		}
-
-		a {
-			@include padding-vertical(5px);
-			color: $color_secondary;
-		}
-
-		ul.sub-menu {
-			// left: 0;
-			// top: 2em;
-		}
-	}
-}
