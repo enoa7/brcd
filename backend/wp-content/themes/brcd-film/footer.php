@@ -28,16 +28,14 @@
 		    	</div>
 		    </div>
 			<div class="site-info col-xs-12 spacepad">
-				<div class="copyright col-xs-12 nopadding">
+				<span class="copyright">
 					<span>Barracuda</span>
 					<span><i class="fa fa-copyright"></i></span>
 					<span>Copyright 2016</span>
-				</div>
-				<!-- <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'brcd-film' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'brcd-film' ), 'WordPress' ); ?></a>
-				<span class="sep"> | </span> -->
-				<div class="kode-in col-xs-12 nopadding">
-					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'brcd-film' ), 'brcd-film', '<a href="http://kode-in.web.id/" rel="designer">kode-in</a>' ); ?>
-				</div>
+				</span>
+				<!-- <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'brcd-film' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'brcd-film' ), 'WordPress' ); ?></a> -->
+				<span class="sep"> | </span>
+					<?php printf( esc_html__( 'Designed and Developed by %2$s.', 'brcd-film' ), 'brcd-film', '<a target="_blank" href="http://kode-in.web.id/" rel="designer">kode-in</a>' ); ?>
 
 			</div>
 		</div>
