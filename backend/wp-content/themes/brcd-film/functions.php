@@ -129,6 +129,16 @@ function brcd_film_widgets_init() {
 		'after_title'   => '</p>',
 	) );
 
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer - Social Media', 'brcd-film' ),
+		'id'            => 'footer-socialmedia',
+		'description'   => esc_html__( 'Add widgets here.', 'brcd-film' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<p class="widget-title">',
+		'after_title'   => '</p>',
+	) );
+
 }
 add_action( 'widgets_init', 'brcd_film_widgets_init' );
 
