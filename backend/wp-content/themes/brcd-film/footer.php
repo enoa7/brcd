@@ -17,7 +17,10 @@
 		<div class="container">
 			<div class="widget-area col-xs-12 col-sm-4" id="more-info">
 		        <?php dynamic_sidebar( 'footer-moreinfo' ); ?>
-		    </div><!-- #more-info .widget-area -->
+		    </div>
+		    <div class="widget-area col-xs-12 col-sm-4" id="sitemap">
+		        <?php dynamic_sidebar( 'footer-sitemap' ); ?>
+		    </div>
 		</div>
 		<!-- <div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'brcd-film' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'brcd-film' ), 'WordPress' ); ?></a>

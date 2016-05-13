@@ -108,9 +108,20 @@ function brcd_film_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
+	/* add 'more info' widget */
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer - More Info', 'brcd-film' ),
 		'id'            => 'footer-moreinfo',
+		'description'   => esc_html__( 'Add widgets here.', 'brcd-film' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<p class="widget-title">',
+		'after_title'   => '</p>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer - Sitemap', 'brcd-film' ),
+		'id'            => 'footer-sitemap',
 		'description'   => esc_html__( 'Add widgets here.', 'brcd-film' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
