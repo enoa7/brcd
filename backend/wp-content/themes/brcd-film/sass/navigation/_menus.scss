@@ -112,6 +112,12 @@
         }
         .input-group {
             width: 100%;
+
+            // reduce the text box height just a little bit
+            input {
+                height: 2em;
+            }
+            
         }
         input {
             border-radius: 13px;
@@ -169,10 +175,10 @@
 }
 
 
-/* add margin top and bottom on desktop for menu and logo*/
+/* add margin top on desktop for menu and logo*/
 
 .site-wrapper {
-    @include margin-vertical(15px);
+    margin-top: 15px;
 }
 
 
