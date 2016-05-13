@@ -24,7 +24,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Normalize
-# Typography
+# Typography7
 # Elements
 # Forms
 # Navigation
@@ -46,12 +46,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 @import "variables-site/variables-site";
 @import "mixins/mixins-master";
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
 // @import "normalize";
-
+ 
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
@@ -129,4 +130,5 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 html, body {
 	@include font-size(1);
 	color: $color_secondary;
+	font-family: 'Montserrat', sans-serif;
 }
