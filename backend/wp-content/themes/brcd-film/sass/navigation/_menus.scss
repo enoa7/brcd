@@ -159,10 +159,13 @@
             // @include transition(0.3s);
             background-color: $color_secondary;
             @extend .nodots;
+            padding-left: 3em;
             li {
                 @include font-size(0.9);
-                text-align: center;
+                text-align: left;
+                width: 100%;
                 font-weight: 600;
+                line-height: 2em;
                 a {
                     color: #fff;
                     &:hover {
