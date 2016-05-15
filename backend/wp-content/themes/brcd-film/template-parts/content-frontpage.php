@@ -56,7 +56,16 @@
 			'category_name'          => 'article',
 			'posts_per_page'         => '3',
 			'order'                  => 'DESC',
+			'meta_query'             => array(
+				array(
+					'key'       => 'highlight',
+					'value'     => 'yes',
+					'compare'   => '=',
+					'type'      => 'CHAR',
+				),
+			),
 		);
+
 
 		// The Query
 		$query = new WP_Query( $args );
