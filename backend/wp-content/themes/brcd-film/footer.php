@@ -14,7 +14,7 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="container">
+		<div class="container spacepad">
 			<div class="widget-area col-xs-12 col-sm-6" id="more-info">
 		        <?php dynamic_sidebar( 'footer-moreinfo' ); ?>
 		    </div>
