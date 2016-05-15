@@ -39,8 +39,36 @@ video {
     }
 }
 
+
 /* style for product/news/highlight section */
 
 #highlight {
     background-color: $color_primary;
+    position: relative;
+    .item {
+        &-img {
+            img {
+                width: 100%;
+            }
+        }
+        &-desc {
+            @media screen and (min-width: 992px) {
+                position: absolute;
+                z-index: 2;
+                top: 15%;
+                left: 15%;
+                background-color: $color_primary;
+                width: 300px;
+
+
+                > .container {
+                    width: auto;
+                }
+            }
+
+            &-btn {
+                text-align: right;
+            }
+        }
+    }
 }

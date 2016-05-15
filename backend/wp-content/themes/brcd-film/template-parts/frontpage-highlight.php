@@ -13,8 +13,12 @@
 	</div>
 	<div class="item-desc">
 		<div class="container spacepad">
-			<div class="item-desc-title"><h3 class="title"><?php the_title(); ?></h3></div>
-			<div class="item-desc-text"><?php the_content(); ?></div>
+			<div class="item-desc-title"><h2 class="title"><?php the_title(); ?></h2></div>
+			<div class="item-desc-text"><?php echo substr(get_the_excerpt(), 0,250) . ' ...'; ?></div>
+			<div class="item-desc-btn spacepad">
+				<a href="<?php echo get_permalink() ?>"><button type="button" class="btn-brcd btn-brcd-primary">Read More</button></a>
+			</div>
 		</div>
 	</div>
+
 </div>
