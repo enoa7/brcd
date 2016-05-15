@@ -5,7 +5,7 @@
  ?>
 
  <div class="hero-content">
-	<video id="hero-video" loop autoplay>
+	<video id="hero-video" loop>
 	  <!-- <source src="http://www.artcopycode.com/videos/acc.mp4" type="video/mp4"> -->
 	  <source src="<?php echo esc_url( get_stylesheet_directory_uri( '/' ) ); ?>/inc/video/<?php echo $video ?>.mp4" type="video/mp4">
 	  <source src="<?php echo esc_url( get_stylesheet_directory_uri( '/' ) ); ?>/inc/video/<?php echo $video ?>.mp4" type="video/ogg">
@@ -44,5 +44,38 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="page-content" id="highlight">
+		
+	<?php 
+
+		// WP_Query arguments
+		$args = array (
+			'post_status'            => array( 'publish' ),
+			'category_name'          => 'article',
+			'posts_per_page'         => '3',
+			'order'                  => 'DESC',
+		);
+
+		// The Query
+		$query = new WP_Query( $args );
+
+		// The Loop
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part('template-parts/frontpage', 'highlight');
+			}
+		} else {
+			// no posts found
+		}
+
+		// Restore original Post Data
+		wp_reset_postdata();
+
+	?>
+
+	
 </div>
 

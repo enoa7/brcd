@@ -137,4 +137,11 @@ html, body {
 	@include font-size(1);
 	color: $color_secondary;
 	font-family: 'Montserrat', sans-serif;
+
+
+	// since most titles uses h* tags
+	// we remove the margin top with the use of title class
+	.title {
+		margin-top: 0;
+	}
 }
