@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"background",
+				"background-color"
+			],
+			[
 				"min",
 				"min-width"
 			],
@@ -47,38 +51,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
-			"settings":
-			{
-				"buffer_size": 2196,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "backend/wp-content/themes/brcd-film/js/main.js",
-			"settings":
-			{
-				"buffer_size": 434,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "backend/wp-content/themes/brcd-film/sass/page/_frontpage.scss",
-			"settings":
-			{
-				"buffer_size": 721,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
-			"settings":
-			{
-				"buffer_size": 4877,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -87,10 +59,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 93.0,
-		"last_filter": "syn php",
+		"height": 292.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"btn pri",
+				"Snippet: bs3-button-primary"
+			],
+			[
+				"syn javsc",
+				"Set Syntax: JavaScript"
+			],
 			[
 				"syn php",
 				"Set Syntax: PHP"
@@ -156,7 +136,7 @@
 				"Themr: List themes"
 			]
 		],
-		"width": 382.0
+		"width": 431.0
 	},
 	"console":
 	{
@@ -177,18 +157,31 @@
 	},
 	"expanded_folders":
 	[
-		"/F/_webdev/_project/brcd",
-		"/F/_webdev/_project/brcd/backend",
-		"/F/_webdev/_project/brcd/backend/wp-content",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/navigation",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts"
+		"/Users/gamalp/webdev/project/brcd",
+		"/Users/gamalp/webdev/project/brcd/backend",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/forms"
 	],
 	"file_history":
 	[
-		"/F/_webdev/_project/brcd/.gitignore",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/template-parts/frontpage-highlight.php",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/page/_frontpage.scss",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/page/_page.scss",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/forms/_buttons.scss",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/plugins/wp-mobile-detect/wp-mobile-detect.php",
+		"/Users/gamalp/Desktop/lispw",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/js/main.js",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/footer.php",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/style.scss",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/modules/_kodein.scss",
+		"/Users/gamalp/webdev/project/atvi/backend/wp-content/themes/atvi-theme/template-parts/atvi-pagecontent.php",
+		"/Users/gamalp/webdev/project/brcd/backend/wp-config.php",
+		"/Users/gamalp/webdev/project/atvi/backend/wp-config.php",
 		"/F/_webdev/_project/brcd/backend/env.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/style.scss",
@@ -209,6 +202,7 @@
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/gulpfile.js",
 		"/G/Files/IMPORTANT DOC/%#&@#%.txt",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/megamenu-mobile.php",
+		"/F/_webdev/_project/brcd/.gitignore",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-page.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sidebar.php",
@@ -221,8 +215,6 @@
 		"/Users/gamalp/webdev/project/atvi/backend/wp-content/themes/atvi-theme/gulpfile.js",
 		"/Users/gamalp/Desktop/potential_shipable_increment.md",
 		"/Users/gamalp/Desktop/Barracuda_MOM_30apr2016.txt",
-		"/Users/gamalp/Desktop/lispw",
-		"/Users/gamalp/webdev/project/atvi/backend/wp-config.php",
 		"/Users/gamalp/webdev/project/atvi/backend/env.php",
 		"/Users/gamalp/webdev/project/resizetest/connect.php",
 		"/Users/gamalp/webdev/project/resizetest/upload.php",
@@ -276,7 +268,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"60",
+			"desktop",
 			"searc",
 			"col-xs-6 col-sm-12",
 			"_delete",
@@ -307,135 +299,19 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2196,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								814,
-								814
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		},
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 1,
-					"file": "backend/wp-content/themes/brcd-film/js/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 434,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								391,
-								391
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "backend/wp-content/themes/brcd-film/sass/page/_frontpage.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 721,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								107,
-								107
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4877,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4029,
-								4029
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3180.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -461,7 +337,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.584147022836,
 			1.0
 		],
 		"rows":
@@ -479,7 +355,7 @@
 	"project": "brcd.sublime-project",
 	"replace":
 	{
-		"height": 92.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -516,7 +392,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 268.0,
 	"status_bar_visible": true,
 	"template_settings":
