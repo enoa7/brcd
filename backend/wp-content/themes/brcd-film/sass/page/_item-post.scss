@@ -1,0 +1,17 @@
+/* style for item posts */
+
+.category-item {
+	.entry-title {
+		text-transform: capitalize;
+	}
+
+	.item-list {
+		&-thumb {
+			max-width: 200px;
+
+			a {
+				cursor: pointer;
+			}
+		}
+	}
+}

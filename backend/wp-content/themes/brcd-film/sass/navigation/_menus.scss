@@ -179,11 +179,13 @@
     }
 }
 
-#masthead.site-header.desktop {
-    position: absolute;
-    width: 100%;
-    z-index: 999;
-}
+/** for pushin hero video on frontpage to the top **/
+// currently not used
+// #masthead.site-header.desktop {
+//     position: absolute;
+//     width: 100%;
+//     z-index: 999;
+// }
 
 
 /* add margin top on desktop for menu and logo*/
