@@ -8,10 +8,17 @@
 	.item-list {
 		&-thumb {
 			max-width: 200px;
-
+			margin: 0 auto;
 			a {
 				cursor: pointer;
 			}
+		}
+	}
+
+	.entry-content-video {
+		.video-item iframe {
+			@extend .col-xs-4;
+			height: auto;
 		}
 	}
 }

@@ -4,8 +4,40 @@
 		"selected_items":
 		[
 			[
-				"background",
-				"background-color"
+				"attac",
+				"$attachment_id〔variable〕"
+			],
+			[
+				"php",
+				"php"
+			],
+			[
+				"img",
+				"imgUrl"
+			],
+			[
+				"select",
+				"selectGallery"
+			],
+			[
+				"cat_",
+				"cat_id"
+			],
+			[
+				"cat",
+				"cat_ID"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"get",
+				"getCat"
+			],
+			[
+				"pad",
+				"padding-top"
 			],
 			[
 				"min",
@@ -28,14 +60,6 @@
 				"margin-left"
 			],
 			[
-				"pad",
-				"padding"
-			],
-			[
-				"max",
-				"max-width"
-			],
-			[
 				"padding",
 				"padding-left"
 			],
@@ -51,6 +75,62 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "backend/wp-content/themes/brcd-film/template-parts/content.php",
+			"settings":
+			{
+				"buffer_size": 2452,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/wp-content/themes/brcd-film/sass/forms/_buttons.scss",
+			"settings":
+			{
+				"buffer_size": 1662,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/wp-content/themes/brcd-film/template-parts/frontpage-highlight.php",
+			"settings":
+			{
+				"buffer_size": 596,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/wp-content/themes/brcd-film/single.php",
+			"settings":
+			{
+				"buffer_size": 573,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/wp-content/themes/brcd-film/js/main.js",
+			"settings":
+			{
+				"buffer_size": 946,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/wp-content/themes/brcd-film/sass/page/_item-post.scss",
+			"settings":
+			{
+				"buffer_size": 296,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
+			"settings":
+			{
+				"buffer_size": 5122,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -59,33 +139,33 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 292.0,
-		"last_filter": "",
+		"height": 354.0,
+		"last_filter": "install",
 		"selected_items":
 		[
 			[
-				"btn pri",
-				"Snippet: bs3-button-primary"
+				"install",
+				"Package Control: Install Package"
 			],
 			[
-				"syn javsc",
+				"syn java",
 				"Set Syntax: JavaScript"
 			],
 			[
-				"syn php",
-				"Set Syntax: PHP"
+				"syn javasc	",
+				"Set Syntax: JavaScript"
 			],
 			[
 				"syn html",
 				"Set Syntax: HTML"
 			],
 			[
-				"syn scss",
-				"Set Syntax: SCSS"
+				"syn php",
+				"Set Syntax: PHP"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
+				"syn scss",
+				"Set Syntax: SCSS"
 			],
 			[
 				"syn sass",
@@ -136,7 +216,7 @@
 				"Themr: List themes"
 			]
 		],
-		"width": 431.0
+		"width": 510.0
 	},
 	"console":
 	{
@@ -157,55 +237,50 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/gamalp/webdev/project/brcd",
-		"/Users/gamalp/webdev/project/brcd/backend",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/forms"
+		"/F/_webdev/_project/brcd",
+		"/F/_webdev/_project/brcd/backend",
+		"/F/_webdev/_project/brcd/backend/wp-content",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/js",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/forms",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts"
 	],
 	"file_history":
 	[
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/template-parts/frontpage-highlight.php",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/page/_frontpage.scss",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/page/_page.scss",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/forms/_buttons.scss",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/plugins/wp-mobile-detect/wp-mobile-detect.php",
-		"/Users/gamalp/Desktop/lispw",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/js/main.js",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/footer.php",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/style.scss",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/modules/_kodein.scss",
-		"/Users/gamalp/webdev/project/atvi/backend/wp-content/themes/atvi-theme/template-parts/atvi-pagecontent.php",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-config.php",
-		"/Users/gamalp/webdev/project/atvi/backend/wp-config.php",
-		"/F/_webdev/_project/brcd/backend/env.php",
+		"/C/Users/djaru/Desktop/kodein-tagline.txt",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/functions.php",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/page/_frontpage.scss",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/page/_page.scss",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/single.php",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sidebar.php",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/megamenu-desktop.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_navigation.scss",
+		"/F/_webdev/_project/brcd/kitchen/brcd_logo_optimized.svg",
+		"/F/_webdev/_project/brcd/kitchen/brcd_logo.svg",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/js/main.js",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
+		"/C/Users/djaru/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/djaru/Dropbox/SCM WEB/account details.txt",
+		"/C/Users/djaru/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/F/_webdev/_project/brcd/.gitignore",
+		"/F/_webdev/_project/brcd/backend/env.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/style.scss",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/page/page.scss",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/brcd-frontpage.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_footer.scss",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/megamenu-desktop.php",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/functions.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/footer.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/header.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/mixins/_mixins-master.scss",
 		"/F/_webdev/_project/atvi/backend/wp-content/themes/atvi-theme/footer.php",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/navigation/_navigation.scss",
 		"/F/_webdev/_project/atvi/backend/wp-content/themes/atvi-theme/functions.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/page.php",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/js/main.js",
-		"/C/Users/djaru/Dropbox/SCM WEB/account details.txt",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/gulpfile.js",
 		"/G/Files/IMPORTANT DOC/%#&@#%.txt",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/megamenu-mobile.php",
-		"/F/_webdev/_project/brcd/.gitignore",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-page.php",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-frontpage.php",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sidebar.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/package.json",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/.gitignore",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/rtl.css",
@@ -215,6 +290,8 @@
 		"/Users/gamalp/webdev/project/atvi/backend/wp-content/themes/atvi-theme/gulpfile.js",
 		"/Users/gamalp/Desktop/potential_shipable_increment.md",
 		"/Users/gamalp/Desktop/Barracuda_MOM_30apr2016.txt",
+		"/Users/gamalp/Desktop/lispw",
+		"/Users/gamalp/webdev/project/atvi/backend/wp-config.php",
 		"/Users/gamalp/webdev/project/atvi/backend/env.php",
 		"/Users/gamalp/webdev/project/resizetest/connect.php",
 		"/Users/gamalp/webdev/project/resizetest/upload.php",
@@ -268,7 +345,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"desktop",
+			"mast",
+			"msat",
+			".site-bran",
+			"center",
+			"60",
 			"searc",
 			"col-xs-6 col-sm-12",
 			"_delete",
@@ -299,19 +380,229 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "backend/wp-content/themes/brcd-film/template-parts/content.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2452,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2002,
+								2002
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "backend/wp-content/themes/brcd-film/sass/forms/_buttons.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1328,
+								1328
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 572.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "backend/wp-content/themes/brcd-film/template-parts/frontpage-highlight.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								537,
+								537
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "backend/wp-content/themes/brcd-film/single.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								474,
+								474
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 4,
+					"file": "backend/wp-content/themes/brcd-film/js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								490,
+								490
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "backend/wp-content/themes/brcd-film/sass/page/_item-post.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 296,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								150,
+								150
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "backend/wp-content/themes/brcd-film/sass/navigation/_menus.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								647,
+								649
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -337,7 +628,7 @@
 		"cols":
 		[
 			0.0,
-			0.584147022836,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -355,7 +646,7 @@
 	"project": "brcd.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -385,14 +676,14 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 268.0,
 	"status_bar_visible": true,
 	"template_settings":

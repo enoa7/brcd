@@ -24,18 +24,36 @@
 // }
 button.btn-brcd {
     @extend .btn;
-
     &.btn-brcd-primary {
         // @extend .btn-primary;
-		color: #fff;
-    	background-color: $color_secondary;
-    	border-color: darken($color_secondary, 5%);
+		color: #000;
+    	background-color: $color_primary;
+    	border-color: darken($color_primary, 5%);
 
     	&:hover {
-    		background-color: lighten($color_secondary, 10%);
-    		border-color: lighten($color_secondary, 5%);
-    		color: #fff;
+            
+    		background-color: darken($color_primary, 10%);
+    		border-color: darken($color_primary, 5%);
+    		color: #000;
     	}
+
+    }
+}
+
+button.btn-brcd {
+    @extend .btn;
+    &.btn-brcd-secondary {
+        // @extend .btn-primary;
+
+        color: #fff;
+        background-color: $color_secondary;
+        border-color: darken($color_secondary, 5%);
+
+        &:hover {
+            background-color: lighten($color_secondary, 10%);
+            border-color: lighten($color_secondary, 5%);
+            color: #fff;
+        }
 
     }
 }

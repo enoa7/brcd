@@ -24,7 +24,7 @@ jQuery( document ).ready( function( $ ) {
     
     gallery_img.click(function(){
         var imgUrl = $(this).attr('src');
-        var newUrl = imgUrl.replace('-300x100', '');
+        var newUrl = imgUrl.replace('-300x200', '');
         gallery_theatre.attr('src', newUrl);
     });
     /** end ------------------ **/
