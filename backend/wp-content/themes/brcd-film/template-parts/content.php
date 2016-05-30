@@ -27,7 +27,7 @@
 		<div class="entry-gallery hero clearfix" id="hero-gallery">
 			<div class="entry-gallery-theatre col-xs-12 col-sm-9 nopadding">
 				<img class="img-responsive" src="<?php echo $default[0]; ?>" alt="">
-			</div>
+			</div> 
 			<div class="entry-gallery-thumb col-xs-12 col-sm-3">
 				<?php 
 
