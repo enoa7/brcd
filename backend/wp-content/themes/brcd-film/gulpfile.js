@@ -64,6 +64,11 @@ gulp.task('js', function() {
         .pipe(reload({ stream: true }));
 });
 
+gulp.task('kodein', function(){
+    return gulp.src('./lib/sass/kodein/**/*')
+        .pipe(gulp.dest('./sass'))
+});
+
 
 gulp.task('default', ['sass', 'js', 'browserSync'], function() {
     gulp.watch('*.scss', {cwd: 'sass/'}, ['sass']);
