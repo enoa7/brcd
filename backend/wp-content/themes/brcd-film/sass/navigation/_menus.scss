@@ -94,7 +94,7 @@
     padding-top: 15px; // default spacing (mobile)
     /* add space to top and bottom for masthead on 768px++ */
     @media screen and (min-width: 768px) {
-        @include padding-vertical(15px);
+        @include spacepad(15px);
     }
     font-weight: 700;
     .site-lang {
@@ -112,7 +112,7 @@
     }
     .site-searchbox {
         @media screen and (max-width: 768px) {
-            @include margin-vertical(10px);
+            @include spacemar(10px);
         }
         .input-group {
             width: 100%;
@@ -123,7 +123,7 @@
         }
         input {
             border-radius: 13px;
-            @include padding-horizontal(10px);
+            @include spacepad-side(10px);
             /* center the searchbox placeholder */
             &::-webkit-input-placeholder {
                 text-align: center;
@@ -154,7 +154,7 @@
             }
         }
         a {
-            @include padding-vertical(5px);
+            @include spacepad(5px);
             color: $color_secondary;
         }
         ul.sub-menu {
@@ -206,10 +206,10 @@
     #primary-menu {
         @extend .clearfix;
         background-color: $color_secondary;
-        @include padding-vertical(15px);
+        @include spacepad(15px);
         li {
             @extend .col-xs-12;
-            @include padding-vertical(5px);
+            @include spacepad(5px);
             text-align: left;
             a {
                 color: #fff;

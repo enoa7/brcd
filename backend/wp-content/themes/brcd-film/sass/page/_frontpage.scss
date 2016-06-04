@@ -19,7 +19,7 @@ video {
 #whatwedo {
     .item {
         @media screen and (min-width: 768px) {
-            @include padding-vertical(2em);
+            @include spacepad(2em);
         }
     }
     .item-desc,
@@ -29,7 +29,7 @@ video {
     .item-title {
         @extend .lead;
         font-weight: 700;
-        @include padding-vertical(1em);
+        @include spacepad(1em);
     }
     .item-desc {
         display: none;

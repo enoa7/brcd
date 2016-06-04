@@ -2,7 +2,7 @@ footer {
     background: $color_secondary;
     color: #fff;
     font-size: 80%;
-    @include padding-vertical(15px);
+    @include spacepad(15px);
     .widget-title,
     .title {
         font-weight: 700;
@@ -20,7 +20,7 @@ footer {
     }
     ul {
         @extend .nodots;
-        @extend .nopadding;
+        @extend .no-padding;
     }
 
 }
