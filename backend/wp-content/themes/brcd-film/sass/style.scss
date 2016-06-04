@@ -45,7 +45,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 --------------------------------------------------------------*/
 @import "variables-site/variables-site";
-@import "kodein";
+@import 'mixin/mixins-master';
+@import 'partial/partial';
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 /*--------------------------------------------------------------
@@ -118,11 +119,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 @import "../node_modules/font-awesome/scss/font-awesome";
 
-
-/*--------------------------------------------------------------
-# Kode-In Utilities
---------------------------------------------------------------*/
-@import "kodein";
 
 /*--------------------------------------------------------------
 # Page

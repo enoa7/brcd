@@ -290,3 +290,16 @@ function custom_pagination($numpages = '', $pagerange = '', $paged='') {
   }
 
 }
+
+/* ==================================================================
+ * Add Featured Image for Categories
+ * ================================================================== */
+
+// add categories to attachments  
+function wptp_add_categories_to_attachments() {
+      register_taxonomy_for_object_type( 'category', 'attachment' );  
+}  
+add_action( 'init' , 'wptp_add_categories_to_attachments' ); 
+
+
+?>

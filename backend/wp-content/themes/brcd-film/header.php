@@ -26,7 +26,7 @@
 		<?php 
 
 			// if its desktop
-			if(wpmd_is_notdevice()) {
+			if(!is_mobile()) {
 				get_template_part( 'template-parts/megamenu', 'desktop' );
 			} else {
 				get_template_part( 'template-parts/megamenu', 'mobile' );

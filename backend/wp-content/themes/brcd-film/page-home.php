@@ -14,7 +14,7 @@ get_header(); ?>
 	// $whatwedo = get_field('what_we_do');
  ?>
 
- <div class="hero-content">
+ <div class="segment hero-content">
 	<video id="hero-video" loop>
 	  <!-- <source src="http://www.artcopycode.com/videos/acc.mp4" type="video/mp4"> -->
 	  <source src="<?php echo esc_url( get_stylesheet_directory_uri( '/' ) ); ?>/inc/video/<?php echo $video ?>.mp4" type="video/mp4">
@@ -23,7 +23,7 @@ get_header(); ?>
 	</video>
  </div>
 
-<div class="page-content" id="whatwedo">
+<div class="segment" id="whatwedo">
 	<h2 class="title text-center">What We Do</h2>
 	<div class="container spacemar">
 		<div class="item col-xs-12 col-sm-4" id="rental">
@@ -56,7 +56,7 @@ get_header(); ?>
 	</div>
 </div>
 
-<div class="page-content" id="highlight">
+<div class="segment" id="highlight">
 		
 	<?php 
 
