@@ -1,4 +1,5 @@
 /* Post Styling */
+@import 'item-post';
 
 // item link styling
 .item {
@@ -16,7 +17,7 @@
 .item {
 	&-desc {
 		@extend .spacepad-5;
-		background: $color_primary;
+		// background: $color_primary;
 	}
 
 	&-title {

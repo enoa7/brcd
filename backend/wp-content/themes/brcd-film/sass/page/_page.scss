@@ -2,5 +2,17 @@
  * List of page specific style
  * ------------------------------------ */
 
- @import 'frontpage';
-  @import 'item-post';
+@import 'frontpage';
+// Regular Page
+
+// remove default margin for h* classes
+.entry-title {
+	margin: 0;
+}
+.item-package {
+	@include spacepad(1em);
+    .entry-header {
+    	background-color: $color_primary;
+    	padding: 0.5em;
+    }
+}
