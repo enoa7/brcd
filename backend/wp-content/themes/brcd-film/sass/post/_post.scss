@@ -1,0 +1,26 @@
+/* Post Styling */
+
+// item link styling
+.item {
+    a {
+        color: #000;
+        &:visited {
+            color: #000;
+        }
+        &:hover {
+            text-decoration: none !important;
+        }
+    }
+}
+
+.item {
+	&-desc {
+		@extend .spacepad-5;
+		background: $color_primary;
+	}
+
+	&-title {
+		@include spacepad-side(1em);
+	}
+}
+

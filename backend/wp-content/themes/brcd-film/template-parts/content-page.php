@@ -7,6 +7,8 @@
  * @package brcdfilm
  */
 
+$type = get_field('category_type');
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
