@@ -15,11 +15,16 @@ get_header(); ?>
  ?>
 
  <div class="segment hero-content">
+
+ 	<?php if(!is_mobile()) { ?>
 	<video id="hero-video" loop>
 	  <!-- <source src="http://www.artcopycode.com/videos/acc.mp4" type="video/mp4"> -->
 	  <source src="<?php echo esc_url( get_stylesheet_directory_uri( '/' ) ); ?>/inc/video/<?php echo $video ?>.mp4" type="video/mp4">
 	  Oh noes! Your browser does not support the video tag.
 	</video>
+	<?php } else {
+		get_mainbanner('mainBanner_xs', 'mainBanner_lg');
+	} ?>
  </div>
 
 <div class="segment" id="whatwedo">

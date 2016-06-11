@@ -10,10 +10,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 		<?php
-
-			if(has_post_thumbnail()) {
-				(is_mobile()) ? the_post_thumbnail('mainBanner_xs') : the_post_thumbnail('mainBanner_lg');
-			}
+			get_mainbanner('mainBanner_xs', 'mainBanner_lg');
 		?>
 
 		<section class="entry-content">

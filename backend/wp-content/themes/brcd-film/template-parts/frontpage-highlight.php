@@ -10,9 +10,7 @@
 <div class="item">
 	<div class="item-img">
 		<?php 
-			if(has_post_thumbnail()) {
-				(is_mobile()) ? the_post_thumbnail('mainBanner_xs') : the_post_thumbnail('mainBanner_lg');
-			}
+			get_mainbanner('mainBanner_xs', 'mainBanner_lg');
 		?>
 	</div>
 	<div class="item-desc">

@@ -375,4 +375,10 @@ function get_highlight() {
 		// Restore original Post Data
 		wp_reset_postdata();
 }
+
+function get_mainbanner($mobile, $desktop) {
+	if(has_post_thumbnail()) {
+		(is_mobile()) ? the_post_thumbnail($mobile) : the_post_thumbnail($desktop);
+	}
+}
 ?>
