@@ -2,7 +2,7 @@ footer.site-footer {
     background: $color_secondary;
     color: #fff;
     font-size: 80%;
-    @include spacepad(15px);
+    @include spacepad(2.5em);
     .widget-title,
     .title {
         font-weight: 700;

@@ -9,26 +9,21 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-		<div class="segment spacepad-15" id="rental-package">
+		<?php
+
+			if(has_post_thumbnail()) {
+				(is_mobile()) ? the_post_thumbnail('mainBanner_xs') : the_post_thumbnail('mainBanner_lg');
+			}
+		?>
+
+		<section class="entry-content">
 			<div class="container">
-				<h2 class="title">Check Out Our Packages</h2>
-				<div class="segment-wrap row">
-				<?php 
-					get_rental_product('category_type', 'package');
-				?>
-				</div>
+				<h1 class="title"><?php the_title(); ?></h1>
+				<?php if (have_posts()) : while ( have_posts() ) : the_post(); ?>
+					<?php the_content(); ?>
+				<?php endwhile; endif; ?>
 			</div>
-		</div>
-		<div class="segment spacepad-15" id="rental-category">
-			<div class="container">
-				<h2 class="title">Check Out Our Category</h2>
-				<div class="segment-wrap row">
-				<?php 
-					get_rental_product('category_type', 'category');
-				?>
-				</div>
-			</div>
-		</div>
+		</section>
 	</main>
 </div>
 
