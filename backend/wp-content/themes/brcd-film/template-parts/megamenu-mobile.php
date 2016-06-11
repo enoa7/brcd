@@ -22,8 +22,8 @@
 			  </div>
 			</form>
 		</div>
-	</div>
-		<div class="site-branding col-xs-6">
+	
+		<div class="site-branding">
 			<?php
 			if ( is_front_page() && is_home() ) : ?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -31,8 +31,13 @@
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
-		<div class="site-trigger col-xs-6 text-right">
-			<i class="fa fa-bars fa-2x"></i>
+
+		<div class="site-trigger clearfix">
+			<!-- <i class="fa fa-bars fa-2x"></i> -->
+			<div class="bar bar-one"></div>
+			<div class="bar bar-two"></div>
+			<div class="bar bar-three"></div>
+		</div>
 		</div>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>

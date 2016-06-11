@@ -25,8 +25,8 @@ jQuery(document).ready(function($) {
     console.log('Causes stain, stay away~');
 
     // menu toggle for mobile
-    $('.site-trigger > .fa').click(function() {
-        $('.main-navigation').toggleClass('toggled');
+    $('.site-trigger').click(function() {
+        $('body').toggleClass('menu-active');
     });
 
     // controls for video on homepage
