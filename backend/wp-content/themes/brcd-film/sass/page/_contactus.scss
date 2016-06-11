@@ -1,6 +1,20 @@
 .brcd-gmap {
-	iframe {
-		width: 100%;
-		pointer-events: none;
-	}	
+    iframe {
+        width: 100%;
+        pointer-events: none;
+    }
+}
+
+#contactus-form.brcd-form {
+    .wpforms-form button[type=submit] {
+        color: #000;
+        background-color: $color_primary;
+        border-color: darken($color_primary, 5%);
+        border-radius: 5px;
+        &:hover {
+            background-color: darken($color_primary, 10%);
+            border-color: darken($color_primary, 5%);
+            color: #000;
+        }
+    }
 }
