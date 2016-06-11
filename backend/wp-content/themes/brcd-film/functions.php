@@ -192,7 +192,7 @@ require get_template_directory() . '/inc/jetpack.php';
 
 add_image_size( 'mainBanner_lg', 1920, 600, true);
 add_image_size( 'mainBanner_md', 992, 400, true);
-add_image_size( 'mainBanner_xs', 600, 600, true);
+add_image_size( 'mainBanner_xs', 600, 600, hard);
 add_image_size( 'video_thumb', 500, 250, hard);
 add_image_size( 'gallery_thumb', 300, 200, true);
 add_image_size( 'logo', 200, 200, hard);
@@ -337,6 +337,42 @@ function get_rental_product($key, $value, $compare = '=') {
 
 	// Restore original Post Data
 	wp_reset_postdata();
+}
 
+
+// get article content that is placed as a highlight on the front page
+function get_highlight() {
+	// WP_Query arguments
+		$args = array (
+			'post_status'            => array( 'publish' ),
+			'category_name'          => 'article',
+			'posts_per_page'         => '3',
+			'order'                  => 'DESC',
+			'meta_query'             => array(
+				array(
+					'key'       => 'highlight',
+					'value'     => 'yes',
+					'compare'   => '=',
+					'type'      => 'CHAR',
+				),
+			),
+		);
+
+
+		// The Query
+		$query = new WP_Query( $args );
+
+		// The Loop
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part('template-parts/frontpage', 'highlight');
+			}
+		} else {
+			// no posts found
+		}
+
+		// Restore original Post Data
+		wp_reset_postdata();
 }
 ?>
