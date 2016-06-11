@@ -179,14 +179,15 @@
     }
 }
 
+
 /** for pushin hero video on frontpage to the top **/
+
 // currently not used
 // #masthead.site-header.desktop {
 //     position: absolute;
 //     width: 100%;
 //     z-index: 999;
 // }
-
 
 /* add margin top on desktop for menu and logo*/
 
@@ -216,7 +217,9 @@
             }
             /* override default sub-menu style */
             .sub-menu {
-                display: block;
+                @include breakpoint(xs) {
+                    display: none;
+                }
                 position: relative;
                 top: 0;
                 left: 0;
