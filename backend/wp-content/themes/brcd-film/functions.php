@@ -301,5 +301,44 @@ function wptp_add_categories_to_attachments() {
 }  
 add_action( 'init' , 'wptp_add_categories_to_attachments' ); 
 
+/* ==================================================================
+ * Grab child pages of Rental products
+ * ================================================================== */
+
+function get_rental_product($key, $value, $compare = '=') {
+
+	// WP_Query arguments
+	$args = array (
+		'post_parent' 	=> '17',
+		'post_type' 	=> 'page',
+		'order'			=>	'ASC',
+		'meta_query'	=> array(
+			array(
+				'key'       =>  $key,
+				'value'     =>  $value,
+				'compare'   =>  $compare
+			),
+		),
+	);
+
+	// The Query
+	$query = new WP_Query( $args );
+
+	// The Loop
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			get_template_part('template-parts/content', 'item-post');
+		}
+	} else {
+		echo 'no posts found';
+
+	}
+
+	// Restore original Post Data
+	wp_reset_postdata();
+
+}
+
 
 ?>
