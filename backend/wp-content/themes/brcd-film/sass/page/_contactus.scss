@@ -1,0 +1,12 @@
+.brcd-gmap {
+    iframe {
+        width: 100%;
+        pointer-events: none;
+    }
+}
+
+#contactus-form.brcd-form {
+    .wpforms-form button[type=submit] {
+        @extend .btn-brcd-primary;
+    }
+}
