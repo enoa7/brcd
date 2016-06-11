@@ -17,3 +17,8 @@
     	padding: 0.5em;
     }
 }
+
+#whatwedo.segment {
+	min-height: 600px;
+	@include spacemar(5em);
+}

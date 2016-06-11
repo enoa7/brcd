@@ -339,6 +339,4 @@ function get_rental_product($key, $value, $compare = '=') {
 	wp_reset_postdata();
 
 }
-
-
 ?>
