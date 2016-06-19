@@ -4,11 +4,13 @@ var Page = {
     init: function(settings) {
         Page.config = {
             mobileMenuTrigger: $('.site-trigger'),
-            mobileMenuBars: $('#megamenu-bars')
+            mobileMenuBars: $('#megamenu-bars'),
+            barPlus: $('.section-trigger')
         };
 
         $.extend(Page.config, settings);
         Page.mobileMenu(); // call the action
+        Page.sectionTrigger();
         VideoController.onReady(); // call video controller
 
     },
@@ -21,12 +23,17 @@ var Page = {
     },
     setupBars: function() {
         var trigger = Page.config.mobileMenuBars;
-        var bar = ['one', 'two', 'three'];
-        $.each(bar, function(i, value){
-            var html = $('<div class="bar-hamburger bar-hamburger-'+ bar[i] +'"></div>');
+        var elem = ['one', 'two', 'three'];
+        $.each(elem, function(i, value){
+            var html = $('<div class="bar-hamburger bar-hamburger-'+ elem[i] +'"></div>');
             trigger.append(html);
         });
-
+    },
+    sectionTrigger: function() {
+        var target = Page.config.barPlus;
+        target.click(function() {
+            $(this).closest('.section-header').toggleClass('active');
+        });
     }
 
 };

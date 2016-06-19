@@ -35,7 +35,13 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class('item-package')?>>
 				<div class="section-header clearfix vertical-align-nofloat">
 					<div class="section-title"><h3 class="entry-title"><?php echo get_the_title() ?></h3></div>
-					<div class="trigger section-trigger trigger-show-hide"><i class="fa fa-plus"></i></div>
+					<div class="section-trigger">
+						<div class="trigger trigger-show-hide">
+							<!-- <i class="fa fa-plus"></i> -->
+							<div class="bar-plus bar-plus-one"></div>
+							<div class="bar-plus bar-plus-two"></div>
+						</div>
+					</div>
 				</div>
 				<div class="entry-content">
 					<?php the_content(); ?>
