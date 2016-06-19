@@ -17,25 +17,15 @@ video {
 /* style for what we do section */
 
 #whatwedo {
-    .item {
-        @media screen and (min-width: 768px) {
-            @include spacepad(2em);
-        }
-    }
     .item-desc,
     .item-title {
         text-align: center;
+        @include spacemar(1em);
     }
     .item-title {
-        @extend .lead;
+        font-size: 1.2em;
         font-weight: 700;
-        @include spacepad(1em);
-    }
-    .item-desc {
-        display: none;
-        @media screen and (min-width: 768px) {
-            display: block;
-        }
+        margin-bottom: 0.5em;
     }
 }
 
@@ -59,13 +49,10 @@ video {
                 left: 15%;
                 background-color: $color_primary;
                 width: 300px;
-
-
                 > .container {
                     width: auto;
                 }
             }
-
             &-btn {
                 text-align: right;
             }

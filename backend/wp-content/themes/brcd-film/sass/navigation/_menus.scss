@@ -195,8 +195,9 @@
 body.menu-active {
     .main-navigation #primary-menu {
         display: block;
-        position: absolute;
+        z-index: 2;
         opacity: 1;
+        width: 100%;
     }
 }
 
@@ -239,18 +240,18 @@ body.menu-active {
         @extend .col-xs-12;
         padding: 0 !important; // set the nav to fullwidth
         margin-top: 5px;
-        @include transition(.2s);
     }
     #primary-menu {
         @extend .clearfix;
         background-color: $color_secondary;
         @include spacepad(15px);
         @include transition(.2s);
+        position: absolute;
         opacity: 0;
         li {
             @extend .col-xs-12;
-            @include spacepad(5px);
-            text-align: left;
+            @include spacepad(0.8em);
+            text-align: center;
             a {
                 color: #fff;
             }

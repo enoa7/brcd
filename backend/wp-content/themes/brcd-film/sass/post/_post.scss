@@ -16,12 +16,12 @@
 
 .item {
 	&-desc {
-		@extend .spacepad-5;
+		// @extend .spacepad-5;
 		// background: $color_primary;
 	}
 
 	&-title {
-		@include spacepad-side(1em);
+		// @include spacepad-side(1em);
 	}
 }
 

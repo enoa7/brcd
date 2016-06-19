@@ -192,7 +192,7 @@ require get_template_directory() . '/inc/jetpack.php';
 
 add_image_size( 'mainBanner_lg', 1920, 600, true);
 add_image_size( 'mainBanner_md', 992, 400, true);
-add_image_size( 'mainBanner_xs', 600, 600, hard);
+add_image_size( 'mainBanner_xs', 768, 600, hard);
 add_image_size( 'video_thumb', 500, 250, hard);
 add_image_size( 'gallery_thumb', 300, 200, true);
 add_image_size( 'logo', 200, 200, hard);
@@ -378,7 +378,7 @@ function get_highlight() {
 
 function get_mainbanner($mobile, $desktop) {
 	if(has_post_thumbnail()) {
-		(is_mobile()) ? the_post_thumbnail($mobile) : the_post_thumbnail($desktop);
+		(is_mobile()) ? the_post_thumbnail($mobile, array('class' => 'img-responsive fullwidth')) : the_post_thumbnail($desktop);
 	}
 }
 ?>
