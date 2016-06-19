@@ -30,6 +30,7 @@
     "uglify": "^0.1.5"
   },
   "dependencies": {
-    "graceful-fs": "^4.1.4"
+    "graceful-fs": "^4.1.4",
+    "jquery-modal": "^0.7.0"
   }
 }

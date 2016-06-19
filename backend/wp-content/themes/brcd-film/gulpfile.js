@@ -31,12 +31,15 @@ gulp.task('browserSync', function() {
 
     browserSync.init(files, {
         proxy: "http://localhost/brcd/backend",
-        notify: 'false'
+        notify: 'true'
     });
 });
 
 gulp.task('sass', function() {
-    return gulp.src('./sass/style.scss')
+    return gulp.src([
+            './sass/style.scss',
+            './node_modules/jquery-modal/jquery.modal.css',
+        ])
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log(err);
@@ -58,6 +61,7 @@ gulp.task('js', function() {
             './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
             './node_modules/slick-carousel/slick/slick.js',
             './node_modules/jquery/dist/jquery.matchHeight.js',
+            './node_modules/jquery-modal/jquery.modal.js',
             './js/module/*.js',
             './js/main.js'
         ])
