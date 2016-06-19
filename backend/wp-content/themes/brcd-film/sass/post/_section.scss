@@ -10,7 +10,7 @@
         max-height: 0;
         background-color: #eee;
         margin-bottom: 1em;
-        @include spacepad(1em);
+        padding: 1em;
     }
 }
 
@@ -26,14 +26,23 @@
     @extend .clearfix;
     background-color: $color_primary;
     > div.section-title {
-    	float: left;
-    	@include font-size(1.5);
-    	font-weight: 700;
-    	padding: 0.5em;
+        float: left;
+        @include font-size(1.5);
+        font-weight: 700;
+        padding: 0.5em;
     }
     > div.section-trigger {
         @extend %trigger;
         float: right;
         padding: 1em;
+    }
+}
+
+.section-enquire {
+	@include spacemar(1em);
+    .btn-brcd-primary {
+        @include breakpoint(xs) {
+            width: 100%;
+        }
     }
 }

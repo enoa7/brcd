@@ -45,7 +45,12 @@
 				</div>
 				<div class="section-content entry-content">
 					<?php the_content(); ?>
+					<div class="section-enquire">
+						<button class="btn-brcd-primary" data-toggle="modal" data-target="#modal-id" href="<?php echo site_url() . '/wp-content/themes/brcd-film/inc/form/enquire-modal.php' ?>" data-enquire="<?php echo get_the_title(); ?>">Enquire Now</button>
+						
+					</div>
 				</div>
+				
 			</article>
 		
 	
