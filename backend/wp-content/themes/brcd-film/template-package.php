@@ -32,10 +32,10 @@
 
 
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class('item-package')?>>
+			<article id="post-<?php the_ID(); ?>" <?php post_class('section-item item-package')?>>
 				<div class="section-header clearfix vertical-align-nofloat">
-					<div class="section-title"><h3 class="entry-title"><?php echo get_the_title() ?></h3></div>
-					<div class="section-trigger">
+					<div class="section-title col-xs-11"><h3 class="entry-title"><?php echo get_the_title() ?></h3></div>
+					<div class="section-trigger col-xs-1 pull-right">
 						<div class="trigger trigger-show-hide">
 							<!-- <i class="fa fa-plus"></i> -->
 							<div class="bar-plus bar-plus-one"></div>
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="entry-content">
+				<div class="section-content entry-content">
 					<?php the_content(); ?>
 				</div>
 			</article>

@@ -1,0 +1,35 @@
+/** section styling **/
+
+.section-item {
+    position: relative;
+    .section-content {
+        @include transition(max-height 0.3s);
+        @include opacity(0);
+        position: relative;
+        width: 100%;
+        max-height: 0;
+        background-color: #eee;
+        margin-bottom: 1em;
+        @include spacepad(1em);
+    }
+}
+
+.section-item.active {
+    .section-content {
+        @include opacity(1);
+        max-height: 300px;
+    }
+}
+
+.section-header {
+    color: $color_secondary;
+    @extend .clearfix;
+    background-color: $color_primary;
+    > div {
+        padding: 0.5em 1em;
+    }
+    > div.section-trigger {
+        @extend %trigger;
+        text-align: right;
+    }
+}

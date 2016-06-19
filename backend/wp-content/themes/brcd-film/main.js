@@ -13609,9 +13609,10 @@ var Page = {
     },
     sectionTrigger: function() {
         var target = Page.config.barPlus;
-        target.click(function() {
-            $(this).closest('.section-header').toggleClass('active');
-        });
+        target.off('click').on('click', function(event){
+                event.stopPropagation();
+               $(this).closest('.section-item').toggleClass('active');
+           })
     }
 
 };

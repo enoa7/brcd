@@ -1,5 +1,6 @@
 /* Post Styling */
 @import 'item-post';
+@import 'section';
 
 // item link styling
 .item {
@@ -23,8 +24,4 @@
 	&-title {
 		// @include spacepad-side(1em);
 	}
-}
-
-.entry-content {
-    margin-bottom: 1em;
 }
