@@ -43,7 +43,7 @@ img {
 /* Custom Elements */
 
 %trigger {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .section-header {
@@ -51,16 +51,42 @@ img {
     @extend .clearfix;
     background-color: $color_primary;
     padding: 0.5em 1em;
-
     > div.section-title {
-    	width: calc(100% - 10%);
-    	float: left;
+        width: calc(100% - 10%);
+        float: left;
     }
-
     > div.section-trigger {
-    	@extend %trigger;
-    	width: calc(100% - 90%);
-    	text-align: right;
-    	float: right;
+        @extend %trigger;
+        width: calc(100% - 90%);
+        text-align: right;
+        float: right;
+    }
+}
+
+//by default the bar is horizontal
+%bar {
+    height: 4px;
+    width: 25px;
+    background-color: #000;
+    position: relative;
+    @include spacemar(4px);
+    @include transition(.2s);
+}
+
+.bar-hamburger {
+    @extend %bar;
+    body.menu-active & {
+        &-one {
+            transform: rotate(-50deg);
+            transform-origin: left left;
+            top: 8px;
+        }
+        &-two {
+            display: none;
+        }
+        &-three {
+            transform: rotate(50deg);
+            transform-origin: right right;
+        }
     }
 }

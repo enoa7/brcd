@@ -31,15 +31,9 @@
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
-
-		<div class="site-trigger clearfix">
-			<!-- <i class="fa fa-bars fa-2x"></i> -->
-			<div class="bar bar-one"></div>
-			<div class="bar bar-two"></div>
-			<div class="bar bar-three"></div>
-		</div>
-		</div>
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+		<div class="site-trigger clearfix" id="megamenu-bars"></div>
+	</div>
+	<nav id="site-navigation" class="main-navigation" role="navigation">
+		<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+	</nav><!-- #site-navigation -->
 </header><!-- #masthead -->
