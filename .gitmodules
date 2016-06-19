@@ -1,6 +1,3 @@
 [submodule "backend/wp-content/themes/brcd-film/lib/sass"]
 	path = backend/wp-content/themes/brcd-film/lib/sass
 	url = https://github.com/enoa7/sass.git
-[submodule "lib/sass"]
-	path = lib/sass
-	url = git@github.com:enoa7/sass.git
