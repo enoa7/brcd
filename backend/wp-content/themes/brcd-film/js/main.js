@@ -24,7 +24,8 @@
 (function($) {
 
     $(document).ready(function() {
-        Page.init();
+        FastClick.attach(document.body); //instantiate fastclick
+        Page.init(); //initialize the page
         
     })
     

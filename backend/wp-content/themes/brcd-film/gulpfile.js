@@ -54,9 +54,9 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
     return gulp.src([
             './node_modules/jquery/dist/jquery.js',
-            // './node_modules/fastclick/lib/*.js',
-            // './node_modules/slick-carousel/slick/slick.js',
-            // './node_modules/jquery/dist/jquery.matchHeight.js',
+            './node_modules/fastclick/lib/*.js',
+            './node_modules/slick-carousel/slick/slick.js',
+            './node_modules/jquery/dist/jquery.matchHeight.js',
             './js/module/*.js',
             './js/main.js'
         ])
