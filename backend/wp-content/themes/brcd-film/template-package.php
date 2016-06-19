@@ -33,9 +33,9 @@
 
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class('section-item item-package')?>>
-				<div class="section-header clearfix vertical-align-nofloat">
-					<div class="section-title col-xs-11"><h3 class="entry-title"><?php echo get_the_title() ?></h3></div>
-					<div class="section-trigger col-xs-1 pull-right">
+				<div class="section-header clearfix ">
+					<div class="section-title"><div class="entry-title"><?php echo get_the_title() ?></div></div>
+					<div class="section-trigger pull-right">
 						<div class="trigger trigger-show-hide">
 							<!-- <i class="fa fa-plus"></i> -->
 							<div class="bar-plus bar-plus-one"></div>

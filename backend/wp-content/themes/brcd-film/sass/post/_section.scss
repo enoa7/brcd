@@ -25,11 +25,15 @@
     color: $color_secondary;
     @extend .clearfix;
     background-color: $color_primary;
-    > div {
-        padding: 0.5em 1em;
+    > div.section-title {
+    	float: left;
+    	@include font-size(1.5);
+    	font-weight: 700;
+    	padding: 0.5em;
     }
     > div.section-trigger {
         @extend %trigger;
-        text-align: right;
+        float: right;
+        padding: 1em;
     }
 }
