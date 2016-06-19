@@ -27,10 +27,11 @@
 
 			// if its desktop
 			if(!is_mobile()) {
-				get_template_part( 'template-parts/megamenu', 'desktop' );
+				get_template_part( 'template-parts/masthead', 'desktop' );
 			} else {
-				get_template_part( 'template-parts/megamenu', 'mobile' );
+				get_template_part( 'template-parts/masthead', 'mobile' );
 			}
+
 
 		?>
 	<div id="content" class="site-content">

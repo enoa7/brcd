@@ -54,16 +54,6 @@
     .current-menu-ancestor > a {}
 }
 
-
-/* Small menu. */
-
-body.menu-active {
-    .menu-toggle,
-    .main-navigation ul {
-        display: block;
-    }
-}
-
 @media screen and (min-width: 37.5em) {
     .menu-toggle {
         display: none;
@@ -200,9 +190,24 @@ body.menu-active {
 }
 
 
+/* Small menu. */
+
+body.menu-active {
+    .main-navigation #primary-menu {
+        display: block;
+        position: absolute;
+        opacity: 1;
+    }
+}
+
+
 /* mobile megamenu */
 
 .site-header.mobile {
+    .site-branding,
+    .site-trigger {
+        padding-bottom: 1em;
+    }
     .site-trigger {
         float: right;
         .bar {
@@ -234,11 +239,14 @@ body.menu-active {
         @extend .col-xs-12;
         padding: 0 !important; // set the nav to fullwidth
         margin-top: 5px;
+        @include transition(.2s);
     }
     #primary-menu {
         @extend .clearfix;
         background-color: $color_secondary;
         @include spacepad(15px);
+        @include transition(.2s);
+        opacity: 0;
         li {
             @extend .col-xs-12;
             @include spacepad(5px);
