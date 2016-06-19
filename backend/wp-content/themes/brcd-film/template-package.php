@@ -10,45 +10,50 @@
 	
 ?>
 
-<?php 
-
-	// WP_Query arguments
-	$args = array (
-		'post_type'              => array( 'post' ),
-		'post_status'            => array( 'publish' ),
-		'cat'                    => $category,
-	);
-
-	// The Query
-	$query = new WP_Query( $args );
-
-	//The Loop
-	if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
 		<div class="container">
+		<h1><?php echo get_the_title() ?></h1>
+		<?php 
+
+			// WP_Query arguments
+			$args = array (
+				'post_type'              => array( 'post' ),
+				'post_status'            => array( 'publish' ),
+				'cat'                    => '9',
+			);
+
+			// The Query
+			$query = new WP_Query( $args );
+
+			//The Loop
+			if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+
+
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class('item-package')?>>
-				<div class="entry-header">
-					<h1 class="entry-title"><?php echo get_the_title() ?></h1>
+				<div class="section-header clearfix vertical-align-nofloat">
+					<div class="section-title"><h3 class="entry-title"><?php echo get_the_title() ?></h3></div>
+					<div class="trigger section-trigger trigger-show-hide"><i class="fa fa-plus"></i></div>
+				</div>
+				<div class="entry-content">
+					<?php the_content(); ?>
 				</div>
 			</article>
+		
+	
+		<?php endwhile; else : ?>
+			<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+		<?php 
+			endif; 
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
 		</div>
 
 	</main>
 </div>
-	
-	
-
-	<?php endwhile; else : ?>
-		<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-	<?php 
-		endif; 
-		// Restore original Post Data
-		wp_reset_postdata();
-	?>
 
 <?php get_footer(); ?>
 

@@ -54,19 +54,22 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
     return gulp.src([
             './node_modules/jquery/dist/jquery.js',
-            './node_modules/fastclick/lib/*.js',
-            './node_modules/slick-carousel/slick/slick.js',
-            './node_modules/jquery/dist/jquery.matchHeight.js',
+            // './node_modules/fastclick/lib/*.js',
+            // './node_modules/slick-carousel/slick/slick.js',
+            // './node_modules/jquery/dist/jquery.matchHeight.js',
+            './js/module/*.js',
             './js/main.js'
         ])
-        .pipe(uglify())
         .pipe(concat('main.js'))
+        .pipe(gulp.dest('./'))
+        .pipe(uglify())
+        .pipe(concat('main.min.js'))
         .pipe(gulp.dest('./'))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('kodein', function(){
-    return gulp.src('./lib/sass/kodein/**/*')
+    return gulp.src('./lib/kodein-sass/kodein/**/*')
         .pipe(gulp.dest('./sass'))
 });
 
@@ -75,4 +78,5 @@ gulp.task('default', ['sass', 'js', 'browserSync'], function() {
     gulp.watch('*.scss', {cwd: 'sass/'}, ['sass']);
     gulp.watch('**/*.scss', {cwd: 'sass/'}, ['sass']);
     gulp.watch('*.js', {cwd: 'js/'}, ['js']);
+    gulp.watch('**/*.js', {cwd: 'js/'}, ['js']);
 });
