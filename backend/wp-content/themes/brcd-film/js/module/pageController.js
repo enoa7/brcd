@@ -45,7 +45,6 @@ var Page = {
         target.one('click', function(event) {
             event.stopPropagation();
             var get_url = $(this).attr('href');
-
             $('.modal-container').load(get_url).modal('show');
         });
     }

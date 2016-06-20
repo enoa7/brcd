@@ -46,8 +46,14 @@
 				<div class="section-content entry-content">
 					<?php the_content(); ?>
 					<div class="section-enquire">
-						<button class="btn-brcd-primary" data-toggle="modal" data-target="#modal-id" href="<?php echo site_url() . '/wp-content/themes/brcd-film/inc/form/enquire-modal.php' ?>" data-enquire="<?php echo get_the_title(); ?>">Enquire Now</button>
+						<!-- <button class="btn-brcd-primary" data-toggle="modal" data-target="#modal-id" href="<?php echo site_url() . '/wp-content/themes/brcd-film/inc/form/enquire-modal.php' ?>" data-enquire="<?php echo get_the_title(); ?>">Enquire Now</button> -->
 						
+						<button class="btn-brcd-primary" data-enquire="<?php echo get_the_title(); ?>">
+							<!-- <a rel="modal:open" href="<?php echo site_url() . '/wp-content/themes/brcd-film/inc/form/enquire-modal.php' ?>">Enquire Now</a> -->
+							<a rel="modal:open" href="#modal-test">Enquire Now</a>
+						</button>
+
+						<div id="modal-test"><p>this is jquery modal plugin <a href="#" rel="modal:close">close modal</a></p></div>
 					</div>
 				</div>
 				
