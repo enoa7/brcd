@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 var uglify = require('gulp-uglify');
 var reload = browserSync.reload;
+var merge = require('gulp-rename');
 // var livereload = require('gulp-livereload');
 
 /* path to wp custom theme */
@@ -36,10 +37,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('sass', function() {
-    return gulp.src([
-            './sass/style.scss',
-            './node_modules/jquery-modal/jquery.modal.css',
-        ])
+    return gulp.src('./sass/style.scss')
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log(err);
@@ -58,7 +56,7 @@ gulp.task('js', function() {
     return gulp.src([
             './node_modules/jquery/dist/jquery.js',
             './node_modules/fastclick/lib/*.js',
-            './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+            // './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
             './node_modules/slick-carousel/slick/slick.js',
             './node_modules/jquery/dist/jquery.matchHeight.js',
             './node_modules/jquery-modal/jquery.modal.js',
@@ -73,11 +71,33 @@ gulp.task('js', function() {
         .pipe(reload({ stream: true }));
 });
 
-gulp.task('kodein', function(){
-    return gulp.src('./lib/kodein-sass/kodein/**/*')
-        .pipe(gulp.dest('./sass'))
-});
 
+// Create a list utility task and merge them
+gulp.task('utility', function(){
+
+    // // move slick fonts to the fonts under custom themes folder
+    // var slick_fonts = gulp.src('node_modules/slick-carousel/slick/fonts/*')
+    //     .pipe(gulp.dest( path + '/fonts'));
+
+    // // move ajax loader to custom themes folder
+    // var ajax_loader = gulp.src('node_modules/slick-carousel/slick/ajax-loader.gif')
+    //     .pipe(gulp.dest(path));
+
+    // // move kode-in submodules to the sass folder under custom themes folder
+    var kodeinSass = gulp.src('lib/kodein-sass/kodein/**/*')
+        .pipe(gulp.dest('./sass/'));
+
+    // // move font_awesome fonts to themes root folder
+    // var font_awesome = gulp.src('node_modules/font-awesome/fonts/**/*')
+    //     .pipe(gulp.dest('sneaky/wp-content/themes/fonts/'))
+
+    var jqueryModalCSS = gulp.src('./node_modules/jquery-modal/jquery.modal.css')
+        .pipe(rename('_jquery.modal.scss'))
+        .pipe(gulp.dest('./sass/'))
+        
+    return merge(jqueryModalCSS, kodeinSass);
+    // return merge(slick_fonts, ajax_loader, kodein_sass, font_awesome);
+})
 
 gulp.task('default', ['sass', 'js', 'browserSync'], function() {
     gulp.watch('*.scss', {cwd: 'sass/'}, ['sass']);
