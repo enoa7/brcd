@@ -6,13 +6,12 @@ var Page = {
             mobileMenuTrigger: $('.site-trigger'),
             mobileMenuBars: $('#megamenu-bars'),
             barPlus: $('.section-trigger'),
-            btnModal: $('button[data-toggle="modal"]')
         };
 
         $.extend(Page.config, settings);
         Page.mobileMenu(); // call the action
         Page.sectionTrigger();
-        Page.loadModal();
+        Modal.init();
         VideoController.onReady(); // call video controller
 
     },
@@ -37,16 +36,5 @@ var Page = {
             event.stopPropagation();
             $(this).closest('.section-item').toggleClass('active');
         })
-    },
-    loadModal: function() {
-        var target = Page.config.btnModal;
-        var html = '<div class="modal-container"></div>';
-        target.parent().append(html);
-        target.one('click', function(event) {
-            event.stopPropagation();
-            var get_url = $(this).attr('href');
-            $('.modal-container').load(get_url).modal('show');
-        });
     }
-
 };
