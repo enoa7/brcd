@@ -13805,6 +13805,45 @@ return jQuery;
   });
 })(jQuery);
 
+var Modal = {
+
+    init: function(settings) {
+
+        Modal.config = {
+
+            btnModal: $('button[data-toggle="modal"]')
+
+        }
+
+        $.extend(Modal.config, settings);
+        Modal.loadModal();
+
+
+    },
+
+    loadModal: function() {
+        var targetModal = Modal.config.btnModal;
+        // var html = '<div class="modal-container"></div>';
+        // targetModal.parent().append(html);
+        // targetModal.on('click', function(event) {
+        //     event.stopPropagation();
+        //     var get_url = $(this).attr('href');
+        //     $('.modal-container').load(get_url).modal({
+        //     	fadeDuration: 250
+        //     });
+        // });
+
+        $('a.open-modal').click(function(event) {
+            $(this).modal({
+                fadeDuration: 250
+            });
+            return false;
+        });
+
+    }
+
+}
+
 /** Page Controller **/
 
 var Page = {
@@ -13813,13 +13852,12 @@ var Page = {
             mobileMenuTrigger: $('.site-trigger'),
             mobileMenuBars: $('#megamenu-bars'),
             barPlus: $('.section-trigger'),
-            btnModal: $('button[data-toggle="modal"]')
         };
 
         $.extend(Page.config, settings);
         Page.mobileMenu(); // call the action
         Page.sectionTrigger();
-        Page.loadModal();
+        Modal.init();
         VideoController.onReady(); // call video controller
 
     },
@@ -13844,18 +13882,7 @@ var Page = {
             event.stopPropagation();
             $(this).closest('.section-item').toggleClass('active');
         })
-    },
-    loadModal: function() {
-        var target = Page.config.btnModal;
-        var html = '<div class="modal-container"></div>';
-        target.parent().append(html);
-        target.one('click', function(event) {
-            event.stopPropagation();
-            var get_url = $(this).attr('href');
-            $('.modal-container').load(get_url).modal('show');
-        });
     }
-
 };
 
 /** Video Controller **/
@@ -13882,27 +13909,6 @@ var VideoController = {
 	}
 };
 
-/* Description
- * makeToggle accept 3 arguments:
- * clickArea  => what you need to click to trigger it
- * targetArea => the targeted DOM
- * toggledCLass => class toggle */
-
-// function makeToggle(clickArea, targetArea, toggledClass) {
-
-//     var func_num_args = arguments.length;
-
-//     if (func_num_args == 3) {
-//         $(clickArea).click(function() {
-//             $(targetArea).toggleClass(toggledClass);
-//         });
-//     } else if (func_num_args < 3) {
-//         toggledClass = 'active';
-//         $(clickArea).click(function() {
-//             $(this).toggleClass(toggledClass);
-//         });
-//     }
-// }
 
 
 (function($) {
@@ -13915,27 +13921,3 @@ var VideoController = {
     
 
 })(jQuery);
-
-// jQuery(document).ready(function($) {
-//     // $() will work as an alias for jQuery() inside of this function
-//     console.log('Causes stain, stay away~');
-
-//     // menu toggle for mobile
-//     $('.site-trigger').click(function() {
-//         $('body').toggleClass('menu-active');
-//     });
-
-//     /** controller for the post gallery ------------------ **/
-//     var gallery_theatre = $('.category-item #hero-gallery .entry-gallery-theatre > img');
-//     var gallery_img = $('.category-item #hero-gallery .item-img');
-
-//     gallery_img.click(function() {
-//         var imgUrl = $(this).attr('src');
-//         var newUrl = imgUrl.replace('-300x200', '');
-//         gallery_theatre.attr('src', newUrl);
-//     });
-//     /** end ------------------ **/
-
-//     makeToggle('.item-package', 'content-active');
-
-// });
