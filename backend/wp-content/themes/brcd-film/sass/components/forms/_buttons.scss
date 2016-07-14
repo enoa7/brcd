@@ -1,0 +1,60 @@
+%btn-brcd {
+    @include transition(.2s);
+    @extend .btn;
+
+    a { 
+        color: inherit;
+        &:hover {
+            text-decoration: none !important;
+            color: inherit;
+        }
+    }
+}
+
+.btn-brcd-primary {
+    @extend %btn-brcd;
+    color: #000;
+    background-color: $color_primary;
+    border-color: darken($color_primary, 5%);
+    &:hover {
+        color: #fff !important;
+        background-color: $color_secondary;
+        border-color: darken($color_secondary, 5%);
+    }
+}
+
+.btn-brcd-secondary {
+    @extend %btn-brcd;
+    color: #fff;
+    background-color: $color_secondary;
+    border-color: darken($color_secondary, 5%);
+    @include transition(.2s);
+    &:hover {
+        color: #000;
+        background-color: $color_primary;
+        border-color: darken($color_primary, 5%);
+    }
+}
+
+.btn-brcd-secondary__alt {
+    @extend .btn-brcd-secondary;
+    &:hover {
+        background-color: darken($color_secondary, 15%);
+        border-color: darken($color_secondary, 15%);
+    }
+}
+
+// button.btn-brcd {
+//     @extend .btn;
+//     &.btn-brcd-secondary {
+//         // @extend .btn-primary;
+//         color: #fff;
+//         background-color: $color_secondary;
+//         border-color: darken($color_secondary, 5%);
+//         &:hover {
+//             background-color: lighten($color_secondary, 10%);
+//             border-color: lighten($color_secondary, 5%);
+//             color: #fff;
+//         }
+//     }
+// }

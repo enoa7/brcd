@@ -213,17 +213,17 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/gamalp/webdev/project/brcd",
-		"/Users/gamalp/webdev/project/brcd/backend",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/lib",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass",
-		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/elements"
+		"/F/_webdev/_project/brcd",
+		"/F/_webdev/_project/brcd/backend",
+		"/F/_webdev/_project/brcd/backend/wp-content",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass",
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/sass/elements"
 	],
 	"file_history":
 	[
+		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/gulpfile.js",
 		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/js/module/pageController.js",
 		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/style.scss",
 		"/Users/gamalp/webdev/project/brcd/backend/wp-content/themes/brcd-film/sass/post/_section.scss",
@@ -301,7 +301,6 @@
 		"/F/_webdev/_project/atvi/backend/wp-content/themes/atvi-theme/footer.php",
 		"/F/_webdev/_project/atvi/backend/wp-content/themes/atvi-theme/functions.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/page.php",
-		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/gulpfile.js",
 		"/G/Files/IMPORTANT DOC/%#&@#%.txt",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/megamenu-mobile.php",
 		"/F/_webdev/_project/brcd/backend/wp-content/themes/brcd-film/template-parts/content-page.php",
@@ -467,6 +466,10 @@
 		"selected_items":
 		[
 			[
+				"gulpf",
+				"backend\\wp-content\\themes\\brcd-film\\gulpfile.js"
+			],
+			[
 				"style.scs",
 				"backend/wp-content/themes/brcd-film/sass/style.scss"
 			],
@@ -514,7 +517,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 268.0,
 	"status_bar_visible": true,
 	"template_settings":

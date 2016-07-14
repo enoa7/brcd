@@ -1,147 +1,39 @@
 /*!
-Theme Name: brcdfilm
-Theme URI: http://underscores.me/
-Author: kode-in
-Author URI: http://kode-in.web.id/
-Description: Theme for Barracuda Film
+Theme Name: HUT SCTV Underscore
+Author: Gamal
+Description: Theme for HUT SCTV 2016
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: brcd-film
-Tags:
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-
-brcdfilm is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+Text Domain: hut-sctv-underscore
 */
 
 /*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
-----------------------------------------------------------------
-# Normalize
-# Typography7
-# Elements
-# Forms
-# Navigation
-	## Links
-	## Menus
-# Accessibility
-# Alignments
-# Clearings
-# Widgets
-# Content
-    ## Posts and pages
-	## Asides
-	## Comments
-# Infinite scroll
-# Media
-	## Captions
-	## Galleries
-
+# Import Vendor Style 
 --------------------------------------------------------------*/
-@import "variables-site/variables-site";
-@import 'kodein';
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import "vendor/vendor";
 
 /*--------------------------------------------------------------
-# Normalize
+# Import Utility 
 --------------------------------------------------------------*/
-// @import "normalize";
- 
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-@import "typography/typography";
+@import "utils/utils";
 
 /*--------------------------------------------------------------
-# Elements
+# Import Base 
 --------------------------------------------------------------*/
-@import "elements/elements";
+@import "base/base";
 
 /*--------------------------------------------------------------
-# Forms
+# Import Components 
 --------------------------------------------------------------*/
-@import "forms/forms";
+@import "components/components";
 
 /*--------------------------------------------------------------
-# Navigation
+# Layout 
 --------------------------------------------------------------*/
-@import "navigation/navigation";
+@import "layout/layout";
 
 /*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-@import "modules/accessibility";
-
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-@import "modules/alignments";
-
-/*--------------------------------------------------------------
-# Clearings
---------------------------------------------------------------*/
-@import "modules/clearings";
-
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
-@import "site/secondary/widgets";
-
-/*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-@import "site/site";
-
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-@import "modules/infinite-scroll";
-
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
-@import "media/media";
-
-/*--------------------------------------------------------------
-# Bootstrap
---------------------------------------------------------------*/
-@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-/*--------------------------------------------------------------
-# Font Awesome
---------------------------------------------------------------*/
-@import "../node_modules/font-awesome/scss/font-awesome";
-
-/*--------------------------------------------------------------
-# jquery modal scss
---------------------------------------------------------------*/
-@import "jquery.modal.scss";
-
-/*--------------------------------------------------------------
-# Page & Post
+# Page 
 --------------------------------------------------------------*/
 @import "page/page";
-@import "post/post";
-
-
-
-/*-------------------------------------------------------------- */
-
-html, body {
-	@include font-size(1);
-	color: $color_secondary;
-	font-family: 'Montserrat', sans-serif;
-
-
-	// since most titles uses h* tags
-	// we remove the margin top with the use of title class
-	.title {
-		margin-top: 0;
-	}
-}

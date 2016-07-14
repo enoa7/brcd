@@ -47,11 +47,13 @@
 					<?php the_content(); ?>
 					<div class="section-enquire">
 						
-						<a rel="modal:open" href="<?php  echo site_url() . '/wp-content/themes/brcd-film/inc/form/enquire-modal.php' ?>">
+						<!-- <a rel="modal:open" href="<?php  echo site_url() . '/wp-content/themes/brcd-film/inc/form/enquire-modal.php' ?>">
 							<button class="btn-brcd-primary" data-enquire="<?php echo get_the_title(); ?>">
 								Enquire Now
 							</button>
-						</a>
+						</a> -->
+
+						<button class="btn-brcd-primary test" data-enquire="<?php echo get_the_title(); ?>"><a href="">Enquire Now</a></button>
 					</div>
 				</div>
 				

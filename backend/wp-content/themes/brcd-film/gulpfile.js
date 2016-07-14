@@ -1,18 +1,55 @@
 var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var concat = require('gulp-concat');
+var plugins = require('gulp-load-plugins')();
+var merge = require('merge-stream');
 var browserSync = require('browser-sync');
-var uglify = require('gulp-uglify');
 var reload = browserSync.reload;
-var merge = require('gulp-rename');
 // var livereload = require('gulp-livereload');
 
-/* path to wp custom theme */
-var theme_path = 'backend/wp-content/themes/brcd-film';
+/* ========================================================
+ * Paths Variable
+ * ======================================================== */
+
+// base paths for the project
+var basePaths = {
+    themeRoot: '../',
+    theme: './',
+    npm: './node_modules/'
+}
+
+// paths for the css/scss
+var style = {
+    main: basePaths.theme + 'sass/style.scss',
+    vendor: basePaths.theme + 'sass/vendor/'
+}
+
+// paths for npm modules
+var module = {
+    slick: basePaths.npm + 'slick-carousel/slick/',
+    fontawesome: basePaths.npm + '/font-awesome/',
+    bootstrap: basePaths.npm + 'bootstrap-sass/assets/',
+    matchHeight: basePaths.npm + 'jquery-match-height/dist/',
+}
+
+// paths for the dist folder
+var dist = './dist';
+
+// list of files that are being moved to dist folder
+var filesToMove = [
+    '*.php',
+    '*.css',
+    './template-parts/*',
+    './inc/*',
+    './fonts/*'
+];
+
+var jsFiles = [
+    basePaths.npm + 'jquery/dist/jquery.js',
+    basePaths.npm + 'fastclick/lib/*.js',
+    module.matchHeight + 'jquery.matchHeight.js',
+    module.slick + 'slick.js',
+    basePaths.theme + 'js/module/*',
+    basePaths.theme + 'js/main.dev.js'
+]
 
 /* ========================================================
  * Tasks with Browser Sync
@@ -20,88 +57,99 @@ var theme_path = 'backend/wp-content/themes/brcd-film';
 gulp.task('browserSync', function() {
 
     var files = [
-        '*.css',
-        '*.php',
-        './inc/*.php',
-        './js/*.js',
-        './layouts/*.css',
-        './sass/*.scss',
-        './sass/**/*.scss',
-        './template-parts/*.php',
+        '**/**/*.css',
+        '**/**/*.scss',
+        '**/**/*.php',
     ];
 
     browserSync.init(files, {
         proxy: "http://localhost/brcd/backend",
-        notify: 'true'
+        notify: 'false'
     });
 });
 
-gulp.task('sass', function() {
-    return gulp.src('./sass/style.scss')
-        .pipe(plumber({
-            errorHandler: function (err) {
+gulp.task('style', function() {
+    return gulp.src(style.main)
+        .pipe(plugins.plumber({
+            errorHandler: function(err) {
                 console.log(err);
                 this.emit('end');
             }
         }))
-        .pipe(sourcemaps.init())
-        .pipe(sass({ outputStyle: 'compressed' }))
-        .pipe(autoprefixer())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./')) //output the file at root (app/)
+        .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.sass())
+        .pipe(plugins.autoprefixer())
+        .pipe(plugins.sourcemaps.write())
+        .pipe(plugins.rename('style.css'))
+        .pipe(gulp.dest(basePaths.theme))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('js', function() {
-    return gulp.src([
-            './node_modules/jquery/dist/jquery.js',
-            './node_modules/fastclick/lib/*.js',
-            // './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-            './node_modules/slick-carousel/slick/slick.js',
-            './node_modules/jquery/dist/jquery.matchHeight.js',
-            './node_modules/jquery-modal/jquery.modal.js',
-            './js/module/*.js',
-            './js/main.js'
-        ])
-        .pipe(concat('main.js'))
-        .pipe(gulp.dest('./'))
-        .pipe(uglify())
-        .pipe(concat('main.min.js'))
-        .pipe(gulp.dest('./'))
+    return gulp.src(jsFiles)
+        .pipe(plugins.concat('main.js'))
+        .pipe(gulp.dest(basePaths.theme))
         .pipe(reload({ stream: true }));
 });
 
 
-// Create a list utility task and merge them
-gulp.task('utility', function(){
 
-    // // move slick fonts to the fonts under custom themes folder
-    // var slick_fonts = gulp.src('node_modules/slick-carousel/slick/fonts/*')
-    //     .pipe(gulp.dest( path + '/fonts'));
+/* ========================================================
+ * Utility Tasks
+ * ======================================================== */
 
-    // // move ajax loader to custom themes folder
-    // var ajax_loader = gulp.src('node_modules/slick-carousel/slick/ajax-loader.gif')
-    //     .pipe(gulp.dest(path));
+gulp.task('bootstrap', function() {
 
-    // // move kode-in submodules to the sass folder under custom themes folder
-    var kodeinSass = gulp.src('lib/kodein-sass/kodein/**/*')
-        .pipe(gulp.dest('./sass/'));
+    var bootstrapStyle = gulp.src(module.bootstrap + 'stylesheets/**/**/*')
+        .pipe(gulp.dest(style.vendor + 'bootstrap-sass'));
 
-    // // move font_awesome fonts to themes root folder
-    // var font_awesome = gulp.src('node_modules/font-awesome/fonts/**/*')
-    //     .pipe(gulp.dest('sneaky/wp-content/themes/fonts/'))
+    return merge(bootstrapStyle);
+});
 
-    var jqueryModalCSS = gulp.src('./node_modules/jquery-modal/jquery.modal.css')
-        .pipe(rename('_jquery.modal.scss'))
-        .pipe(gulp.dest('./sass/'))
-        
-    return merge(jqueryModalCSS, kodeinSass);
-    // return merge(slick_fonts, ajax_loader, kodein_sass, font_awesome);
-})
+gulp.task('font-awesome', function() {
 
-gulp.task('default', ['sass', 'js', 'browserSync'], function() {
-    gulp.watch('*.scss', {cwd: 'sass/'}, ['sass']);
-    gulp.watch('**/*.scss', {cwd: 'sass/'}, ['sass']);
-    gulp.watch('*.js', {cwd: 'js/'}, ['js']);
-    gulp.watch('**/*.js', {cwd: 'js/'}, ['js']);
+    //move font awesome scss to our main plugins.sass folder
+    var faStyle = gulp.src(module.fontawesome + 'scss/*')
+        .pipe(gulp.dest(style.vendor + 'font-awesome'));
+
+    //move font_awesome fonts to themes root folder
+    var faFont = gulp.src(module.fontawesome + 'fonts/**/*')
+        .pipe(gulp.dest(basePaths.themeRoot + 'fonts'));
+
+    //merge tasks
+    return merge(faStyle, faFont);
+
+});
+
+gulp.task('slicky', function() {
+
+    // move slick fonts to the fonts under our themes folder
+    var slickFont = gulp.src(module.slick + 'fonts/*')
+        .pipe(gulp.dest(basePaths.theme + 'fonts'));
+
+    var slickStyle = gulp.src([
+            module.slick + 'slick.scss',
+            module.slick + 'slick-theme.scss'
+        ])
+        .pipe(gulp.dest(style.vendor + 'slick'));
+
+    // move ajax loader to custom themes folder
+    var slickAjaxLoader = gulp.src(module.slick + 'ajax-loader.gif')
+        .pipe(gulp.dest(basePaths.theme));
+
+    //merge tasks
+    return merge(slickFont, slickStyle, slickAjaxLoader);
+
+});
+
+gulp.task('utility', ['bootstrap', 'slicky', 'font-awesome']);
+
+/* ========================================================
+ * Default Tasks
+ * ======================================================== */
+
+gulp.task('default', ['style', 'js', 'browserSync'], function() {
+
+    gulp.watch('**/*.scss', { cwd: basePaths.theme + 'sass/' }, ['style']);
+    gulp.watch('**/*.js', { cwd: basePaths.theme + 'js/' }, ['js']);
 });

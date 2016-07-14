@@ -1,0 +1,90 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+}
+
+blockquote, q {
+	quotes: "" "";
+
+	&:before,
+	&:after {
+		content: "";
+	}
+}
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+@import "lists";
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+@import "tables";
+
+/* Custom Elements */
+
+%trigger {
+    cursor: pointer;
+}
+
+//by default the bar is horizontal
+%bar {
+    height: 4px;
+    width: 25px;
+    background-color: #000;
+    position: relative;
+    @include spacemar(4px);
+    @include transition(.2s);
+}
+
+.bar-hamburger {
+    @extend %bar;
+    body.menu-active & {
+        &-one {
+            @include rotate(50);
+            transform-origin: left left;
+            top: 8px;
+        }
+        &-two {
+            display: none;
+        }
+        &-three {
+            @include rotate(-50);
+            transform-origin: right right;
+        }
+    }
+}
+
+.bar-plus {
+    @extend %bar;
+    width: 19px;
+    &-one {
+        top: 3.5px;
+    }
+    &-two {
+        @include rotate(-90);
+        @include transform-origin(50% 60%); //fix blurry 
+        top: -4px;
+    }
+    .section-item.active & {
+        &-two {
+            @include rotate(0);
+        }
+    }
+}

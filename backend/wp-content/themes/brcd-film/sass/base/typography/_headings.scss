@@ -1,0 +1,14 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    clear: both;
+}
+
+// since most titles uses h* tags
+// we remove the margin top with the use of title class
+.title {
+    margin-top: 0;
+}

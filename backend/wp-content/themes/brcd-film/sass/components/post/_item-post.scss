@@ -1,0 +1,28 @@
+/* style for item posts */
+
+.category-item {
+	.entry-title {
+		text-transform: capitalize;
+	}
+
+	.item-list {
+		&-thumb {
+			max-width: 200px;
+			margin: 0 auto;
+			a {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.entry-content-video {
+		.video-item iframe {
+			@extend .col-xs-4;
+			height: auto;
+		}
+	}
+}
+
+.entry-content {
+	@include spacepad(15px);
+}

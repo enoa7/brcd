@@ -378,7 +378,7 @@ function get_highlight() {
 
 function get_mainbanner($mobile, $desktop) {
 	if(has_post_thumbnail()) {
-		(is_mobile()) ? the_post_thumbnail($mobile, array('class' => 'img-responsive fullwidth')) : the_post_thumbnail($desktop);
+		(is_mobile()) ? the_post_thumbnail($mobile, array('class' => 'img-responsive fullwidth')) : the_post_thumbnail($desktop, array('class' => 'img-responsive fullwidth'));
 	}
 }
 ?>
