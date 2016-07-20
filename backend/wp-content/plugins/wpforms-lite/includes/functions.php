@@ -732,6 +732,31 @@ function wpforms_sanitize_hex_color( $color ) {
 }
 
 /**
+ * Debug mode bool.
+ *
+ * @since 1.2.3
+ */
+function wpforms_debug() {
+
+	$debug = false;
+
+	if ( ( defined( 'WPFORMS_DEBUG' ) && true === WPFORMS_DEBUG ) && is_super_admin() ) {
+		$debug = true;
+	}
+
+	$debug_option = get_option( 'wpforms_debug' ); 
+
+	if ( $debug_option ) {
+		$current_user = wp_get_current_user();
+		if ( $current_user->user_login == $debug_option ) {
+			$debug = true;
+		}
+	}
+
+	return apply_filters( 'wpforms_debug', $debug );
+}
+
+/**
  * Helper function to display debug data.
  *
  * @since 1.0.0
@@ -740,7 +765,7 @@ function wpforms_sanitize_hex_color( $color ) {
  */
 function wpforms_debug_data( $data, $echo = true ) {
 	
-	if ( ( defined( 'WPFORMS_DEBUG' ) && true === WPFORMS_DEBUG ) && is_super_admin() ) {
+	if ( wpforms_debug() ) {
 		
 		$output = '<textarea style="background:#fff;margin: 20px 0;width:100%;height:500px;font-size:12px;font-family: Consolas,Monaco,monospace;direction: ltr;unicode-bidi: embed;line-height: 1.4;padding: 4px 6px 1px;" readonly>';	
 			
@@ -768,42 +793,96 @@ function wpforms_debug_data( $data, $echo = true ) {
  * @since 1.0.0
  * @param string $title
  * @param string $message
- * @param string|array $level
  * @param array $args
  */
-function wpforms_log( $title = '', $message = '', $level = 'errors', $args = array() ) {
+function wpforms_log( $title = '', $message = '', $args = array()  ) {
 
 	// Require log title
 	if ( empty( $title ) )
 		return;
 
-	/**
-	 * Compare error levels to determine if we should log.
-	 * Current supported levels:
-	 * - All - always log. always.
-	 * - Errors
-	 * - Spam
-	 * - Entries
-	 */
-	if ( $level != 'all' ) {
-		$logging_levels = get_option( 'wpforms_logging', array() );
-		if ( !in_array( $level, $logging_levels ) ) {
+	// Force logging everything when in debug mode
+	if ( ! wpforms_debug() ) {
+		
+		/**
+		 * Compare error levels to determine if we should log.
+		 * Current supported levels:
+		 * - Errors (error)
+		 * - Spam (spam)
+		 * - Entries (entry)
+		 * - Payments (payment)
+		 * - Providers (provider)
+		 * - Conditional Logic (conditional_logic)
+		 */
+		$type   = !empty( $args['type'] ) ? (array) $args['type'] : array( 'error' );
+		$levels = get_option( 'wpforms_logging', array() );
+		$lvls   = array_intersect( $type, $levels );
+		if ( empty( $lvls ) ) {
 			return;
 		}
 	}
 
-	// Other args
-	$defaults = array(
-		'parent' => '0',
-		'type'   => '',
-	);
-	$args = wp_parse_args( $args, $defaults );
+	// Meta
+	if ( !empty( $args['form_id'] ) ) {
+		$meta = array( 'form' => absint( $args['form_id'] ) );
+	} elseif ( !empty( $args['meta'] ) ) {
+		$meta = $args['meta'];
+	} else {
+		$meta = '';
+	}
+
+	// Parent
+	$parent = !empty( $args['parent'] ) ? $args['parent'] : 0;
 
 	// Make arrays and objects look nice
 	if ( is_array( $message ) || is_object( $message ) ) {
-		$message = '<pre>' . print_r( $data, true ) . '</pre>';
+		$message = '<pre>' . print_r( $message, true ) . '</pre>';
 	} 
 
 	// Create log entry
-	wpforms()->logs->add( $title, $message, $args['parent'], $args['type'] );
+	wpforms()->logs->add( $title, $message, $parent, $parent, $meta );
 }
+
+if ( ! function_exists( 'array_replace_recursive' ) ) : 
+	/** 
+	* PHP-agnostic version of {@link array_replace_recursive()}. 
+	* 
+	* The array_replace_recursive() function is a PHP 5.3 function. WordPress 
+	* currently supports down to PHP 5.2, so this method is a workaround 
+	* for PHP 5.2. 
+	* 
+	* Note: array_replace_recursive() supports infinite arguments, but for our use- 
+	* case, we only need to support two arguments. 
+	* 
+	* Subject to removal once WordPress makes PHP 5.3.0 the minimum requirement. 
+	* 
+	* @since 1.2.3 
+	* @see http://php.net/manual/en/function.array-replace-recursive.php#109390 
+	* @param  array $base         Array with keys needing to be replaced. 
+	* @param  array $replacements Array with the replaced keys. 
+	* @return array 
+	*/ 
+	function array_replace_recursive( $base = array(), $replacements = array() ) { 
+		// PHP 5.2-compatible version 
+		// http://php.net/manual/en/function.array-replace-recursive.php#109390. 
+		foreach ( array_slice( func_get_args(), 1 ) as $replacements ) { 
+			$bref_stack = array( &$base ); 
+			$head_stack = array( $replacements ); 
+			do { 
+				end( $bref_stack ); 
+				$bref = &$bref_stack[ key( $bref_stack ) ]; 
+				$head = array_pop( $head_stack ); 
+				unset( $bref_stack[ key( $bref_stack ) ] ); 
+				foreach ( array_keys( $head ) as $key ) { 
+					if ( isset( $key, $bref ) && is_array( $bref[ $key ] ) && is_array( $head[ $key ] ) ) { 
+						$bref_stack[] = &$bref[ $key ]; 
+						$head_stack[] = $head[ $key ]; 
+					} else { 
+						$bref[ $key ] = $head[ $key ]; 
+					} 
+				} 
+			} while ( count( $head_stack ) ); 
+		} 
+		return $base; 
+	}
+endif;

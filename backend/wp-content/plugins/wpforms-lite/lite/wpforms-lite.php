@@ -2,7 +2,7 @@
 /**
  * WPForms Lite. Load Lite specific features/functionality.
  *
- * @since 1.2.x
+ * @since 1.2.0
  * @package WPForms
  */
 class WPForms_Lite {
@@ -10,19 +10,20 @@ class WPForms_Lite {
 	/**
 	 * Primary class constructor.
 	 *
-	 * @since 1.2.x
+	 * @since 1.2.0
 	 */
 	public function __construct() {
 
 		$this->includes();
 
-		add_action( 'wpforms_setup_panel_after',       array( $this, 'form_templates'      )     );
-		add_filter( 'wpforms_builder_fields_buttons',  array( $this, 'form_fields'         ), 20 );
-		add_action( 'wpforms_builder_panel_buttons',   array( $this, 'form_panels'         ), 20 );
-		add_action( 'wpforms_builder_enqueues_before', array( $this, 'builder_enqueues'    )     );
-		add_action( 'wpforms_admin_page',              array( $this, 'entries_page'        )     );
-		add_action( 'admin_enqueue_scripts',           array( $this, 'addon_page_enqueues' )     );
-		add_action( 'wpforms_admin_page',              array( $this, 'addons_page'         )     );
+		add_action( 'wpforms_form_settings_notifications', array( $this, 'form_settings_notifications' ),  8, 1 );
+		add_action( 'wpforms_setup_panel_after',           array( $this, 'form_templates'              )        );
+		add_filter( 'wpforms_builder_fields_buttons',      array( $this, 'form_fields'                 ),    20 );
+		add_action( 'wpforms_builder_panel_buttons',       array( $this, 'form_panels'                 ),    20 );
+		add_action( 'wpforms_builder_enqueues_before',     array( $this, 'builder_enqueues'            )        );
+		add_action( 'wpforms_admin_page',                  array( $this, 'entries_page'                )        );
+		add_action( 'admin_enqueue_scripts',               array( $this, 'addon_page_enqueues'         )        );
+		add_action( 'wpforms_admin_page',                  array( $this, 'addons_page'                 )        );
 	}
 
 	/**
@@ -35,6 +36,154 @@ class WPForms_Lite {
 		if ( is_admin() ) {
 			require_once WPFORMS_PLUGIN_DIR . 'lite/includes/admin/class-settings.php';
 		}
+	}
+
+	/**
+	 * Form notification settings, supports multiple notifications.
+	 *
+	 * @since 1.2.3
+	 * @param object $settings
+	 */
+	public function form_settings_notifications( $settings ) {
+
+		// Fetch next ID and handle backwards compatibility
+		if ( empty( $settings->form_data['settings']['notifications'] ) ) {
+			$settings->form_data['settings']['notifications'][1]['email']          = !empty( $settings->form_data['settings']['notification_email'] ) ? $settings->form_data['settings']['notification_email'] : '{admin_email}';
+			$settings->form_data['settings']['notifications'][1]['subject']        = !empty( $settings->form_data['settings']['notification_subject'] ) ? $settings->form_data['settings']['notification_subject'] : sprintf( __( 'New %s Entry', 'wpforms ' ), $settings->form_data['settings']['form_title'] );
+			$settings->form_data['settings']['notifications'][1]['sender_name']    = !empty( $settings->form_data['settings']['notification_fromname'] ) ? $settings->form_data['settings']['notification_fromname'] : get_bloginfo( 'name' );
+			$settings->form_data['settings']['notifications'][1]['sender_address'] = !empty( $settings->form_data['settings']['notification_fromaddress'] ) ? $settings->form_data['settings']['notification_fromaddress'] : '{admin_email}';
+			$settings->form_data['settings']['notifications'][1]['replyto']        = !empty( $settings->form_data['settings']['notification_replyto'] ) ? $settings->form_data['settings']['notification_replyto'] : '';
+		}
+		$id = 1;
+
+		echo '<div class="wpforms-panel-content-section-title">';
+			_e( 'Notifications', 'wpforms' );
+		echo '</div>';
+
+		echo '<p class="wpforms-alert wpforms-alert-info">Want multiple notifications with smart conditional logic?<br><a href="' . $this->upgrade_link() . 'target="_blank"><strong>Upgrade to PRO</strong></a> to unlock it and more awesome features.</p>';
+		
+		wpforms_panel_field(
+			'select',
+			'settings',
+			'notification_enable',
+			$settings->form_data,
+			__( 'Notifications', 'wpforms' ),
+			array(
+				'default' => '1',
+				'options' => array(
+					'1' => __( 'On', 'wpforms' ),
+					'0' => __( 'Off', 'wpforms' ),
+				),
+			)
+		);
+
+		echo '<div class="wpforms-notification">';
+
+			echo '<div class="wpforms-notification-header">';
+				echo '<span>' . __( 'Default Notification', 'wpforms' ) . '</span>';
+			echo '</div>';
+
+			wpforms_panel_field(
+				'text',
+				'notifications',
+				'email',
+				$settings->form_data,
+				__( 'Send To Email Address', 'wpforms' ),
+				array( 
+					'default'    => '{admin_email}',
+					'tooltip'    => __( 'Enter the email address to receive form entry notifications. For multiple notifications, seperate email addresses with a comma.', 'wpforms' ),
+					'smarttags'  => array(
+						'type'   => 'fields',
+						'fields' => 'name,email,text',
+					),
+					'parent'     => 'settings',
+					'subsection' => $id,
+					'class'      => 'email-recipient',
+				)
+			);
+			wpforms_panel_field(
+				'text',
+				'notifications',
+				'subject',
+				$settings->form_data,
+				__( 'Email Subject', 'wpforms' ),
+				array( 
+					'default'    => __( 'New Entry: ' , 'wpforms' ) . $settings->form->post_title,
+					'smarttags'  => array(
+						'type'   => 'fields',
+						'fields' => 'name,email,text',
+					),
+					'parent'     => 'settings',
+					'subsection' => $id
+				)
+			);
+			wpforms_panel_field(
+				'text',
+				'notifications',
+				'sender_name',
+				$settings->form_data,
+				__( 'From Name', 'wpforms' ),
+				array( 
+					'default'    => sanitize_text_field( get_option( 'blogname' ) ),
+					'smarttags'  => array(
+						'type'   => 'fields',
+						'fields' => 'name,email,text',
+					),
+					'parent'     => 'settings',
+					'subsection' => $id
+				)
+			);
+			wpforms_panel_field(
+				'text',
+				'notifications',
+				'sender_address',
+				$settings->form_data,
+				__( 'From Email', 'wpforms' ),
+				array( 
+					'default'    => '{admin_email}',
+					'smarttags'  => array(
+						'type'   => 'fields',
+						'fields' => 'name,email,text',
+					),
+					'parent'     => 'settings',
+					'subsection' => $id
+				)
+			);
+			wpforms_panel_field(
+				'text',
+				'notifications',
+				'replyto',
+				$settings->form_data,
+				__( 'Reply-To', 'wpforms' ),
+				array( 
+					'smarttags'  => array(
+						'type'   => 'fields',
+						'fields' => 'name,email,text',
+					),
+					'parent'     => 'settings',
+					'subsection' => $id
+				)
+			);
+			wpforms_panel_field(
+				'textarea',
+				'notifications',
+				'message',
+				$settings->form_data,
+				__( 'Message', 'wpforms' ),
+				array(
+					'rows'       => 6,
+					'default'    => '{all_fields}',
+					'smarttags'  => array(
+						'type'   => 'all'
+					),
+					'parent'     => 'settings',
+					'subsection' => $id,
+					'class'      => 'email-msg',
+					'after'      => '<p class="note">' . __( 'To display all form fields, use the <code>{all_fields}</code> Smart Tag.', 'wpforms' ) . '</p>'
+				)
+			);
+
+		echo '</div>';
 	}
 
 	/**
@@ -352,10 +501,26 @@ class WPForms_Lite {
 				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
 			</div>
 			<div class="wpforms-addon-item wpforms-addon-status-upgrade wpforms-second">
+				<div class="wpforms-addon-image"><img src="https://wpforms.com/images/addon-icon-campaign-monitor.png"></div>
+				<div class="wpforms-addon-text">
+					<h4>Campaign Monitor Addon</h4>
+					<p class="desc">WPForms Campaign Monitor addon allows you to create Campaign Monitor newsletter signup forms in WordPress, so you can grow your email list.</p>
+				</div>
+				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
+			</div>
+			<div class="wpforms-addon-item wpforms-addon-status-upgrade wpforms-first">
 				<div class="wpforms-addon-image"><img src="https://wpforms.com/images/addon-icon-conditional-logic.png"></div>
 				<div class="wpforms-addon-text">
 					<h4>Conditional Logic Addon</h4>
 					<p class="desc">WPForms' smart conditional logic addon allows you to show or hide fields, sections, and send specific notifications based on user selections, so you can collect the most relevant information.</p>
+				</div>
+				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
+			</div>
+			<div class="wpforms-addon-item wpforms-addon-status-upgrade wpforms-second">
+				<div class="wpforms-addon-image"><img src="https://wpforms.com/images/addon-icon-getresponse.png"></div>
+				<div class="wpforms-addon-text">
+					<h4>GetResponse Addon</h4>
+					<p class="desc">WPForms GetResponse addon allows you to create GetResponse newsletter signup forms in WordPress, so you can grow your email list.</p>
 				</div>
 				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
 			</div>

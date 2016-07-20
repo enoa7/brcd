@@ -19,6 +19,9 @@ class WPForms_Preview {
 
 		// Maybe load a preview page
 		add_action( 'init', array( $this, 'init' ) );
+
+		// Hide preview page from admin
+		add_action( 'pre_get_posts', array( $this, 'form_preview_hide' ) );
 	}
 
 	/**
@@ -256,10 +259,31 @@ class WPForms_Preview {
 		$title     = sanitize_text_field( $form['settings']['form_title'] );
 		$shortcode = '[wpforms id="' . absint( $form['id'] ) . '"]';
 		$content   = __( 'This is a preview of your form. This page not publically accessible.', 'wpforms' );
+		if ( !empty( $_GET['new_window'] ) ) {
+			$content .= ' <a href="javascript:window.close();">' . __( 'Close this window', 'wpforms' ) . '.</a>';
+		}
 		$posts[0]->post_title   = $title . __( ' Preview', 'wpforms' );
 		$posts[0]->post_content = $content . $shortcode;
 		$posts[0]->post_status  = 'public';
 
 		return $posts;
 	}
+	
+	/**
+	 * Hide the preview page from admin
+	 *
+	 * @since 1.2.3
+	 * @param object $query
+	 */
+	function form_preview_hide( $query ) {
+	
+		if( $query->is_main_query() && is_admin() && isset( $query->query_vars['post_type'] ) && 'page' == $query->query_vars['post_type'] ) {
+			 $wpforms_preview = intval( get_option( 'wpforms_preview_page' ) );
+			 if( $wpforms_preview ) {
+			 	$exclude = $query->query_vars['post__not_in'];
+			 	$exclude[] = $wpforms_preview;
+			 	$query->set( 'post__not_in', $exclude );
+			 }
+		}
+	}	
 }

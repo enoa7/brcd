@@ -220,6 +220,8 @@ class WPForms_Form_Handler {
 			$form_id = $data['id'];
 		}
 
+		$data = wp_unslash( $data );
+
 		if ( !empty( $data['settings']['form_title'] ) ) {
 			$title = $data['settings']['form_title'];
 		} else {
@@ -233,12 +235,6 @@ class WPForms_Form_Handler {
 		}
 
 		$data['field_id'] = !empty( $data['field_id'] ) ? absint( $data['field_id'] ) : '0';
-
-		// @todo - This needs testing
-		if ( !empty( $args['merge'] ) ) {
-			$previous = $this->get( $form_id, array( 'content_only' => true ) );
-			$data = wp_parse_args( $data, $previous );
-		}
 
 		// Perserve form meta.
 		$meta = $this->get_meta( $form_id );

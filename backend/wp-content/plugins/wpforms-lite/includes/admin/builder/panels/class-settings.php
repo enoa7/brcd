@@ -55,7 +55,7 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 
 		$sections = array(
 			'general'       => __( 'General', 'wpforms' ),
-			'notifications' => __( 'Notification', 'wpforms' ),
+			'notifications' => __( 'Notifications', 'wpforms' ),
 			'confirmation'  => __( 'Confirmation', 'wpforms' ),
 		);
 		$sections = apply_filters( 'wpforms_builder_settings_sections', $sections, $this->form_data );
@@ -149,93 +149,93 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 		// Notifications
 		//--------------------------------------------------------------------//
 		echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-notifications">';
-		echo '<div class="wpforms-panel-content-section-title">';
-			_e( 'Notifications', 'wpforms' );
-		echo '</div>';
-		wpforms_panel_field(
-			'select',
-			'settings',
-			'notification_enable',
-			$this->form_data,
-			__( 'Notifications', 'wpforms' ),
-			array(
-				'default' => '1',
-				'options' => array(
-					'1' => __( 'On', 'wpforms' ),
-					'0' => __( 'Off', 'wpforms' ),
-				),
-			)
-		);
-		wpforms_panel_field(
-			'text',
-			'settings',
-			'notification_email',
-			$this->form_data,
-			__( 'Send To Email Address', 'wpforms' ),
-			array( 
-				'default' => '{admin_email}',
-				'tooltip' => __( 'Enter the email address to receive form entry notifications. For multiple notifications, seperate email addresses with a comma.', 'wpforms' ),
-				'smarttags' => array(
-					'type'   => 'fields',
-					'fields' => 'name,email,text',
-				),			
-			)
-		);
-		wpforms_panel_field(
-			'text',
-			'settings',
-			'notification_subject',
-			$this->form_data,
-			__( 'Email Subject', 'wpforms' ),
-			array( 
-				'default' => __( 'New Entry: ' , 'wpforms' ) . $this->form->post_title,
-				'smarttags' => array(
-					'type'   => 'fields',
-					'fields' => 'name,email,text',
-				),
-			)
-		);
-		wpforms_panel_field(
-			'text',
-			'settings',
-			'notification_fromname',
-			$this->form_data,
-			__( 'From Name', 'wpforms' ),
-			array( 
-				'default' => sanitize_text_field( get_option( 'blogname' ) ),
-				'smarttags' => array(
-					'type'   => 'fields',
-					'fields' => 'name,email,text',
-				),
-			)
-		);
-		wpforms_panel_field(
-			'text',
-			'settings',
-			'notification_fromaddress',
-			$this->form_data,
-			__( 'From Email', 'wpforms' ),
-			array( 
-				'default' => '{admin_email}',
-				'smarttags' => array(
-					'type'   => 'fields',
-					'fields' => 'name,email,text',
-				),
-			)
-		);
-		wpforms_panel_field(
-			'text',
-			'settings',
-			'notification_replyto',
-			$this->form_data,
-			__( 'Reply-To', 'wpforms' ),
-			array( 
-				'smarttags' => array(
-					'type'   => 'fields',
-					'fields' => 'name,email,text',
-				),
-			)
-		);
+		// echo '<div class="wpforms-panel-content-section-title">';
+		// 	_e( 'Notifications', 'wpforms' );
+		// echo '</div>';
+		// wpforms_panel_field(
+		// 	'select',
+		// 	'settings',
+		// 	'notification_enable',
+		// 	$this->form_data,
+		// 	__( 'Notifications', 'wpforms' ),
+		// 	array(
+		// 		'default' => '1',
+		// 		'options' => array(
+		// 			'1' => __( 'On', 'wpforms' ),
+		// 			'0' => __( 'Off', 'wpforms' ),
+		// 		),
+		// 	)
+		// );
+		// wpforms_panel_field(
+		// 	'text',
+		// 	'settings',
+		// 	'notification_email',
+		// 	$this->form_data,
+		// 	__( 'Send To Email Address', 'wpforms' ),
+		// 	array( 
+		// 		'default' => '{admin_email}',
+		// 		'tooltip' => __( 'Enter the email address to receive form entry notifications. For multiple notifications, seperate email addresses with a comma.', 'wpforms' ),
+		// 		'smarttags' => array(
+		// 			'type'   => 'fields',
+		// 			'fields' => 'name,email,text',
+		// 		),			
+		// 	)
+		// );
+		// wpforms_panel_field(
+		// 	'text',
+		// 	'settings',
+		// 	'notification_subject',
+		// 	$this->form_data,
+		// 	__( 'Email Subject', 'wpforms' ),
+		// 	array( 
+		// 		'default' => __( 'New Entry: ' , 'wpforms' ) . $this->form->post_title,
+		// 		'smarttags' => array(
+		// 			'type'   => 'fields',
+		// 			'fields' => 'name,email,text',
+		// 		),
+		// 	)
+		// );
+		// wpforms_panel_field(
+		// 	'text',
+		// 	'settings',
+		// 	'notification_fromname',
+		// 	$this->form_data,
+		// 	__( 'From Name', 'wpforms' ),
+		// 	array( 
+		// 		'default' => sanitize_text_field( get_option( 'blogname' ) ),
+		// 		'smarttags' => array(
+		// 			'type'   => 'fields',
+		// 			'fields' => 'name,email,text',
+		// 		),
+		// 	)
+		// );
+		// wpforms_panel_field(
+		// 	'text',
+		// 	'settings',
+		// 	'notification_fromaddress',
+		// 	$this->form_data,
+		// 	__( 'From Email', 'wpforms' ),
+		// 	array( 
+		// 		'default' => '{admin_email}',
+		// 		'smarttags' => array(
+		// 			'type'   => 'fields',
+		// 			'fields' => 'name,email,text',
+		// 		),
+		// 	)
+		// );
+		// wpforms_panel_field(
+		// 	'text',
+		// 	'settings',
+		// 	'notification_replyto',
+		// 	$this->form_data,
+		// 	__( 'Reply-To', 'wpforms' ),
+		// 	array( 
+		// 		'smarttags' => array(
+		// 			'type'   => 'fields',
+		// 			'fields' => 'name,email,text',
+		// 		),
+		// 	)
+		// );
 		do_action( 'wpforms_form_settings_notifications', $this );
 		echo '</div>';
 

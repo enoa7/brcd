@@ -7,6 +7,8 @@
  * @package brcdfilm
  */
 
+include 'inc/module/Page.class.php';
+
 if ( ! function_exists( 'brcd_film_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

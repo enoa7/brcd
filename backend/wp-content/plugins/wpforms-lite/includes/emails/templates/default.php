@@ -182,7 +182,7 @@ $header_image = wpforms_setting( 'email-header-image', false );
 		/* Body -Body Text */
 		#templateBody .mcnTextContent,
 		#templateBody .mcnTextContent p{
-			color:#202020;
+			color:#555555;
 			font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 			font-size:14px;
 			line-height:150%;

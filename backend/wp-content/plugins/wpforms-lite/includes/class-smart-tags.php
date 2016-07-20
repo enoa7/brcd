@@ -17,7 +17,7 @@ class WPForms_Smart_Tags {
 	 */
 	public function __construct() {
 
-		add_filter( 'wpforms_process_smart_tags', array( $this, 'process' ), 10, 3 );
+		add_filter( 'wpforms_process_smart_tags', array( $this, 'process' ), 10, 4 );
 	}
 
 	/**
@@ -30,6 +30,8 @@ class WPForms_Smart_Tags {
 	function get( $return = 'array'  ) {
 
 		$tags = array(
+			'admin_email'         => __( 'Site Administer Email', 'wpforms' ),
+			'entry_id'            => __( 'Entry ID', 'wpforms' ),
 			'form_id'             => __( 'Form ID', 'wpforms' ),
 			'form_name'           => __( 'Form Name', 'wpforms' ),
 			'page_title'          => __( 'Embedded Post/Page Title', 'wpforms' ),
@@ -73,9 +75,12 @@ class WPForms_Smart_Tags {
 	 *
 	 * @since 1.0.0
 	 * @param string $content
+	 * @param array $form_data
+	 * @param array $fields
+	 * @param int $entry_id
 	 * @return string
 	 */
-	function process( $content, $form_data, $fields = '' ) {
+	function process( $content, $form_data, $fields = '', $entry_id = '' ) {
 
 		// Basic smart tags
 		preg_match_all( "/\{(.+?)\}/", $content, $tags );
@@ -90,8 +95,12 @@ class WPForms_Smart_Tags {
 						$content = str_replace( '{'.$tag.'}', sanitize_email( get_option( 'admin_email' ) ), $content );
 						break;
 
+					case 'entry_id':
+						$content = str_replace( '{'.$tag.'}', sanitize_text_field( $entry_id ), $content );
+						break;
+
 					case 'form_id':
-						$content = str_replace( '{'.$tag.'}', $form_data['id'], $content );
+						$content = str_replace( '{'.$tag.'}', absint( $form_data['id'] ), $content );
 						break;
 
 					case 'form_name':

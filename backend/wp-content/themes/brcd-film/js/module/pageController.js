@@ -12,7 +12,7 @@ var Page = {
         Page.mobileMenu(); // call the action
         Page.sectionTrigger();
         Modal.init();
-        VideoController.onReady(); // call video controller
+        // VideoController.onReady(); // call video controller
 
     },
     mobileMenu: function() {

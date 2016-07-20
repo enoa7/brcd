@@ -12,7 +12,7 @@ var wpf = {
 
 		wpf.bindUIActions();
 
-		jQuery(document).ready(wpf.ready());
+		jQuery(document).ready(wpf.ready);
 	},
 
 	/**
@@ -93,8 +93,19 @@ var wpf = {
 			}
 		});
 
-		/* todo: sort choices as well */
+		// Preserve the order of field choices 
+		for(var key in fields) {
+			if (fields[key].choices) {
+				jQuery('#wpforms-field-option-row-'+fields[key].id+'-choices li').each(function(index, ele) {
+					var choiceKey = jQuery(ele).data('key');
+					fields[key].choices['choice_'+choiceKey] = fields[key].choices[choiceKey];
+					fields[key].choices['choice_'+choiceKey].key = choiceKey;
+					delete fields[key].choices[choiceKey];
+				});
+			}
+		}
 
+		// Preserve the order of fields 
 		for(var key in fieldOrder) {
 			fieldsOrdered['field_'+fieldOrder[key]] = fields[fieldOrder[key]];
 		}
@@ -190,6 +201,15 @@ var wpf = {
 	
 		var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
 		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	},
+
+	/**
+	 * Is number?
+	 *
+	 * @since 1.2.3
+	 */
+	isNumber: function(n) {
+		return !isNaN(parseFloat(n)) && isFinite(n);
 	}
 }
 wpf.init();

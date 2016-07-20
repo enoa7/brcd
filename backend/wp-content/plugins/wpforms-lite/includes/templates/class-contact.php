@@ -52,8 +52,12 @@ class WPForms_Template_Contact extends WPForms_Template {
 				),
 			),
 			'settings' => array(
-				'notification_fromname'       => '{field_id="0"}',
-				'notification_fromaddress'    => '{field_id="1"}',
+				'notifications' => array(
+					'1' => array(
+						'sender_name'    => '{field_id="0"}',
+						'sender_address' => '{field_id="1"}',
+					),	
+				),
 				'honeypot'                    => '1',
 				'confirmation_message_scroll' => '1',
 			),

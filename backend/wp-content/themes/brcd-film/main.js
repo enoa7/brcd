@@ -13987,7 +13987,7 @@ var Page = {
         Page.mobileMenu(); // call the action
         Page.sectionTrigger();
         Modal.init();
-        VideoController.onReady(); // call video controller
+        // VideoController.onReady(); // call video controller
 
     },
     mobileMenu: function() {
@@ -14014,29 +14014,45 @@ var Page = {
     }
 };
 
-/** Video Controller **/
+var HeroContent = (function() {
 
-var VideoController = {
-    onReady: function(settings) {
-        VideoController.config = {
-            container: $('#hero-video'),
-        };
+    var selectVideo = '#hero-video';
+    var selectBanner = '.hero-content';
 
-        $.extend(VideoController.config, settings);
-        VideoController.UIAction(); // call the action
-        
-    },
-    UIAction: function() {
-    	var video = VideoController.config.container;
-    	video.click(function() {
-    		if(video[0].paused) {
-    			video[0].play();
-    		} else {
-    			video[0].pause();
-    		}
-    	})
-	}
-};
+    var videoController = function() {
+
+        $(selectVideo).click(function() {
+
+            if ($(selectVideo)[0].paused) {
+                $(selectVideo)[0].play();
+            } else {
+                $(selectVideo)[0].pause();
+            }
+
+        });
+    };
+
+    var bannerController = function() {
+
+        $(selectBanner).slick();
+
+    }
+
+    return {
+        videoController: videoController,
+        bannerController: bannerController
+    };
+
+})();
+
+(function(){
+
+    $(document).ready(function(){
+        HeroContent.videoController();
+        HeroContent.bannerController();
+    });
+
+})();
 
 
 

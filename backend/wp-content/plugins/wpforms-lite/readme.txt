@@ -160,6 +160,31 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.2.4.1 =
+- Fixed: Plugin settings page not correctly showing
+
+= 1.2.4 =
+- Added: Additional logging and error reporting
+- Changed: Footer asset detection priority, for improved capatibility with other services
+- Changed: Refactored and refined front-end javascript
+- Fixed: Rogue PHP notices
+
+= 1.2.3.2 =
+- Fixed: Default field validation considered 0 as empty
+
+= 1.2.3.1 =
+- Fixed: Blank form email notification defaults
+
+= 1.2.3 =
+- Added: Form notification message setting
+- Added: Additional Smart Tags available inside Form Settings panels
+- Added: Process Smart Tags inside form confirmation messages and URLs
+- Added: Hide WPForms Preview page from WordPress dashboard
+- Added: System Details tab to WPForms Settings, to display debug information, etc
+- Changed: Many form builder javascript improvements
+- Changed: Improved internal logging and debugging tools
+- Fixed: Large forms not always saving because of max_input_vars PHP setting
+
 = 1.2.2.2 =
 - Fixed: Javascript asset not loading due to incorrect path
 

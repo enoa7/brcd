@@ -21,14 +21,10 @@
 			s = this.settings;
 
 			// Document ready
-			$(document).ready(function() {
-				WPFormsBuilder.ready();
-			});
+			$(document).ready(WPFormsBuilder.ready);
 
 			// Page load
-			$(window).on('load', function() {
-				WPFormsBuilder.load();
-			});
+			$(window).on('load', WPFormsBuilder.load);
 
 			WPFormsBuilder.bindUIActions();
 		},
@@ -127,6 +123,9 @@
 			// Notification settings
 			WPFormsBuilder.notificationToggle();
 
+			// Secret preview hotkey
+			WPFormsBuilder.previewHotkey();
+
 			// Clone form title to setup page
 			$('#wpforms-setup-name').val($('#wpforms-panel-field-settings-form_title').val());
 		
@@ -222,7 +221,8 @@
 			} else {
 
 				// Show all fields or narrow to specific field types
-				var allowed = $this.data('fields');
+				var allowed = $this.data('fields'),
+					type    = $this.data('type');
 				if ( allowed.length ) {
 					var fields = wpf.getFields(allowed.split(','));
 				} else {
@@ -231,19 +231,30 @@
 
 				// Create smart tags list
 				var smartTagList = '<ul class="smart-tags-list-display">';
-				if (!fields) {
-					smartTagList += '<li class="heading">'+wpforms_builder.fields_unavailable+'</li>';
-				} else {
-					smartTagList += '<li class="heading">'+wpforms_builder.fields_available+'</li>';
-					for(var key in fields) {
-						if (fields[key].label) {
-							var label = wpf.sanitizeString(fields[key].label);
-						} else {
-							var label = wpforms_builder.field+' #'+fields[key].id;
+				
+				if (type === 'fields' || type === 'all') {
+					if (!fields) {
+						smartTagList += '<li class="heading">'+wpforms_builder.fields_unavailable+'</li>';
+					} else {
+						smartTagList += '<li class="heading">'+wpforms_builder.fields_available+'</li>';
+						for(var key in fields) {
+							if (fields[key].label) {
+								var label = wpf.sanitizeString(fields[key].label);
+							} else {
+								var label = wpforms_builder.field+' #'+fields[key].id;
+							}
+							smartTagList += '<li><a href="#" data-type="field" data-meta=\'' + fields[key].id + '\'>'+label+'</a></li>';
 						}
-						smartTagList += '<li><a href="#" data-fieldid="'+fields[key].id+'">'+label+'</a></li>';
 					}
 				}
+
+				if (type === 'other' || type === 'all') {
+					smartTagList += '<li class="heading">'+wpforms_builder.other+'</li>';
+					for(var key in wpforms_builder.smart_tags) {
+						smartTagList += '<li><a href="#" data-type="other" data-meta=\'' + key+ '\'>'+wpforms_builder.smart_tags[key]+'</a></li>';
+					}
+				}
+
 				smartTagList += '</ul>';
 
 				$label.after(smartTagList);
@@ -263,19 +274,29 @@
 
 			var $this   = $(el),
 				$list   = $this.closest('.smart-tags-list-display'),
-				$label  = $list.prev('label'),
-				$input  = $list.next('input[type=text]'),
-				fieldID = $this.data('fieldid');
+				$parent = $list.parent(),
+				$label  = $parent.find('label'),
+				$input  = $parent.find('input[type=text]'),
+				meta    = $this.data('meta'),
+				type    = $this.data('type');
+
+			if ( ! $input.length ) {
+				$input  = $parent.find('textarea');
+			}
 
 			// insert smart tag
-			$input.insertAtCaret('{field_id="'+fieldID+'"}');
-
+			if ( type === 'field' ) {
+				$input.insertAtCaret('{field_id="'+meta+'"}');
+			} else {
+				$input.insertAtCaret('{'+meta+'}');
+			}
+			
 			// remove list, all done!
 			$list.slideUp(400, function() {
 				$list.remove();
 			});
 
-			$label.find('toggle-smart-tag-display span').text(wpforms_builder.smart_tags_show);
+			$label.find('.toggle-smart-tag-display span').text(wpforms_builder.smart_tags_show);
 		},
 
 		/**
@@ -1377,6 +1398,18 @@
 			$(document).on('change', '#wpforms-panel-field-settings-notification_enable', function(e) {
 				WPFormsBuilder.notificationToggle();
 			});
+
+			// Add New notification settings block
+			$(document).on('click', '.wpforms-notifications-add', function(e) {
+				e.preventDefault();
+				WPFormsBuilder.notificationAdd();
+			});
+
+			// Add New notification settings block
+			$(document).on('click', '.wpforms-notification-delete', function(e) {
+				e.preventDefault();
+				WPFormsBuilder.notificationDelete($(this));
+			});
 		},
 
 		/**
@@ -1434,10 +1467,100 @@
 		notificationToggle: function() {
 			var $notification = $('#wpforms-panel-field-settings-notification_enable');
 			if ( $notification.find('option:selected').val() === '0'){
-				$notification.parent().parent().find('.wpforms-panel-field').not($notification.parent()).hide();
+				$notification.parent().parent().find('.wpforms-notification').hide();
 			} else {
-				$notification.parent().parent().find('.wpforms-panel-field').not($notification.parent()).show();
+				$notification.parent().parent().find('.wpforms-notification').show();
 			}
+		},
+
+		/**
+		 * Add new notification.
+		 *
+		 * @since 1.2.3
+		 */
+		notificationAdd: function() {
+
+			var nextID       = Number($('.wpforms-notifications-add').attr('data-next_id'));
+				namePrompt   = wpforms_builder.notification_prompt,
+				nameField    = '<input autofocus="" type="text" id="notification-name" placeholder="'+wpforms_builder.notification_ph+'">',
+				nameError    = '<p class="error">'+wpforms_builder.notification_error+'</p>',
+				modalContent = namePrompt+nameField+nameError;
+
+			$.confirm({
+				title: false,
+				content: modalContent,
+				confirm: function () {
+					var input = this.$b.find('input#notification-name'),
+						error = this.$b.find('.error');
+					if (input.val() == '') {
+						error.show();
+						return false;
+					} else {
+						var $firstNotification = $('.wpforms-notification').first(),
+							$newNotification = $firstNotification.clone();
+
+						$newNotification.find('.wpforms-notification-header span').text(input.val());
+						$newNotification.find('input, textarea, select').each(function(index, el) {
+							if ($(this).attr('name')) {
+								$(this).val('').attr('name', $(this).attr('name').replace(/\[(\d+)\]/, '['+nextID+']'));
+								if ($(this).is('select')) {
+									$(this).find('option:first').prop('selected',true);
+								} else if ( $(this).attr('type') === 'checkbox') {
+									$(this).prop('checked', false).val('1');
+								} else {
+									$(this).val('');
+								}
+							}
+						});
+						$newNotification.find('.wpforms-notification-header input').val(input.val());
+						$newNotification.find('.email-msg textarea').val('{all_fields}');
+						$newNotification.find('.email-recipient input').val('{admin_email}');
+						// Conditional logic, if present
+						var $conditionalLogic = $newNotification.find('.wpforms-conditional-block');
+						if ($conditionalLogic.length) {
+							$conditionalLogic.find('.wpforms-conditional-group').not(':first').remove();
+							$conditionalLogic.find('.wpforms-conditional-row').not(':first').remove();
+							$conditionalLogic.find('.wpforms-conditional-row').attr('data-input-name', 'settings[notifications]['+nextID+']');
+							$conditionalLogic.find('.wpforms-conditional-field').attr('data-groupid', '0').attr('data-ruleid', '0');
+							$conditionalLogic.find('.wpforms-conditional-row select').each(function(index, el) {
+								if ($(this).attr('name')) {
+									$(this).attr('name', $(this).attr('name').replace(/\[(\d+)\]\[(\d+)\]/, '[0][0]'));
+								}
+							});
+							$conditionalLogic.find('.wpforms-conditional-row').find('.value').empty().append('<select>');
+							$conditionalLogic.find('.wpforms-conditional-groups').hide();
+						}
+						$firstNotification.before( $newNotification );
+						$('.wpforms-notifications-add').attr('data-next_id', nextID+1);
+					}
+				}
+			});
+		},
+
+		/**
+		 * Delete notification.
+		 *
+		 * @since 1.2.3
+		 */
+		notificationDelete: function(el) {
+
+			var $this = $(el);
+
+			$.confirm({
+				title: false,
+				content: wpforms_builder.notification_delete,
+				confirm: function () {
+					var notifications = $('.wpforms-notification');
+					if ( notifications.length <= 1 ) {
+						$.alert({
+							title: false,
+							content: wpforms_builder.notification_error2
+						});	
+					} else {
+						$this.closest('.wpforms-notification').remove();
+					}
+				}
+			});
 		},
 
 		//--------------------------------------------------------------------//
@@ -1500,7 +1623,7 @@
 
 			var data = {
 				action: 'wpforms_save_form',
-				data  : $('#wpforms-builder-form').serialize(),
+				data  : JSON.stringify($('#wpforms-builder-form').serializeArray()),
 				id    : s.formID,
 				nonce : wpforms_builder.nonce
 			}
@@ -1636,7 +1759,7 @@
 		},
 
 		/**
-		 * Update Stripe Receipt email field on form updates.
+		 * Update field mapped select items on form updates.
 		 *
 		 * @since 1.2.0
 		 * @param object event
@@ -1679,7 +1802,7 @@
 					if (fields[key].label.length) {
 						var label = wpf.sanitizeString(fields[key].label);
 					} else {
-						var label = 'Field #' + fields[key].val;
+						var label = wpforms_builder.field + ' #' + fields[key].val;
 					}
 
 					// Add to select if it is a field type allowed
@@ -1735,6 +1858,30 @@
 		 */
 		loadColorPickers: function() {
 			$('.wpforms-color-picker').minicolors();
+		},
+
+		/**
+		 * Secret preview hotkey.
+		 *
+		 * @since 1.2.4
+		 */
+		previewHotkey: function() {
+
+			var ctrlDown = false;
+
+			$(document).keydown(function(e) {
+				if (e.keyCode == 17) {
+					ctrlDown = true;
+				} else if (ctrlDown && e.keyCode == 80) {
+					window.open(wpforms_builder.preview_url);
+					ctrlDown = false;
+					return false;
+				}
+			}).keyup(function(e) {
+				if (e.keyCode == 17) {
+					ctrlDown = false;
+				} 
+			});
 		}
 	};
 

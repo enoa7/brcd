@@ -5,7 +5,7 @@
  * Description: Beginner friendly WordPress contact form plugin. Use our Drag & Drop form builder to create your WordPress forms.
  * Author:      WPForms
  * Author URI:  https://wpforms.com
- * Version:     1.2.2.2
+ * Version:     1.2.4.1
  * Text Domain: wpforms
  * Domain Path: languages
  *
@@ -44,7 +44,7 @@ if ( class_exists( 'WPForms' ) ) :
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
 	add_action( 'admin_init', 'wpforms_deactivate' );
-	
+
 	/**
 	 * Display notice after deactivation.
 	 *
@@ -60,7 +60,7 @@ if ( class_exists( 'WPForms' ) ) :
 else :
 
 /**
- * Main WPForms class
+ * Main WPForms class.
  *
  * @since 1.0.0
  * @package WPForms
@@ -81,7 +81,7 @@ final class WPForms {
 	 * @since 1.0.0
 	 * @var sting
 	 */
-	public $version = '1.2.2.2';
+	public $version = '1.2.4.1';
 
 	/**
 	 * The form data handler instance.
@@ -211,6 +211,7 @@ final class WPForms {
 			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/overview/class-overview.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/builder/class-builder.php';
+			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/builder/functions.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-welcome.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-editor.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/ajax-actions.php';

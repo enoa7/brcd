@@ -65,13 +65,6 @@ class WPForms_WP_Emails {
 	private $template;
 
 	/**
-	 * The header text for the email.
-	 *
-	 * @since 1.1.3
-	 */
-	private $heading = '';
-
-	/**
 	 * Form data.
 	 *
 	 * @since 1.1.3
@@ -79,11 +72,18 @@ class WPForms_WP_Emails {
 	private $form_data = '';
 
 	/**
-	 * Fields, formatted and sanitized.
+	 * Fields, formatted, and sanitized.
 	 *
 	 * @since 1.1.3
 	 */
 	private $fields = '';
+
+	/**
+	 * Entry ID.
+	 *
+	 * @since 1.2.3
+	 */
+	public $entry_id = '';
 
 	/**
 	 * Get things going.
@@ -120,12 +120,10 @@ class WPForms_WP_Emails {
 	 */
 	public function get_from_name() {
 
-		if ( ! $this->from_name ) {
-			if ( !empty( $this->form_data['settings']['notification_fromname'] ) ) {
-				$this->from_name =  $this->process_tag( $this->form_data['settings']['notification_fromname'] );
-			} else {
-				$this->from_name =  get_bloginfo( 'name' );
-			}
+		if ( !empty( $this->from_name ) ) {	
+			$this->from_name =  $this->process_tag( $this->from_name );
+		} else {
+			$this->from_name =  get_bloginfo( 'name' );
 		}
 
 		return apply_filters( 'wpforms_email_from_name', wp_specialchars_decode( $this->from_name ), $this );
@@ -139,12 +137,10 @@ class WPForms_WP_Emails {
 	 */
 	public function get_from_address() {
 
-		if ( ! $this->from_address ) {
-			if ( !empty( $this->form_data['settings']['notification_fromaddress'] ) ) {
-				$this->from_address = $this->process_tag( $this->form_data['settings']['notification_fromaddress'] );
-			} else {
-				$this->from_address = get_option( 'admin_email' );
-			}
+		if ( !empty( $this->from_address ) ) {
+			$this->from_address = $this->process_tag( $this->from_address );
+		} else {
+			$this->from_address = get_option( 'admin_email' );
 		}
 
 		return apply_filters( 'wpforms_email_from_address', $this->from_address, $this );
@@ -158,10 +154,8 @@ class WPForms_WP_Emails {
 	 */
 	public function get_reply_to() {
 
-		if ( ! $this->reply_to ) {
-			if ( !empty( $this->form_data['settings']['notification_replyto'] ) ) {
-				$this->reply_to = $this->process_tag( $this->form_data['settings']['notification_replyto'] );
-			}
+		if ( !empty( $this->reply_to ) ) {
+			$this->reply_to = $this->process_tag( $this->reply_to );
 		}
 
 		return apply_filters( 'wpforms_email_reply_to', $this->reply_to, $this );
@@ -218,8 +212,6 @@ class WPForms_WP_Emails {
 			return apply_filters( 'wpforms_email_message', wp_strip_all_tags( $message ), $this );
 		}
 
-		//$message = $this->text_to_html( $message );
-
 		ob_start();
 
 		$this->get_template_part( 'header', $this->get_template(), true );
@@ -237,9 +229,11 @@ class WPForms_WP_Emails {
 		// Hooks into the email footer
 		do_action( 'wpforms_email_footer', $this );
 
+		$message = $this->process_tag( $message, false );
+		$message = nl2br( $message );
+
 		$body	 = ob_get_clean();
 		$message = str_replace( '{email}', $message, $body );
-		$message = $this->process_tag( $message, false );
 		$message = str_replace( '{all_fields}', $this->process_all_fields( true ), $message );
 
 		return apply_filters( 'wpforms_email_message', $message, $this );
@@ -271,6 +265,7 @@ class WPForms_WP_Emails {
 
 		$message     = $this->build_email( $message );
 		$attachments = apply_filters( 'wpforms_email_attachments', $attachments, $this );
+		$subject     = wp_specialchars_decode( $this->process_tag( $subject ) );
 
 		// Let's do this
 		$sent = wp_mail( $to, $subject, $message, $this->get_headers(), $attachments );
@@ -305,7 +300,6 @@ class WPForms_WP_Emails {
 		remove_filter( 'wp_mail_content_type', array( $this, 'get_content_type' ) );
 	}
 
-
 	/**
 	 * Converts text formatted HTML. This is primarily for turning line breaks 
 	 * into <p> and <br/> tags.
@@ -333,7 +327,9 @@ class WPForms_WP_Emails {
 	 */
 	function process_tag( $string = '', $santiize = true ) {
 
-		$tag = apply_filters( 'wpforms_process_smart_tags', $string, $this->form_data, $this->fields );
+		$tag = apply_filters( 'wpforms_process_smart_tags', $string, $this->form_data, $this->fields, $this->entry_id );
+
+		$tag = stripslashes( wp_specialchars_decode( $tag ) );
 
 		if ( $santiize ) {
 			$tag = sanitize_text_field( $tag );

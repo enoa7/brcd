@@ -66,9 +66,6 @@ class WPForms_Builder {
 		// Only load if we are actually on the builder
 		if ( $page == 'wpforms-builder' ) {
 
-			// Builder specific functions
-			require_once WPFORMS_PLUGIN_DIR . 'includes/admin/builder/functions.php';
-
 			// Load form if found
 			$form_id = isset( $_GET['form_id'] ) ? absint( $_GET['form_id'] ) : false;
 
@@ -154,7 +151,7 @@ class WPForms_Builder {
 
 		// CSS
 		wp_enqueue_style( 
-			'font-awesome', 
+			'wpforms-font-awesome', 
 			WPFORMS_PLUGIN_URL . 'assets/css/font-awesome.min.css', 
 			null, 
 			'4.4.0'
@@ -263,13 +260,20 @@ class WPForms_Builder {
 				'cancel'                 => __( 'Cancel', 'wpforms' ),
 				'ok'                     => __( 'OK', 'wpforms' ),
 				'close'                  => __( 'Close', 'wpforms' ),
+				'conditionals_change'    => __( 'Due to form changes, conditional logic rules have been removed or updated:', 'wpforms' ),
 				'field'                  => __( 'Field', 'wpforms' ),
 				'field_locked'           => __( 'Field Locked', 'wpforms' ),
 				'field_locked_msg'       => __( 'This field cannot be deleted because it required by the form template.', 'wpforms' ),
 				'fields_available'       => __( 'Available Fields', 'wpforms' ),
 				'fields_unavailable'     => __( 'No fields available', 'wpforms' ),
+				'heads_up'               => __( 'Heads up!', 'wpforms' ),
 				'nonce'                  => wp_create_nonce( 'wpforms-builder' ),
 				'no_email_fields'        => __( 'No email fields', 'wpforms' ),
+				'notification_delete'    => __( 'Are you sure you want to delete this notification?', 'wpforms' ),
+				'notification_prompt'    => __( 'Enter a notification name', 'wpforms' ),
+				'notification_ph'        => __( 'Eg: User Confirmation', 'wpforms' ),
+				'notification_error'     => __( 'You must provide a notification name', 'wpforms' ),
+				'notification_error2'    => __( 'Form must contain one notification. To disable all notifications use the setting Notifications dropdown setting.', 'wpforms' ),
 				'saving'                 => __( 'Saving ...', 'wpforms' ),
 				'saved'                  => __( 'Saved!', 'wpforms' ),
 				'save_exit'              => __( 'Save and Exit', 'wpforms' ),
@@ -291,13 +295,20 @@ class WPForms_Builder {
 				'error_choice'           => __( 'This item must contain at least one choice.', 'wpforms' ),
 				'off'                    => __( 'Off', 'wpforms' ),
 				'on'                     => __( 'On', 'wpforms' ),
+				'other'                  => __( 'Other', 'wpforms' ),
 				'previous'               => __( 'Previous', 'wpforms' ),
 				'saved_state'            => '',
+				'smart_tags'             => wpforms()->smart_tags->get(),
 				'smart_tags_show'        => __( 'Show Smart Tags', 'wpforms' ),
 				'smart_tags_hide'        => __( 'Hide Smart Tags', 'wpforms' ),
-				'select_field'           => __( '-- Select field --', 'wpforms' ),
+				'select_field'           => __( '-- Select Field --', 'wpforms' ),
+				'select_choice'          => __( '-- Select Choice --', 'wpforms' ),
 		);
 		$strings = apply_filters( 'wpforms_builder_strings', $strings, $this->form );
+
+		if ( !empty( $_GET['form_id'] ) ) {
+			$strings['preview_url'] = add_query_arg( array( 'new_window' => 1 ), wpforms()->preview->form_preview_url( $_GET['form_id'] ) );
+		}
 
 		wp_localize_script(
 			'wpforms-builder',

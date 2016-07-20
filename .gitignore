@@ -1,7 +1,17 @@
-# ----------------
-# Ignored Files
-# ----------------
-
+#ignored npm folders
 backend/wp-content/themes/brcd-film/node_modules/
 
+#ignored asset files 
 kitchen/
+
+#ignored env.php
+backend/env.php
+
+#ignored sql files
+*.sql
+
+#ignored sublime files
+*.sublime-project
+*.sublime-workspace
+
+#ignored wp

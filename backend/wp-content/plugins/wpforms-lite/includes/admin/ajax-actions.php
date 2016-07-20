@@ -28,8 +28,39 @@ function wpforms_save_form() {
 	if ( empty( $_POST['data'] ) ) 
 		die( __( 'No data provided', 'wpforms' ) );
 
-	$data    = wp_parse_args( $_POST['data'], array() );
+	$form_post = json_decode( stripslashes( $_POST['data'] ) ); 
+	$data      = array();
+
+	if ( ! is_null( $form_post ) && $form_post ) { 
+		foreach ( $form_post as $post_input_data ) { 
+			// For input names that are arrays (e.g. `menu-item-db-id[3][4][5]`), 
+			// derive the array path keys via regex and set the value in $_POST. 
+			preg_match( '#([^\[]*)(\[(.+)\])?#', $post_input_data->name, $matches ); 
+
+			$array_bits = array( $matches[1] ); 
+
+			if ( isset( $matches[3] ) ) { 
+				$array_bits = array_merge( $array_bits, explode( '][', $matches[3] ) ); 
+			} 
+
+			$new_post_data = array(); 
+
+			// Build the new array value from leaf to trunk. 
+			for ( $i = count( $array_bits ) - 1; $i >= 0; $i -- ) { 
+				if ( $i == count( $array_bits ) - 1 ) { 
+						$new_post_data[ $array_bits[ $i ] ] = wp_slash( $post_input_data->value ); 
+				} else { 
+						$new_post_data = array( $array_bits[ $i ] => $new_post_data ); 
+				} 
+			} 
+
+			$data = array_replace_recursive( $data, $new_post_data ); 
+		} 
+	} 
+
 	$form_id = wpforms()->form->update( $data['id'], $data );
+
+	do_action( 'wpforms_builder_save_form', $form_id, $data );
 
 	if ( ! $form_id ) {
 		die( __( 'An error occured and the form could not be saved', 'wpforms'  ) );

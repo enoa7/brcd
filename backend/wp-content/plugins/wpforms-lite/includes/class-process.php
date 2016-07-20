@@ -27,13 +27,21 @@ class WPForms_Process {
 	public $fields;
 
 	/**
+	 * Holds the ID of a successful entry.
+	 *
+	 * @since 1.2.3
+	 * @var int
+	 */
+	public $entry_id = 0;
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.0.0
 	 */
 	public function __construct() {
 
-		add_action( 'init', array( $this, 'listen' ) );
+		add_action( 'wp', array( $this, 'listen' ) );
 	}
 
 	/**
@@ -158,17 +166,27 @@ class WPForms_Process {
 			}
 
 			// Success - add entry to database
-			$entry_id = $this->entry_save( $this->fields, '', $entry, $form_data['id'], $form_data );
+			$entry_id = $this->entry_save( $this->fields, $entry, $form_data['id'], $form_data );
 
 			// Success - send email notification
 			$this->entry_email( $this->fields, $entry, $form_data, $entry_id );
 
+			// Pass completed and formatted fields in POST
+			$_POST['wpforms']['complete'] = $this->fields;
+
+			// Pass entry ID in POST
+			$_POST['wpforms']['entry_id'] = $entry_id;
+
 			// Logs entry depending on log levels set
-			$log = array(
-				'fields'   => $this->fields,
-				'entry_id' => $entry_id,
+			wpforms_log( 
+				'Entry', 
+				$this->fields, 
+				array( 
+					'type'    => array( 'entry' ), 
+					'parent'  => $entry_id, 
+					'form_id' => $form_data['id'],
+				)
 			);
-			wpforms_log( 'Form Entry', $log, 'entries', array( 'type' => 'entry', 'parent' => $entry_id ) );
 
 			// Post-process hooks
 			do_action( 'wpforms_process_complete', $this->fields, $entry, $form_data, $entry_id );
@@ -176,10 +194,16 @@ class WPForms_Process {
 		
 		} else {
 
-			$message = $honeypot . '<br><pre>' . print_r( $entry, true ) . '</pre>';
-
 			// Logs spam entry depending on log levels set
-			wpforms_log( 'Spam Entry', $message, 'spam', array( 'type' => 'spam' ) );
+			wpforms_log( 
+				'Spam Entry', 
+				array( $honeypot, $entry ), 
+				array( 
+					'type'    => array( 'spam' ), 
+					'parent'  => $entry_id, 
+					'form_id' => $form_data['id'],
+				)
+			);
 		}
 
 		$this->entry_confirmation_redirect( $form_data );
@@ -237,7 +261,7 @@ class WPForms_Process {
 		if ( !empty( $form_data['settings']['confirmation_type'] ) && $form_data['settings']['confirmation_type'] != 'message' ) {
 
 			if ( $form_data['settings']['confirmation_type'] == 'redirect' ) {
-				$url = $form_data['settings']['confirmation_redirect'];
+				$url = apply_filters( 'wpforms_process_smart_tags', $form_data['settings']['confirmation_redirect'], $form_data, $this->fields, $this->entry_id );
 			}
 
 			if ( $form_data['settings']['confirmation_type'] == 'page' ) {
@@ -275,44 +299,65 @@ class WPForms_Process {
 			return;
 		}
 
-		// Check that the form has an email address to send to
-		if ( empty( $form_data['settings']['notification_email'] ) ) {
-			return;
-		}
-
 		// Provide the opportunity to override via a filter
 		if ( ! apply_filters( 'wpforms_entry_email', true, $fields, $entry, $form_data ) ) {
 			return;
 		}
 
 		$fields = apply_filters( 'wpforms_entry_email_data', $fields, $entry, $form_data );
-		$email  = array();
-		
-		// Setup email message. Soon this will be configurable for the user.
-		$email['message'] = '{all_fields}';
 
-		// Setup email address or addresses
-		$email['address'] = explode( ',', apply_filters( 'wpforms_process_smart_tags', $form_data['settings']['notification_email'], $form_data, $fields ) );
-		$email['address'] = array_map( 'sanitize_email', $email['address'] );
-
-		// Setup email subject line
-		if ( !empty( $form_data['settings']['notification_subject'] ) ) {
-			$email['subject'] = apply_filters( 'wpforms_process_smart_tags', $form_data['settings']['notification_subject'], $form_data, $fields );
-			$email['subject'] = wp_specialchars_decode( sanitize_text_field( $email['subject'] ) );
+		// Backwards compatibility for notifications before v1.2.3
+		if ( empty( $form_data['settings']['notifications'] ) ) {
+			$notifications[1] = array(
+				'email'          => $form_data['settings']['notification_email'],
+				'subject'        => $form_data['settings']['notification_subject'],
+				'sender_name'    => $form_data['settings']['notification_fromname'],
+				'sender_address' => $form_data['settings']['notification_fromaddress'],
+				'replyto'        => $form_data['settings']['notification_replyto'],
+				'message'        => '{all_fields}',
+			);
 		} else {
-			$email['subject'] = __( 'New %s Entry', $form_data['settings']['form_title'] );
+			$notifications = $form_data['settings']['notifications'];
 		}
 
-		// Last chance
-		$email = apply_filters( 'wpforms_entry_email_atts', $email, $fields, $entry, $form_data );
+		foreach( $notifications as $notification_id => $notification ) {
 
-		$emails = new WPForms_WP_Emails;
-		$emails->__set( 'form_data', $form_data );
-		$emails->__set( 'fields', $fields );
+			if ( empty( $notification['email'] ) ) {
+				continue;
+			}
 
-		foreach( $email['address'] as $address ) {
-			$emails->send( $address, $email['subject'], $email['message'] );
-		}			
+			$process_email = apply_filters( 'wpforms_entry_email_process', true, $fields, $form_data, $notification_id ); 
+
+			if ( ! $process_email ) {
+				continue;
+			}
+
+			$email  = array();
+
+			// Setup email properties
+			$email['address']        = explode( ',', apply_filters( 'wpforms_process_smart_tags', $notification['email'], $form_data, $fields, $this->entry_id ) );
+			$email['address']        = array_map( 'sanitize_email', $email['address'] );
+			$email['subject']        = !empty( $notification['subject'] ) ? $notification['subject'] : sprintf( __( 'New %s Entry', 'wpforms ' ), $form_data['settings']['form_title'] );
+			$email['sender_address'] = !empty( $notification['sender_address'] ) ? $notification['sender_address'] : get_option( 'admin_email' );
+			$email['sender_name']    = !empty( $notification['sender_name'] ) ? $notification['sender_name'] : get_bloginfo( 'name' );
+			$email['replyto']        = !empty( $notification['replyto'] ) ? $notification['replyto'] : false;
+			$email['message']        = !empty( $notification['message'] ) ? $notification['message'] : '{all_fields}';
+			$email                   = apply_filters( 'wpforms_entry_email_atts', $email, $fields, $entry, $form_data, $notification_id );
+
+			// Create new email
+			$emails = new WPForms_WP_Emails;
+			$emails->__set( 'form_data',    $form_data               );
+			$emails->__set( 'fields',       $fields                  );
+			$emails->__set( 'entry_id',     $this->entry_id          );
+			$emails->__set( 'from_name',    $email['sender_name']    );
+			$emails->__set( 'from_address', $email['sender_address'] );
+			$emails->__set( 'reply_to',     $email['replyto']        );
+
+			// Go
+			foreach( $email['address'] as $address ) {
+				$emails->send( $address, $email['subject'], $email['message'] );
+			}	
+		}		
 	}
 
 	/**
@@ -323,10 +368,10 @@ class WPForms_Process {
 	 * @param array $entry
 	 * @param array $form_data
 	 */
-	public function entry_save( $fields, $entry_meta, $entry, $form_id, $form_data = '' ) {
+	public function entry_save( $fields, $entry, $form_id, $form_data = '' ) {
 
-		do_action( 'wpforms_process_entry_save', $fields, $entry_meta, $entry, $form_id, $form_data );
+		do_action( 'wpforms_process_entry_save', $fields, $entry, $form_id, $form_data );
 
-		return '0';
+		return $this->entry_id;
 	}
 }

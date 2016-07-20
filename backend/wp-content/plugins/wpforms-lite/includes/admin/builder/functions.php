@@ -23,14 +23,16 @@
 function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args = array(), $echo = true ) {
 
 	// Required params
-	if ( empty( $option ) || empty( $panel ) || empty( $field ) || empty( $form_data )  ) {
+	if ( empty( $option ) || empty( $panel ) || empty( $field )  ) {
 		return;
 	}
 
 	// Setup basic vars
 	$panel       = esc_attr( $panel );
 	$field       = esc_attr( $field );
+	$panel_id    = sanitize_html_class( $panel );
 	$parent      = !empty( $args['parent'] ) ? esc_attr( $args['parent'] ) : '';
+	$subsection  = !empty( $args['subsection'] ) ? esc_attr( $args['subsection'] ) : '';
 	$label       = !empty( $label ) ? esc_html( $label ) : '';
 	$class       = !empty( $args['class'] ) ? esc_attr( $args['class'] ) : '';
 	$input_class = !empty( $args['input_class'] ) ? esc_attr( $args['input_class'] ) : '';
@@ -40,8 +42,14 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 
 	// Check if we should store values in a parent array
 	if ( !empty( $parent ) ) {
-		$field_name = sprintf( '%s[%s][%s]', esc_attr( $args['parent'] ), $panel, $field );
-		$value      = isset( $form_data[$parent][$panel][$field ] )  ? $form_data[$parent][$panel][$field] : $default;
+		if ( !empty( $subsection ) ) {
+			$field_name  = sprintf( '%s[%s][%s][%s]', $parent, $panel, $subsection, $field );
+			$value       = isset( $form_data[$parent][$panel][$subsection][$field] ) ? $form_data[$parent][$panel][$subsection][$field] : $default;
+			$panel_id    = sanitize_html_class( $panel . '-' . $subsection );
+		} else {
+			$field_name = sprintf( '%s[%s][%s]', $parent, $panel, $field );
+			$value      = isset( $form_data[$parent][$panel][$field] )  ? $form_data[$parent][$panel][$field] : $default;
+		}
 	} else {
 		$field_name = sprintf( '%s[%s]', $panel, $field );
 		$value      = isset( $form_data[$panel][$field] ) ? $form_data[$panel][$field] : $default;
@@ -63,7 +71,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$output = sprintf( 
 				'<input type="%s" id="wpforms-panel-field-%s-%s" name="%s" value="%s" placeholder="%s" class="%s" %s>', 
 				$type,
-				sanitize_html_class( $panel ), 
+				sanitize_html_class( $panel_id ), 
 				sanitize_html_class( $field ),
 				$field_name,
 				esc_attr( $value ),
@@ -78,7 +86,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$rows   = !empty( $args['rows'] ) ? (int) $args['rows'] : '3';
 			$output = sprintf( 
 				'<textarea id="wpforms-panel-field-%s-%s" name="%s" rows="%d" placeholder="%s" class="%s" %s>%s</textarea>',
-				sanitize_html_class( $panel ), 
+				sanitize_html_class( $panel_id ), 
 				sanitize_html_class( $field ),
 				$field_name,
 				$rows,
@@ -97,7 +105,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			) );
 			$args['textarea_name'] = $field_name;
 			$args['teeny'] = true;
-			$id = 'wpforms-panel-field-' . sanitize_html_class( $panel ) . '-' . sanitize_html_class( $field );
+			$id = 'wpforms-panel-field-' . sanitize_html_class( $panel_id ) . '-' . sanitize_html_class( $field );
 			$id = str_replace( '-', '_', $id );
 			ob_start();
 			wp_editor( $value, $id , $args );
@@ -109,7 +117,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$checked = checked( '1', $value, false );
 			$output  = sprintf( 
 				'<input type="checkbox" id="wpforms-panel-field-%s-%s" name="%s" value="1" class="%s" %s %s>',
-				sanitize_html_class( $panel ), 
+				sanitize_html_class( $panel_id ), 
 				sanitize_html_class( $field ),
 				$field_name,
 				$input_class,
@@ -118,7 +126,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			);
 			$output .= sprintf( 
 				'<label for="wpforms-panel-field-%s-%s" class="inline">%s',
-				sanitize_html_class( $panel ), 
+				sanitize_html_class( $panel_id ), 
 				sanitize_html_class( $field ),
 				$label
 			);
@@ -137,24 +145,29 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			if ( !empty( $args['field_map'] ) ) {
 				$options = array();
 				$available_fields = wpforms_get_form_fields( $form_data, $args['field_map']  );
+				if ( !empty( $available_fields ) ) {
 				foreach ( $available_fields as $id => $available_field ) {
 					$lbl = !empty( $available_field['label'] ) ? esc_attr( $available_field['label'] ) : __( 'Field #') . $id;
 					$options[$id] = $lbl;
-				}
+				} }
 				$input_class .= ' wpforms-field-map-select';
 				$data_attr   .= ' data-field-map-allowed="' . implode( ' ', $args['field_map'] ) . '"';
+				if ( !empty( $placeholder ) ) {
+					$data_attr .= ' data-field-map-placeholder="' . esc_attr( $placeholder ) . '"';
+				}
 			} else {
 				$options = $args['options'];
 			}
 
 			$output  = sprintf( 
 				'<select id="wpforms-panel-field-%s-%s" name="%s" class="%s" %s>',
-				sanitize_html_class( $panel ), 
+				sanitize_html_class( $panel_id ), 
 				sanitize_html_class( $field ),
 				$field_name,
 				$input_class,
 				$data_attr
 			);
+
 				if ( !empty( $placeholder ) ) {
 					$output .= '<option value="">' . $placeholder . '</option>';
 				}
@@ -162,6 +175,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 				foreach ( $options as $key => $option ) {
 					$output .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( $key, $value, false ), $option );
 				}
+
 			$output .= '</select>';
 			break;
 	}
@@ -169,7 +183,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 	// Put the pieces together....
 	$field_open = sprintf( 
 		'<div id="wpforms-panel-field-%s-%s-wrap" class="wpforms-panel-field %s %s">', 
-		sanitize_html_class( $panel ), 
+		sanitize_html_class( $panel_id ), 
 		sanitize_html_class( $field ),
 		$class,
 		'wpforms-panel-field-' . sanitize_html_class( $option )
@@ -178,7 +192,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 	if ( 'checkbox' != $option & !empty( $label ) ) {
 		$field_label = sprintf( 
 			'<label for="wpforms-panel-field-%s-%s">%s',
-			sanitize_html_class( $panel ), 
+			sanitize_html_class( $panel_id ), 
 			sanitize_html_class( $field ),
 			$label
 		);
