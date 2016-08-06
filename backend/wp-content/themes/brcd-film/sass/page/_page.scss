@@ -5,19 +5,96 @@
 @import 'frontpage';
 @import 'contactus';
 // Regular Page
-
 // remove default margin for h* classes
 .entry-title {
-	margin: 0;
+    margin: 0;
 }
+
 .item-package {
-	@include spacepad(1em);
-    .entry-header {
-    	
+    @include spacepad(1em);
+}
+
+.segment {
+    @include spacepad(1rem);
+    @include breakpoint(sm) {
+        @include spacepad(5rem);
+    }
+    .title {
+        margin-bottom: 3rem;
+        font-weight: 700;
+    }
+    > .container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    @at-root {
+        &.hero-content {
+            padding-top: 0;
+        }
+        &#aboutus {
+            background-color: $color_primary;
+        }
+        &#contactus {
+            background-color: lighten($color_secondary, 5%);
+            color: #fff;
+        }
     }
 }
 
-#whatwedo.segment {
-	min-height: 600px;
-	@include spacemar(5em);
+#aboutus {
+    .tagline {
+        overflow: hidden;
+        position: relative;
+        > div {
+            text-align: center;
+            @include spacepad(1.1em);
+            background-color: #000;
+            color: #fff;
+            width: 100%;
+            max-width: 463px;
+            @include breakpoint(md) {
+                max-width: 623px;
+            }
+            @include breakpoint(lg) {
+                max-width: 768px;
+            }
+            margin: 0 auto;
+            &:before {
+                @include triangle('left', 30px, #000);
+                left: 13.7%;
+                top: 0px;
+                @include breakpoint(xs) {
+                    display: none;
+                }
+            }
+            &:after {
+                @include triangle('right', 30px, #000);
+                right: 13.7%;
+                top: 0px;
+                @include breakpoint(xs) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .desc {
+        @include spacepad(3rem);
+        text-align: center;
+    }
+}
+
+#contactus {
+    .wpforms-field-label {
+        color: #fff;
+    }
+    .wpforms-form button[type=submit] {
+        @extend .btn-brcd-primary;
+        @extend .btn-lg;
+        @include breakpoint(xs) {
+            width: 100%;
+        }
+        @include breakpoint(sm) {
+            float: right;
+        }
+    }
 }

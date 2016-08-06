@@ -99,7 +99,22 @@ class WPForms_Settings {
 			WPFORMS_VERSION
 		);
 
+		wp_enqueue_style( 
+			'minicolors', 
+			WPFORMS_PLUGIN_URL . 'assets/css/jquery.minicolors.css', 
+			null, 
+			'2.2.3'
+		);
+
 		// JS
+		wp_enqueue_script( 
+			'minicolors', 
+			WPFORMS_PLUGIN_URL . 'assets/js/jquery.minicolors.min.js', 
+			array( 'jquery' ), 
+			'2.2.3', 
+			false
+		);
+
 		wp_enqueue_script( 
 			'wpforms-settings', 
 			WPFORMS_PLUGIN_URL . 'assets/js/admin-settings.js',
@@ -166,19 +181,19 @@ class WPForms_Settings {
 				if ( isset( $_POST['submit-general'] ) ) {
 
 					// Prep and sanatize settings for save
-					$this->options['email-template']       = !empty( $_POST['email-template'] ) ? esc_attr( $_POST['email-template'] ) : 'default';
-					$this->options['email-header-image']   = !empty( $_POST['email-header-image'] ) ? esc_url_raw( $_POST['email-header-image'] ) : '';
-					$this->options['disable-css']          = !empty( $_POST['disable-css'] ) ? intval( $_POST['disable-css'] ) : '1';
-					$this->options['global-assets']        = !empty( $_POST['global-assets'] ) ? '1' : false;
-					$this->options['recaptcha-site-key']   = !empty( $_POST['recaptcha-site-key'] ) ? esc_html( $_POST['recaptcha-site-key'] ) : '';
-					$this->options['recaptcha-secret-key'] = !empty( $_POST['recaptcha-secret-key'] ) ? esc_html( $_POST['recaptcha-secret-key'] ) : '';
+					$this->options['email-template']         = !empty( $_POST['email-template'] ) ? esc_attr( $_POST['email-template'] ) : 'default';
+					$this->options['email-header-image']     = !empty( $_POST['email-header-image'] ) ? esc_url_raw( $_POST['email-header-image'] ) : '';
+					$this->options['email-background-color'] = !empty( $_POST['email-background-color'] ) ? wpforms_sanitize_hex_color( $_POST['email-background-color'] ) : '#e9eaec';
+					$this->options['disable-css']            = !empty( $_POST['disable-css'] ) ? intval( $_POST['disable-css'] ) : '1';
+					$this->options['global-assets']          = !empty( $_POST['global-assets'] ) ? '1' : false;
+					$this->options['recaptcha-site-key']     = !empty( $_POST['recaptcha-site-key'] ) ? esc_html( $_POST['recaptcha-site-key'] ) : '';
+					$this->options['recaptcha-secret-key']   = !empty( $_POST['recaptcha-secret-key'] ) ? esc_html( $_POST['recaptcha-secret-key'] ) : '';
 					$this->options = apply_filters( 'wpforms_settings_save', $this->options, $_POST, 'general' );
 
 					// Update settings in DB
 					update_option( 'wpforms_settings' , $this->options );
 
 					printf( '<div class="updated below-h2"><p>%s</p></div>', __( 'General settings updated.', 'wpforms' ) );
-
 				}
 			}
 		}
@@ -206,24 +221,6 @@ class WPForms_Settings {
 							</td>
 						</tr>
 						<tr>
-							<td class="section" colspan="2">
-								<hr>
-								<h4><?php _e( 'Email', 'wpforms' ); ?></h4>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<label for="wpforms-settings-email-template"><?php _e( 'Email Template', 'wpforms' ); ?></label>
-							</th>
-							<td>
-								<select name="email-template" id="wpforms-settings-email-template">
-									<option value="default" <?php selected( 'default', $this->get( 'email-template' ) ); ?>><?php _e( 'Default HTML template', 'wpforms' ); ?></option>
-									<option value="none" <?php selected( 'none', $this->get( 'email-template' ) ); ?>><?php _e( 'Plain Text', 'wpforms' ); ?></option>
-								</select>
-								<p class="description"><?php _e( 'Determines how email notifications will be formatted.', 'wpforms' ); ?></p>
-							</td>
-						</tr>
-						<tr>
 							<th scope="row">
 								<label for="wpforms-settings-general-global-assets"><?php _e( 'Load Assets Globally', 'wpforms' ); ?></label>
 							</th>
@@ -233,11 +230,29 @@ class WPForms_Settings {
 							</td>
 						</tr>
 						<tr>
+							<td class="section" colspan="2">
+								<hr>
+								<h4><?php _e( 'Email', 'wpforms' ); ?></h4>
+							</td>
+						</tr>
+						<tr>
 							<th scope="row">
-								<label for="wpforms-settings-email-header-image"><?php _e( 'Email Header Image ', 'wpforms' ); ?></label>
+								<label for="wpforms-settings-general-email-template"><?php _e( 'Email Template', 'wpforms' ); ?></label>
 							</th>
 							<td>
-								<label for="wpforms-settings-email-header-image" class="wpforms-settings-upload-image-display">
+								<select name="email-template" id="wpforms-settings-general-email-template">
+									<option value="default" <?php selected( 'default', $this->get( 'email-template' ) ); ?>><?php _e( 'Default HTML template', 'wpforms' ); ?></option>
+									<option value="none" <?php selected( 'none', $this->get( 'email-template' ) ); ?>><?php _e( 'Plain Text', 'wpforms' ); ?></option>
+								</select>
+								<p class="description"><?php _e( 'Determines how email notifications will be formatted.', 'wpforms' ); ?></p>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<label for="wpforms-settings-general-email-header-image"><?php _e( 'Email Header Image ', 'wpforms' ); ?></label>
+							</th>
+							<td>
+								<label for="wpforms-settings-general-email-header-image" class="wpforms-settings-upload-image-display">
 									<?php 
 									$email_header = $this->get( 'email-header-image' );
 									if ( $email_header ) {
@@ -252,6 +267,15 @@ class WPForms_Settings {
 									<?php _e( 'Recommended size is 300x100 or smaller for best support on all devices.', 'wpforms' ); ?>
 								</p>
 							</td>          
+						</tr>
+						<tr>
+							<th scope="row">
+								<label for="wpforms-settings-general-email-background-color"><?php _e( 'Email Background Color', 'wpforms' ); ?></label>
+							</th>
+							<td>
+								<input type="text" name="email-background-color" value="<?php echo esc_attr( $this->get( 'email-background-color', '#e9eaec' ) ); ?>" id="wpforms-settings-general-email-background-color" class="wpforms-color-picker">
+								<p class="description"><?php _e( 'Customize the background color of the HTML email template.', 'wpforms' ); ?></p>
+							</td>
 						</tr>
 						<tr>
 							<td class="section" colspan="2">
@@ -516,7 +540,7 @@ class WPForms_Settings {
 
 		// PHP configs... now we're getting to the important stuff
 		$return .= "\n" . '-- PHP Configuration' . "\n\n";
-		$return .= 'Safe Mode:                ' . ( ini_get( 'safe_mode' ) ? 'Enabled' : 'Disabled' . "\n" );
+		//$return .= 'Safe Mode:                ' . ( ini_get( 'safe_mode' ) ? 'Enabled' : 'Disabled' . "\n" );
 		$return .= 'Memory Limit:             ' . ini_get( 'memory_limit' ) . "\n";
 		$return .= 'Upload Max Size:          ' . ini_get( 'upload_max_filesize' ) . "\n";
 		$return .= 'Post Max Size:            ' . ini_get( 'post_max_size' ) . "\n";

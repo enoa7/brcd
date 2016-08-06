@@ -33,7 +33,7 @@ var HeroContent = (function() {
 
     $(document).ready(function(){
         HeroContent.videoController();
-        HeroContent.bannerController();
+        // HeroContent.bannerController();
     });
 
 })();

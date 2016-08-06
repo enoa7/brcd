@@ -200,7 +200,6 @@ class WPForms_Process {
 				array( $honeypot, $entry ), 
 				array( 
 					'type'    => array( 'spam' ), 
-					'parent'  => $entry_id, 
 					'form_id' => $form_data['id'],
 				)
 			);

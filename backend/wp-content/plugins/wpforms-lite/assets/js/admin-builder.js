@@ -1799,7 +1799,7 @@
 				for(var key in fields) {
 
 					// Compile the label
-					if (fields[key].label.length) {
+					if ( undefined !== fields[key].label && fields[key].label.length) {
 						var label = wpf.sanitizeString(fields[key].label);
 					} else {
 						var label = wpforms_builder.field + ' #' + fields[key].val;

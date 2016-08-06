@@ -48,6 +48,9 @@
 				$('#wpforms-tabs').fadeIn('fast');
 				$('.wpforms-circle-loader').remove();
 			});
+
+			// Load color pickers
+			$('.wpforms-color-picker').minicolors();
 		},
 
 		/**

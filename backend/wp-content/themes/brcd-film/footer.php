@@ -36,7 +36,9 @@
 				<!-- <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'brcd-film' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'brcd-film' ), 'WordPress' ); ?></a> -->
 				<span class="sep"> | </span>
 					<?php printf( esc_html__( 'Designed and Developed by %2$s.', 'brcd-film' ), 'brcd-film', '<a target="_blank" href="http://kode-in.web.id/" rel="designer"><i>kode-in</i></a>' ); ?>
-
+			</div>
+			<div class="backtotop">
+				<button class="btn-brcd btn-brcd-primary anchorlinks"><a href="#home">Back to Top</a></button>
 			</div>
 		</div>
 

@@ -383,4 +383,38 @@ function get_mainbanner($mobile, $desktop) {
 		(is_mobile()) ? the_post_thumbnail($mobile, array('class' => 'img-responsive fullwidth')) : the_post_thumbnail($desktop, array('class' => 'img-responsive fullwidth'));
 	}
 }
+
+/**
+ * function to display content for the main banner
+ * if its on desktop, it will display video(if video link is provided) or a sliding banner
+ * otherwise if its on mobile, display the sliding banner
+ */
+function get_main_content() {
+
+	$video = get_field('hero_video');
+	if(!is_mobile()) {
+
+		if($video) {
+
+			$html  = '<video id="hero-video" loop>';
+			$html .= '<source src="'. esc_url( get_stylesheet_directory_uri( "/" ) ) .'/inc/video/'.$video.'.mp4" type="video/mp4">';
+			$html .= 'Oh noes! Your browser does not support the video tag.';
+			$html .=  '</video>';
+
+			echo $html;
+
+		} else {
+			masterslider(1); //call master slider
+		}
+
+		
+	} else {
+
+		// $frontpage = new Page();
+		// $frontpage->display_banner();
+		masterslider(1); //call master slider
+	}
+
+}
+
 ?>

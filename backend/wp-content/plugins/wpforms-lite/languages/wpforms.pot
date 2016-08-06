@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPForms package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPForms 1.2.4\n"
+"Project-Id-Version: WPForms 1.2.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpforms\n"
-"POT-Creation-Date: 2016-07-07 20:06:51+00:00\n"
+"POT-Creation-Date: 2016-08-03 14:56:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -112,8 +112,8 @@ msgid ""
 msgstr ""
 
 #: includes/admin/builder/class-builder.php:277
-#: lite/includes/admin/class-settings.php:116
-#: pro/includes/admin/class-settings.php:120
+#: lite/includes/admin/class-settings.php:131
+#: pro/includes/admin/class-settings.php:135
 msgid "Saving ..."
 msgstr ""
 
@@ -189,7 +189,7 @@ msgid "Other"
 msgstr ""
 
 #: includes/admin/builder/class-builder.php:299
-#: includes/class-frontend.php:477
+#: includes/class-frontend.php:482
 #: pro/includes/fields/class-page-break.php:144
 msgid "Previous"
 msgstr ""
@@ -239,7 +239,7 @@ msgid "Save Form"
 msgstr ""
 
 #: includes/admin/builder/class-builder.php:386
-#: pro/includes/admin/class-settings.php:410
+#: pro/includes/admin/class-settings.php:435
 msgid "Save"
 msgstr ""
 
@@ -266,7 +266,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/builder/panels/class-fields.php:123
-#: includes/admin/builder/panels/class-settings.php:117
+#: includes/admin/builder/panels/class-settings.php:125
 msgid "Submit"
 msgstr ""
 
@@ -301,15 +301,15 @@ msgid "Click to edit. Drag to reorder."
 msgstr ""
 
 #: includes/admin/builder/panels/class-settings.php:21
-#: includes/admin/class-menu.php:84 lite/includes/admin/class-settings.php:349
-#: pro/includes/admin/class-settings.php:667
+#: includes/admin/class-menu.php:84 lite/includes/admin/class-settings.php:390
+#: pro/includes/admin/class-settings.php:690
 msgid "Settings"
 msgstr ""
 
 #: includes/admin/builder/panels/class-settings.php:57
 #: includes/admin/builder/panels/class-settings.php:87
-#: lite/includes/admin/class-settings.php:137
-#: pro/includes/admin/class-settings.php:141
+#: lite/includes/admin/class-settings.php:152
+#: pro/includes/admin/class-settings.php:156
 msgid "General"
 msgstr ""
 
@@ -320,7 +320,7 @@ msgid "Notifications"
 msgstr ""
 
 #: includes/admin/builder/panels/class-settings.php:59
-#: includes/admin/builder/panels/class-settings.php:247
+#: includes/admin/builder/panels/class-settings.php:255
 msgid "Confirmation"
 msgstr ""
 
@@ -343,62 +343,72 @@ msgid "Hide form title and description area"
 msgstr ""
 
 #: includes/admin/builder/panels/class-settings.php:116
-msgid "Submit Button Text"
+msgid "Form CSS Class"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:124
-msgid "Submit Button CSS Class"
-msgstr ""
-
-#: includes/admin/builder/panels/class-settings.php:125
+#: includes/admin/builder/panels/class-settings.php:117
 msgid ""
-"Enter CSS class names for the form submit button. Class names should be "
+"Enter CSS class names for the form wrapper. Multiple class names should be "
 "seperated with spaces."
 msgstr ""
 
+#: includes/admin/builder/panels/class-settings.php:124
+msgid "Submit Button Text"
+msgstr ""
+
 #: includes/admin/builder/panels/class-settings.php:132
+msgid "Submit Button CSS Class"
+msgstr ""
+
+#: includes/admin/builder/panels/class-settings.php:133
+msgid ""
+"Enter CSS class names for the form submit button. Multiple names should be "
+"seperated with spaces."
+msgstr ""
+
+#: includes/admin/builder/panels/class-settings.php:140
 msgid "Enable anti-spam honeypot"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:142
+#: includes/admin/builder/panels/class-settings.php:150
 msgid "Enable reCAPTCHA"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:254
+#: includes/admin/builder/panels/class-settings.php:262
 msgid "Confirmation Type"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:258
+#: includes/admin/builder/panels/class-settings.php:266
 #: includes/templates/class-suggestion.php:74 lite/wpforms-lite.php:172
 #: pro/wpforms-pro.php:360
 msgid "Message"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:259
+#: includes/admin/builder/panels/class-settings.php:267
 msgid "Show Page"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:260
+#: includes/admin/builder/panels/class-settings.php:268
 msgid "Go to URL (Redirect)"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:269
+#: includes/admin/builder/panels/class-settings.php:277
 msgid "Confirmation Message"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:271
+#: includes/admin/builder/panels/class-settings.php:279
 msgid "Thanks for contacting us! We will be in touch with you shortly."
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:282
+#: includes/admin/builder/panels/class-settings.php:290
 msgid "Automatically scroll to the confirmation message"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:295
+#: includes/admin/builder/panels/class-settings.php:303
 msgid "Confirmation Page"
 msgstr ""
 
-#: includes/admin/builder/panels/class-settings.php:303
+#: includes/admin/builder/panels/class-settings.php:311
 msgid "Confirmation Redirect URL"
 msgstr ""
 
@@ -467,9 +477,9 @@ msgid ""
 "a>?"
 msgstr ""
 
-#. #-#-#-#-#  wpforms.pot (WPForms 1.2.4)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.2.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#. #-#-#-#-#  wpforms.pot (WPForms 1.2.4)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.2.5)  #-#-#-#-#
 #. Author of the plugin/theme
 #: includes/admin/class-menu.php:39 includes/admin/class-menu.php:40
 #: includes/admin/class-menu.php:51
@@ -486,7 +496,7 @@ msgstr ""
 
 #: includes/admin/class-menu.php:62
 #: includes/admin/overview/class-overview.php:148
-#: pro/includes/class-provider.php:1050
+#: pro/includes/class-provider.php:1051
 msgid "Add New"
 msgstr ""
 
@@ -668,11 +678,11 @@ msgstr ""
 msgid "Forms Overview"
 msgstr ""
 
-#: includes/class-frontend.php:282
+#: includes/class-frontend.php:287
 msgid "Step"
 msgstr ""
 
-#: includes/class-frontend.php:283
+#: includes/class-frontend.php:288
 msgid "of"
 msgstr ""
 
@@ -747,7 +757,7 @@ msgstr ""
 msgid "WPForms honeypot field triggered."
 msgstr ""
 
-#: includes/class-process.php:340 lite/wpforms-lite.php:52
+#: includes/class-process.php:339 lite/wpforms-lite.php:52
 #: pro/wpforms-pro.php:236
 msgid "New %s Entry"
 msgstr ""
@@ -826,7 +836,7 @@ msgstr ""
 msgid "Lost Password URL"
 msgstr ""
 
-#: includes/class-widget.php:127 pro/includes/admin/class-settings.php:493
+#: includes/class-widget.php:127 pro/includes/admin/class-settings.php:518
 msgid "No forms"
 msgstr ""
 
@@ -848,8 +858,8 @@ msgstr ""
 msgid "Field ID #"
 msgstr ""
 
-#: includes/emails/templates/footer-default.php:38
-msgid "Sent from "
+#: includes/emails/templates/footer-default.php:40
+msgid "Sent from <a href=\"%s\" style=\"color:#bbbbbb;\">%s</a>"
 msgstr ""
 
 #: includes/fields/class-base.php:290
@@ -1040,8 +1050,8 @@ msgid "Show Values"
 msgstr ""
 
 #: includes/fields/class-email.php:21
-#: lite/includes/admin/class-settings.php:211
-#: pro/includes/admin/class-settings.php:284
+#: lite/includes/admin/class-settings.php:235
+#: pro/includes/admin/class-settings.php:300
 #: pro/includes/templates/class-donation.php:42
 #: pro/includes/templates/class-order.php:42
 #: pro/includes/templates/class-request-quote.php:46
@@ -1227,122 +1237,132 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:117
-#: pro/includes/admin/class-settings.php:121
+#: lite/includes/admin/class-settings.php:132
+#: pro/includes/admin/class-settings.php:136
 msgid "Are you sure you want to disconnect this account?"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:118
-#: pro/includes/admin/class-settings.php:122
+#: lite/includes/admin/class-settings.php:133
+#: pro/includes/admin/class-settings.php:137
 msgid "Upload or Choose Your Image"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:119
-#: pro/includes/admin/class-settings.php:123
+#: lite/includes/admin/class-settings.php:134
+#: pro/includes/admin/class-settings.php:138
 msgid "Use Image"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:138
+#: lite/includes/admin/class-settings.php:153
 msgid "System Information"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:161
-#: pro/includes/admin/class-settings.php:168
-#: pro/includes/admin/class-settings.php:368
+#: lite/includes/admin/class-settings.php:176
+#: pro/includes/admin/class-settings.php:183
+#: pro/includes/admin/class-settings.php:393
 msgid "Settings check failed."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:180
-#: pro/includes/admin/class-settings.php:187
+#: lite/includes/admin/class-settings.php:196
+#: pro/includes/admin/class-settings.php:203
 msgid "General settings updated."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:197
-#: pro/includes/admin/class-settings.php:261
+#: lite/includes/admin/class-settings.php:212
+#: pro/includes/admin/class-settings.php:277
 msgid "Include Form Styling"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:201
-#: pro/includes/admin/class-settings.php:265
+#: lite/includes/admin/class-settings.php:216
+#: pro/includes/admin/class-settings.php:281
 msgid "Base and form theme styling"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:202
-#: pro/includes/admin/class-settings.php:266
+#: lite/includes/admin/class-settings.php:217
+#: pro/includes/admin/class-settings.php:282
 msgid "Base styling only"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:203
-#: pro/includes/admin/class-settings.php:267
+#: lite/includes/admin/class-settings.php:218
+#: pro/includes/admin/class-settings.php:283
 #: pro/includes/fields/class-page-break.php:58
 msgid "None"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:205
-#: pro/includes/admin/class-settings.php:269
+#: lite/includes/admin/class-settings.php:220
+#: pro/includes/admin/class-settings.php:285
 msgid "Determines which CSS files to load for the site."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:216
-#: pro/includes/admin/class-settings.php:289
-msgid "Email Template"
-msgstr ""
-
-#: lite/includes/admin/class-settings.php:220
-#: pro/includes/admin/class-settings.php:293
-msgid "Default HTML template"
-msgstr ""
-
-#: lite/includes/admin/class-settings.php:221
-#: pro/includes/admin/class-settings.php:294
-msgid "Plain Text"
-msgstr ""
-
-#: lite/includes/admin/class-settings.php:223
-#: pro/includes/admin/class-settings.php:296
-msgid "Determines how email notifications will be formatted."
-msgstr ""
-
-#: lite/includes/admin/class-settings.php:228
-#: pro/includes/admin/class-settings.php:274
+#: lite/includes/admin/class-settings.php:225
+#: pro/includes/admin/class-settings.php:290
 msgid "Load Assets Globally"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:232
-#: pro/includes/admin/class-settings.php:278
+#: lite/includes/admin/class-settings.php:229
+#: pro/includes/admin/class-settings.php:294
 msgid ""
 "Check this if you would like to load WPForms assets site-wide. Only check if "
 "your site is having compatibility issues or instructed to by support."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:237
-#: pro/includes/admin/class-settings.php:301
+#: lite/includes/admin/class-settings.php:240
+#: pro/includes/admin/class-settings.php:305
+msgid "Email Template"
+msgstr ""
+
+#: lite/includes/admin/class-settings.php:244
+#: pro/includes/admin/class-settings.php:309
+msgid "Default HTML template"
+msgstr ""
+
+#: lite/includes/admin/class-settings.php:245
+#: pro/includes/admin/class-settings.php:310
+msgid "Plain Text"
+msgstr ""
+
+#: lite/includes/admin/class-settings.php:247
+#: pro/includes/admin/class-settings.php:312
+msgid "Determines how email notifications will be formatted."
+msgstr ""
+
+#: lite/includes/admin/class-settings.php:252
+#: pro/includes/admin/class-settings.php:317
 msgid "Email Header Image "
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:249
-#: pro/includes/admin/class-settings.php:313
+#: lite/includes/admin/class-settings.php:264
+#: pro/includes/admin/class-settings.php:329
 msgid "Upload Image"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:251
-#: pro/includes/admin/class-settings.php:315
+#: lite/includes/admin/class-settings.php:266
+#: pro/includes/admin/class-settings.php:331
 msgid ""
 "Upload or choose a logo to be displayed at the top of email notifications."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:252
-#: pro/includes/admin/class-settings.php:316
+#: lite/includes/admin/class-settings.php:267
+#: pro/includes/admin/class-settings.php:332
 msgid "Recommended size is 300x100 or smaller for best support on all devices."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:259
-#: pro/includes/admin/class-settings.php:323
+#: lite/includes/admin/class-settings.php:273
+#: pro/includes/admin/class-settings.php:338
+msgid "Email Background Color"
+msgstr ""
+
+#: lite/includes/admin/class-settings.php:277
+#: pro/includes/admin/class-settings.php:342
+msgid "Customize the background color of the HTML email template."
+msgstr ""
+
+#: lite/includes/admin/class-settings.php:283
+#: pro/includes/admin/class-settings.php:348
 msgid "reCAPTCHA"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:260
-#: pro/includes/admin/class-settings.php:324
+#: lite/includes/admin/class-settings.php:284
+#: pro/includes/admin/class-settings.php:349
 msgid ""
 "reCAPTCHA is a free anti-spam service from Google. Its helps protect your "
 "website from spam and abuse while letting real people pass through with "
@@ -1352,18 +1372,18 @@ msgid ""
 "\"_blank\">read our walk through</a> for step-by-step directions."
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:265
-#: pro/includes/admin/class-settings.php:329
+#: lite/includes/admin/class-settings.php:289
+#: pro/includes/admin/class-settings.php:354
 msgid "reCAPTCHA Site key"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:273
-#: pro/includes/admin/class-settings.php:337
+#: lite/includes/admin/class-settings.php:297
+#: pro/includes/admin/class-settings.php:362
 msgid "reCAPTCHA Secret key"
 msgstr ""
 
-#: lite/includes/admin/class-settings.php:282
-#: pro/includes/admin/class-settings.php:346
+#: lite/includes/admin/class-settings.php:306
+#: pro/includes/admin/class-settings.php:371
 msgid "Save General Settings"
 msgstr ""
 
@@ -1450,7 +1470,7 @@ msgid "Addon installed."
 msgstr ""
 
 #: pro/includes/admin/builder/panels/class-payments.php:21
-#: pro/includes/admin/class-settings.php:142
+#: pro/includes/admin/class-settings.php:157
 msgid "Payments"
 msgstr ""
 
@@ -1650,117 +1670,117 @@ msgid ""
 "continue receiving automatic updates."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:143
+#: pro/includes/admin/class-settings.php:158
 msgid "Integrations"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:144
+#: pro/includes/admin/class-settings.php:159
 msgid "Import/Export"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:145
+#: pro/includes/admin/class-settings.php:160
 msgid "System Info"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:194
+#: pro/includes/admin/class-settings.php:210
 msgid "Please enter a license key to verify."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:224
+#: pro/includes/admin/class-settings.php:240
 msgid "License"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:225
+#: pro/includes/admin/class-settings.php:241
 msgid "Your license key provides access to updates and Add-ons. "
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:230
+#: pro/includes/admin/class-settings.php:246
 msgid "License Key"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:234
+#: pro/includes/admin/class-settings.php:250
 msgid "Verify Key"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:236
+#: pro/includes/admin/class-settings.php:252
 msgid "Deactivate Key"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:244
+#: pro/includes/admin/class-settings.php:260
 msgid "License Key Type"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:247
+#: pro/includes/admin/class-settings.php:263
 msgid "Your license key type for this site is <strong>%s.</strong>"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:248
+#: pro/includes/admin/class-settings.php:264
 msgid "Refresh Key"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:249
+#: pro/includes/admin/class-settings.php:265
 msgid ""
 "If your license has been upgraded or is incorrect, you may force a refresh."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:379
+#: pro/includes/admin/class-settings.php:404
 msgid "Settings updated."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:393
+#: pro/includes/admin/class-settings.php:418
 msgid "Currency"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:397
+#: pro/includes/admin/class-settings.php:422
 msgid "US Dollars (USD)"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:399
+#: pro/includes/admin/class-settings.php:424
 msgid "Determines which currency to use for payments."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:430
+#: pro/includes/admin/class-settings.php:455
 msgid ""
 "You do not have any marketing add-ons activated. You can head over to the <a "
 "href=\"%s\">Add-Ons page</a> to install and activate the add-on for your "
 "provider."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:451
+#: pro/includes/admin/class-settings.php:476
 msgid "Form(s) imported"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:460
+#: pro/includes/admin/class-settings.php:485
 msgid "Form Import"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:465
+#: pro/includes/admin/class-settings.php:490
 msgid "Select an export file."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:471
+#: pro/includes/admin/class-settings.php:496
 msgid "Import"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:478
+#: pro/includes/admin/class-settings.php:503
 msgid "Form Export"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:483
+#: pro/includes/admin/class-settings.php:508
 msgid ""
 "Select form(s) to download an export file. This can be imported into another "
 "site."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:499
+#: pro/includes/admin/class-settings.php:524
 msgid "Export"
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:561
+#: pro/includes/admin/class-settings.php:584
 msgid "Please upload a valid .json form export file."
 msgstr ""
 
-#: pro/includes/admin/class-settings.php:561
+#: pro/includes/admin/class-settings.php:584
 #: pro/includes/admin/entries/class-entries-export.php:293
 msgid "Error"
 msgstr ""
@@ -2056,8 +2076,8 @@ msgstr ""
 msgid "Connection"
 msgstr ""
 
-#: pro/includes/class-provider.php:149 pro/includes/class-provider.php:1095
-#: pro/includes/class-provider.php:1130
+#: pro/includes/class-provider.php:149 pro/includes/class-provider.php:1096
+#: pro/includes/class-provider.php:1131
 msgid "You do not have permission"
 msgstr ""
 
@@ -2069,7 +2089,7 @@ msgstr ""
 msgid "Select Account"
 msgstr ""
 
-#: pro/includes/class-provider.php:638 pro/includes/class-provider.php:1209
+#: pro/includes/class-provider.php:638 pro/includes/class-provider.php:1210
 msgid "Add New Account"
 msgstr ""
 
@@ -2127,36 +2147,36 @@ msgstr ""
 msgid "Add rule group"
 msgstr ""
 
-#: pro/includes/class-provider.php:1099 pro/includes/class-provider.php:1134
+#: pro/includes/class-provider.php:1100 pro/includes/class-provider.php:1135
 msgid "Missing data"
 msgstr ""
 
-#: pro/includes/class-provider.php:1111
+#: pro/includes/class-provider.php:1112
 msgid "Connection missing"
 msgstr ""
 
-#: pro/includes/class-provider.php:1148 pro/includes/class-provider.php:1199
+#: pro/includes/class-provider.php:1149 pro/includes/class-provider.php:1200
 msgid "Connected on: "
 msgstr ""
 
-#: pro/includes/class-provider.php:1149 pro/includes/class-provider.php:1200
+#: pro/includes/class-provider.php:1150 pro/includes/class-provider.php:1201
 msgid "Disconnect "
 msgstr ""
 
-#: pro/includes/class-provider.php:1184
+#: pro/includes/class-provider.php:1185
 msgid "Integrate %s with WPForms"
 msgstr ""
 
-#: pro/includes/class-provider.php:1185
+#: pro/includes/class-provider.php:1186
 msgid "Connected"
 msgstr ""
 
-#: pro/includes/class-provider.php:1215
+#: pro/includes/class-provider.php:1216
 msgid ""
 "Please fill out all of the fields below to add your new provider account."
 msgstr ""
 
-#: pro/includes/class-provider.php:1221
+#: pro/includes/class-provider.php:1222
 msgid "Connect to"
 msgstr ""
 
@@ -2819,9 +2839,9 @@ msgstr ""
 msgid "Please deactivate WPForms Lite before activating WPForms"
 msgstr ""
 
-#. #-#-#-#-#  wpforms.pot (WPForms 1.2.4)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.2.5)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wpforms.pot (WPForms 1.2.4)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.2.5)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://wpforms.com"
 msgstr ""

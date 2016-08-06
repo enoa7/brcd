@@ -57,15 +57,14 @@ class WPForms_Frontend {
 		$form = wpforms()->form->get( (int) $id );
 		if ( ! $form )
 			return;
-
-		// Fetch basic information
-		$form_data = wpforms_decode( $form->post_content, true );
-		$form_id   = absint( $form->ID );
-		$settings  = $form_data['settings'];
-		$action    = esc_url_raw( remove_query_arg( 'wpforms' ) );
-		$class[]   = wpforms_setting( 'disable-css', '1' ) == '1' ? 'wpforms-container-full' : '';
-		$errors    = empty( wpforms()->process->errors[$form->ID] ) ? array() : wpforms()->process->errors[$form->ID];
-		$success   = false;
+		// Basic information
+		$form_data  = wpforms_decode( $form->post_content, true );
+		$form_id    = absint( $form->ID );
+		$settings   = $form_data['settings'];
+		$action     = esc_url_raw( remove_query_arg( 'wpforms' ) );
+		$class[]    = wpforms_setting( 'disable-css', '1' ) == '1' ? 'wpforms-container-full' : '';
+		$errors     = empty( wpforms()->process->errors[$form->ID] ) ? array() : wpforms()->process->errors[$form->ID];
+		$success    = false;
 
 		// If the form does not contain any fields do not proceed
 		if ( empty( $form_data['fields'] ) ) {
@@ -108,6 +107,10 @@ class WPForms_Frontend {
 
 		// Allow form container classes to be filtered
 		$class = array_map( 'sanitize_html_class', apply_filters( 'wpforms_frontend_container_class', $class, $form_data ) );
+		
+		if ( !empty( $form_data['settings']['form_class'] ) ) {
+			$class = array_merge( $class, array_map('sanitize_html_class', explode( ' ', $form_data['settings']['form_class'] ) ) );
+		}
 
 		// Begin to build the output
 		echo '<div class="wpforms-container ' . implode( ' ', $class ) . '" id="wpforms-' . $form_id . '">';
@@ -144,8 +147,10 @@ class WPForms_Frontend {
 			// Load confirmatiom specific asssets
 			$this->assets_confirmation();
 
-			$message = apply_filters( 'wpforms_process_smart_tags', $form_data['settings']['confirmation_message'], $form_data, $_POST['wpforms']['complete'], $_POST['wpforms']['entry_id'] );
-			$message = apply_filters( 'wpforms_frontend_confirmation_message', $message, $form_data );
+			$complete = !empty( $_POST['wpforms']['complete'] ) ? $_POST['wpforms']['complete'] : array();
+			$entry_id = !empty( $_POST['wpforms']['entry_id'] ) ? $_POST['wpforms']['entry_id'] : 0;
+			$message  = apply_filters( 'wpforms_process_smart_tags', $form_data['settings']['confirmation_message'], $form_data, $complete, $entry_id );
+			$message  = apply_filters( 'wpforms_frontend_confirmation_message', $message, $form_data );
 
 			$class = wpforms_setting( 'disable-css', '1' ) == '1' ? 'wpforms-confirmation-container-full' : 'wpforms-confirmation-container';
 
@@ -451,7 +456,7 @@ class WPForms_Frontend {
 
 						echo '<div class="' . implode( ' ', $field_atts['description_class'] ) . '" id="' . implode( ' ', $field_atts['description_id'] ) . '">';
 
-							echo $field['description'];
+							echo apply_filters( 'wpforms_process_smart_tags', $field['description'], $form_data );
 
 						echo '</div>';
 					}
@@ -537,9 +542,16 @@ class WPForms_Frontend {
 		if ( !isset( $form_data['settings']['recaptcha'] ) || '1' != $form_data['settings']['recaptcha'] )
 			return;
 
+		$d    = '';
+		$datas = apply_filters( 'wpforms_frontend_recaptcha', array( 'sitekey' => $site_key ), $form_data );
+
 		echo '<div class="wpforms-recaptcha-container">';
 
-			echo '<div class="g-recaptcha" data-sitekey="' . esc_attr( wpforms_setting( 'recaptcha-site-key', '' ) ) . '"></div>';
+			foreach( $datas as $key => $data ) {
+				$d .= 'data-' . $key . '="' . esc_attr( $data ) . '" ';
+			}
+
+			echo '<div class="g-recaptcha" ' . $d . '></div>';
 
 			if ( !empty( wpforms()->process->errors[$form_data['id']]['recaptcha'] ) ) {
 				echo '<label id="wpforms-field_recaptcah-error" class="wpforms-error">' . esc_html( wpforms()->process->errors[$form_data['id']]['recaptcha'] ) . '</label>';
@@ -763,9 +775,9 @@ class WPForms_Frontend {
 
 
 		// Load reCAPTCHA support if form supports it
-		$site_key   = wpforms_setting( 'recaptcha-site-key', '' );
-		$secret_key = wpforms_setting( 'recaptcha-secret-key', '' );
-		if ( !empty( $site_key )  && !empty( $secret_key ) ) {
+		$site_key   = wpforms_setting( 'recaptcha-site-key' );
+		$secret_key = wpforms_setting( 'recaptcha-secret-key' );
+		if ( !empty( $site_key ) && !empty( $secret_key ) ) {
 			wp_enqueue_script(
 				'wpforms-recaptcha',
 				'https://www.google.com/recaptcha/api.js',

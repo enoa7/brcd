@@ -3,4 +3,8 @@
 /* Site Logo */
 .site-branding svg {
 	max-width: 200px;
+
+	@include breakpoint(xs) {
+		max-width: 130px;
+	}
 }

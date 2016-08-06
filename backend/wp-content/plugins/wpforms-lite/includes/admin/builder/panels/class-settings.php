@@ -111,6 +111,14 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 		wpforms_panel_field(
 			'text',
 			'settings',
+			'form_class',
+			$this->form_data,
+			__( 'Form CSS Class', 'wpforms' ),
+			array( 'tooltip' => __( 'Enter CSS class names for the form wrapper. Multiple class names should be seperated with spaces.', 'wpforms' ) )
+		);
+		wpforms_panel_field(
+			'text',
+			'settings',
 			'submit_text',
 			$this->form_data,
 			__( 'Submit Button Text', 'wpforms' ),
@@ -122,7 +130,7 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'submit_class',
 			$this->form_data,
 			__( 'Submit Button CSS Class', 'wpforms' ),
-			array( 'tooltip' => __( 'Enter CSS class names for the form submit button. Class names should be seperated with spaces.', 'wpforms' ) )
+			array( 'tooltip' => __( 'Enter CSS class names for the form submit button. Multiple names should be seperated with spaces.', 'wpforms' ) )
 		);
 		wpforms_panel_field(
 			'checkbox',

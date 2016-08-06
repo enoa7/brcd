@@ -358,25 +358,29 @@
 	border-bottom: 0;
 }
 
-/* Dropdown Choices / Multiple choice */
+/* Dropdown Choices / Multiple choice / Captcha questions */
 
-#wpforms-panel-fields .wpforms-field-option-row-choices li {
+#wpforms-panel-fields .wpforms-field-option-row-choices li,
+#wpforms-panel-fields .wpforms-field-option-row-questions li {
 	border-bottom:1px solid #ddd;
 	overflow: hidden;
 	padding: 5px 0;
 	margin: 0
 }
 
-#wpforms-panel-fields .wpforms-field-option-row-choices li:first-of-type {
+#wpforms-panel-fields .wpforms-field-option-row-choices li:first-of-type ,
+#wpforms-panel-fields .wpforms-field-option-row-questions li:first-of-type {
 	padding-top:0;
 }
 
-#wpforms-panel-fields .wpforms-field-option-row-choices li:last-of-type {
+#wpforms-panel-fields .wpforms-field-option-row-choices li:last-of-type,
+#wpforms-panel-fields .wpforms-field-option-row-questions li:last-of-type {
 	padding-bottom:0;
 	border: 0;
 }
 
-#wpforms-panel-fields .wpforms-field-option-row-choices li i {
+#wpforms-panel-fields .wpforms-field-option-row-choices li i,
+#wpforms-panel-fields .wpforms-field-option-row-questions li i {
 	font-size:18px;
 	display: inline-block;
 	margin: 0 5px;
@@ -390,7 +394,8 @@
 	margin: 0 10px 0 5px;
 }
 
-#wpforms-panel-fields .wpforms-field-option-row-choices li .add i {
+#wpforms-panel-fields .wpforms-field-option-row-choices li .add i,
+#wpforms-panel-fields .wpforms-field-option-row-questions li .add i  {
 	margin-left:10px;
 }
 
@@ -402,6 +407,16 @@
 #wpforms-panel-fields .wpforms-field-option-row-choices li input[type=text].value {
 	margin: 10px 0 0 50px;
 	display: none;
+}
+
+#wpforms-panel-fields .wpforms-field-option-row-questions li input[type=text] {
+	display: inline-block;
+	width:82%;
+	margin: 0 0 10px 0;
+}
+
+#wpforms-panel-fields .wpforms-field-option-row-questions li input[type=text]:last-of-type {
+	margin: 0;
 }
 
 #wpforms-panel-fields .wpforms-field-option-row-choices .show-values li input[type=text].value {
@@ -1070,6 +1085,23 @@
 	text-align: center;
 	padding-top: 8px;
 }
+
+/* Custom captcha  */
+
+#wpforms-panel-fields .wpforms-field-captcha .format-selected-math {
+	font-size: 16px;
+}
+
+#wpforms-panel-fields .wpforms-field-captcha .format-selected-math input {
+	display: inline-block;
+	width: 70px;
+}
+
+#wpforms-panel-fields .wpforms-field-captcha .format-selected-math .wpforms-question,
+#wpforms-panel-fields .wpforms-field-captcha .format-selected-qa .wpforms-equation {
+	display: none;
+}
+
 
 /* Choice input layouts */
 #wpforms-panel-fields  ul.primary-input {

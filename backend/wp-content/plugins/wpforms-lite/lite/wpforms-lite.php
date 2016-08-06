@@ -10,7 +10,7 @@ class WPForms_Lite {
 	/**
 	 * Primary class constructor.
 	 *
-	 * @since 1.2.0
+	 * @since 1.2.x
 	 */
 	public function __construct() {
 
@@ -49,7 +49,7 @@ class WPForms_Lite {
 		// Fetch next ID and handle backwards compatibility
 		if ( empty( $settings->form_data['settings']['notifications'] ) ) {
 			$settings->form_data['settings']['notifications'][1]['email']          = !empty( $settings->form_data['settings']['notification_email'] ) ? $settings->form_data['settings']['notification_email'] : '{admin_email}';
-			$settings->form_data['settings']['notifications'][1]['subject']        = !empty( $settings->form_data['settings']['notification_subject'] ) ? $settings->form_data['settings']['notification_subject'] : sprintf( __( 'New %s Entry', 'wpforms ' ), $settings->form_data['settings']['form_title'] );
+			$settings->form_data['settings']['notifications'][1]['subject']        = !empty( $settings->form_data['settings']['notification_subject'] ) ? $settings->form_data['settings']['notification_subject'] : sprintf( __( 'New %s Entry', 'wpforms ' ), $settings->form->post_title );
 			$settings->form_data['settings']['notifications'][1]['sender_name']    = !empty( $settings->form_data['settings']['notification_fromname'] ) ? $settings->form_data['settings']['notification_fromname'] : get_bloginfo( 'name' );
 			$settings->form_data['settings']['notifications'][1]['sender_address'] = !empty( $settings->form_data['settings']['notification_fromaddress'] ) ? $settings->form_data['settings']['notification_fromaddress'] : '{admin_email}';
 			$settings->form_data['settings']['notifications'][1]['replyto']        = !empty( $settings->form_data['settings']['notification_replyto'] ) ? $settings->form_data['settings']['notification_replyto'] : '';
@@ -551,8 +551,24 @@ class WPForms_Lite {
 			<div class="wpforms-addon-item wpforms-addon-status-upgrade wpforms-second">
 				<div class="wpforms-addon-image"><img src="https://wpforms.com/images/addon-icon-user-registration.png"></div>
 				<div class="wpforms-addon-text">
-					<h4>User Registration</h4>
+					<h4>User Registration Addon</h4>
 					<p class="desc">WPForms user registration addon allows you to create custom WordPress user registration forms for your website.</p>
+				</div>
+				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
+			</div>
+			<div class="wpforms-addon-item wpforms-addon-status-upgrade wpforms-first">
+				<div class="wpforms-addon-image"><img src="https://wpforms.com/images/addon-icon-captcha.png"></div>
+				<div class="wpforms-addon-text">
+					<h4>Custom Captcha Addon</h4>
+					<p class="desc">WPForms custom captcha addon allows you to define custom questions or use random math questions as captcha to combat spam form submissions.</p>
+				</div>
+				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
+			</div>
+			<div class="wpforms-addon-item wpforms-addon-status-upgrade wpforms-second">
+				<div class="wpforms-addon-image"><img src="https://wpforms.com/images/addon-icon-geolocation.png"></div>
+				<div class="wpforms-addon-text">
+					<h4>Geolocation Addon</h4>
+					<p class="desc">WPForms geolocation addon allows you to collect and store your website visitors geolocation data along with their form submission.</p>
 				</div>
 				<div class="wpforms-addon-action"><a href="<?php echo $upgrade; ?>" target="_blank">Upgrade Now</a></div>
 			</div>

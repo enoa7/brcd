@@ -2,7 +2,7 @@
 Contributors: wpforms, jaredatch, smub
 Tags: contact form, contact form plugin, contact button, contact me, custom form, custom contact form, form builder, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form 
 Requires at least: 4.4
-Tested up to: 4.5.2
+Tested up to: 4.6
 Stable tag: trunk
 License: GNU General Public License v2.0 or later
 
@@ -85,11 +85,14 @@ We also knew that our developer friends may want to extend it further. That's wh
 * <a href="https://wpforms.com/features/multi-page-forms/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Multi-Page Forms</a> - Split long forms into multiple pages to improve user experience.
 * <a href="https://wpforms.com/addons/mailchimp-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">MailChimp Forms</a> - Create MailChimp newsletter signup forms in WordPress to grow your email list.
 * <a href="https://wpforms.com/addons/aweber-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">AWeber Forms</a> - Create AWeber newsletter signup forms in WordPress to grow your email list.
+* <a href="https://wpforms.com/addons/campaign-monitor-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Campaign Monitor Forms</a> - Create Campaign Monitor newsletter signup forms in WordPress to grow your email list.
 * <a href="https://wpforms.com/addons/getresponse-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">GetResponse Forms</a> - Create GetResponse newsletter signup forms in WordPress to grow your email list.
 * <a href="https://wpforms.com/addons/paypal-standard-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">PayPal Payment Forms</a> - Create PayPal forms to easily collect payments, donations, and online orders.
 * <a href="https://wpforms.com/addons/stripe-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Stripe Forms</a> - Easily collect payments, donations, and online orders with our Stripe addon.
 * <a href="https://wpforms.com/addons/user-registration-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">User Registration Forms</a> - Create custom WordPress user registration form.
 * <a href="https://wpforms.com/addons/conditional-logic-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Smart Conditional Logic</a> - Show or hide fields and form sections based on user behavior.
+* <a href="https://wpforms.com/addons/geolocation-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Geolocation</a> - Display location information about your users.
+* <a href="https://wpforms.com/addons/custom-catpcha-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Custom Captchas</a> - Create custom captchas for your forms.
 * Want us to add something else? Suggest a feature and we'll get it added!
 
 After reading this feature list, you can probably imagine why WPForms is the best WordPress forms plugin in the market.
@@ -159,6 +162,14 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.2.5 =
+- Added: Setting for Email template background color
+- Added: Form setting for form wrapper CSS class
+- Changed: Multiple Payment field stores Choice label text
+- Changed: reCAPTCHA tweaks and added filter	
+- Changed: Improved IP detection
+- Fixed: Mapped select fields in builder triggered JS error
 
 = 1.2.4.1 =
 - Fixed: Plugin settings page not correctly showing

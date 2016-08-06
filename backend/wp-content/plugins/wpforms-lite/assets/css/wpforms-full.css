@@ -497,6 +497,10 @@ div.wpforms-container-full .wpforms-form .wpforms-recaptcha-container {
 	clear: both;
 }
 
+div.wpforms-container-full .wpforms-form .wpforms-recaptcha-container iframe {
+	width: 100%;
+}
+
 
 /* Form Header area
 ----------------------------------------------------------------------------- */
@@ -554,7 +558,6 @@ div.wpforms-container-full .wpforms-form .wpforms-pagebreak-split .wpforms-page-
 }
 
 
-
 /* Credit Card field
 ----------------------------------------------------------------------------- */
 
@@ -593,6 +596,23 @@ div.wpforms-container-full .wpforms-form .wpforms-field-credit-card-expiration s
 	line-height: 38px;
 }
 
+/* Custom Captcha field
+----------------------------------------------------------------------------- */
+
+div.wpforms-container-full .wpforms-form .wpforms-captcha-math input {
+	display: inline-block;
+	width: 70px;
+	vertical-align: inherit;
+	margin: 0 0 0 5px;
+}
+
+div.wpforms-container-full .wpforms-form .wpforms-captcha-equation {
+	font-size: 16px;
+}
+
+div.wpforms-container-full .wpforms-form .wpforms-captcha-question {
+	margin: 0 0 4px 0;
+}
 
 /* Page Indicator themes
 ----------------------------------------------------------------------------- */
@@ -713,11 +733,6 @@ div.wpforms-container-full .wpforms-form .wpforms-field-hp {
 
 div.wpforms-container-full .wpforms-form .wpforms-field-hidden {
 	display: none;
-}
-
-/* ReCAPTCHA */
-div.wpforms-container-full .wpforms-form .wpforms-recaptcha-container iframe {
-	width: inherit;
 }
 
 

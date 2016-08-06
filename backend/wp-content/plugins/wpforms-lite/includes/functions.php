@@ -714,6 +714,31 @@ function wpforms_countries() {
 }
 
 /**
+ * Lookup user IP.
+ *
+ * There are many ways to do this, but we prefer the way EDD does it.
+ * https://github.com/easydigitaldownloads/easy-digital-downloads/blob/master/includes/misc-functions.php#L163
+ *
+ * @since 1.2.5
+ * @return string
+ */
+function wpforms_get_ip() {
+
+	$ip = '127.0.0.1';
+
+	if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} elseif( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
+		$ip = $_SERVER['REMOTE_ADDR'];
+	}
+	// Fix potential CSV returned from $_SERVER variables
+	$ip_array = array_map( 'trim', explode( ',', $ip ) );
+	return $ip_array[0];
+}
+
+/**
  * Sanitizes hex color.
  *
  * @since 1.2.1
@@ -729,6 +754,30 @@ function wpforms_sanitize_hex_color( $color ) {
 	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
 		return $color;
 	}
+}
+
+
+/**
+ * Detect if we should use a light or dark color based on the color given.
+ *
+ * @since 1.2.5
+ * @link https://docs.woocommerce.com/wc-apidocs/source-function-wc_light_or_dark.html#608-627
+ * @param mixed $color
+ * @param string $dark (default: '#000000')
+ * @param string $light (default: '#FFFFFF')
+ * @return string
+ */
+function wpforms_light_or_dark( $color, $dark = '#000000', $light = '#FFFFFF' ) {
+
+	$hex = str_replace( '#', '', $color );
+
+	$c_r = hexdec( substr( $hex, 0, 2 ) );
+	$c_g = hexdec( substr( $hex, 2, 2 ) );
+	$c_b = hexdec( substr( $hex, 4, 2 ) );
+
+	$brightness = ( ( $c_r * 299 ) + ( $c_g * 587 ) + ( $c_b * 114 ) ) / 1000;
+
+	return $brightness > 155 ? $dark : $light;
 }
 
 /**

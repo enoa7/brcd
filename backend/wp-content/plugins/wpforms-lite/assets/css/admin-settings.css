@@ -14,10 +14,10 @@
 }
 
 #wpforms-settings .wpforms-circle-loader {
-  margin: 50px auto;
-  width: 60px;
-  height: 60px;
-  position: relative;
+	margin: 50px auto;
+	width: 60px;
+	height: 60px;
+	position: relative;
 }
 
 #wpforms-settings .wpforms-circle-loader .wpforms-circle {
@@ -204,6 +204,16 @@
 	vertical-align: baseline;
 }
 
+#wpforms-settings .wpforms-color-picker {
+	height: auto;
+	padding-left: 30px !important;
+	overflow: visible;
+}
+
+#wpforms-settings .wpforms-color-picker .minicolors-theme-default .minicolors-swatch {
+	height: 24px
+}
+
 #wpforms-settings .wpforms-provider-account {
 	margin-bottom: 20px;
 	line-height: 1.8;
@@ -329,7 +339,8 @@
 	display: none;
 }
 
-.wpforms-settings-provider-accounts-connect p {
+.wpforms-settings-provider-accounts-connect p,
+.wpforms-settings-provider-accounts p {
 	margin: 0 0 15px 0;
 }
 

@@ -1,8 +1,7 @@
 %btn-brcd {
     @include transition(.2s);
     @extend .btn;
-
-    a { 
+    a {
         color: inherit;
         &:hover {
             text-decoration: none !important;
@@ -16,6 +15,9 @@
     color: #000;
     background-color: $color_primary;
     border-color: darken($color_primary, 5%);
+    a {
+        color: #000;
+    }
     &:hover {
         color: #fff !important;
         background-color: $color_secondary;

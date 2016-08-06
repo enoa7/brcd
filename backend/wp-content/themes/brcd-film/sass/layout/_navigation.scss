@@ -96,9 +96,10 @@
         padding-top: 10px; //add padding top to aligned it with the searchbox
     }
     .site-branding {
-        float: left;
+        display: inline;
         @include breakpoint(sm) {
             padding-top: 1em;
+            float: left;
         }
     }
     .site-nav {
