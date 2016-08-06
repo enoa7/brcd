@@ -16,11 +16,11 @@
 		</div>
 		<div class="col-sm-8 nopadding">
 			<!-- language selection -->
-			<div class="site-lang col-sm-9">
+			<!-- <div class="site-lang col-sm-9">
 				<span>english</span>
 				<span>|</span>
 				<span>indonesia</span>
-			</div>
+			</div> -->
 			<!-- searchbox -->
 			<div class="site-searchbox col-sm-3">
 				<form class="form-inline">

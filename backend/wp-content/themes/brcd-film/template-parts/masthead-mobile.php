@@ -8,11 +8,11 @@
 
 <header id="masthead" class="site-header mobile">
 	<div class="container" id="home">
-		<div class="site-lang col-xs-12">
+		<!-- <div class="site-lang col-xs-12">
 			<span>english</span>
 			<span>|</span>
 			<span>indonesia</span>
-		</div>
+		</div> -->
 		<div class="site-searchbox col-xs-12">
 			<form class="form-inline">
 			  <div class="form-group">
